@@ -1,0 +1,29 @@
+/* pages/quiz/ans-analyze/ans-analyze.wxss */
+.analyze-wrap{
+  width: 680rpx;
+  height: 700rpx;
+  padding: 100rpx 50rpx 0;
+  box-sizing: border-box;
+  /* width: 540rpx;
+  height: 600rpx; */
+  margin: 30rpx auto;
+  background: #33CB98;
+  border-radius: 40rpx;
+}
+.tit{
+  font-size: 54rpx;
+}
+.anl{
+  color: #fff;
+  font-size: 40rpx;
+  font-weight: normal;
+}
+.btn{
+  margin: 60rpx auto;
+  font-size: 56rpx;
+  font-weight: normal;
+  padding: 0;
+  color: #000;
+  border-radius: 28rpx;
+  background: #E4E4E4
+}

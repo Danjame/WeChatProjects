@@ -1,4 +1,8 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "quiz-btn": "./quiz-btn/quiz-btn",
+    "quiz-answer": "./quiz-answer/quiz-answer",
+    "ans-analyze": "./ans-analyze/ans-analyze"
+  },
   "navigationBarTitleText": "消遥达人"
 }

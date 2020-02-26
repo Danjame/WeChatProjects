@@ -1,0 +1,26 @@
+/* pages/quiz/quiz-answer/quiz-answer.wxss */
+.ans-wrapper{
+  width: 540rpx;
+  margin: 110rpx auto 0;
+}
+.title{
+  font-size: 54rpx;
+}
+.txt{
+  color: #D6D6D6;
+  font-size: 28rpx;
+  line-height: 100rpx;
+}
+.btn{
+  margin: 60rpx auto;
+  font-size: 56rpx;
+  font-weight: normal;
+  padding: 0;
+  /* background: #33CB98; */
+  color: #000;
+  border-radius: 28rpx;
+}
+.active{
+  background: #33CB98;
+  color: #fff;
+}

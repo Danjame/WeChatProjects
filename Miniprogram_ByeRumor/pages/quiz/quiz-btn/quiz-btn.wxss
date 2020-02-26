@@ -1,0 +1,16 @@
+/* pages/quiz/quiz_btn/quiz-btn.wxss */
+quiz-btn{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  
+}
+.btn{
+  width: 456rpx;
+  line-height: 168rpx;
+  border-radius: 40rpx;
+  background: #fff;
+  box-shadow: 1px 1px 5px #9A9A9A;
+  font-size: 60rpx;
+  color: #9A9A9A;
+}
