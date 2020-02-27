@@ -2,7 +2,32 @@
 <!-- <text>pages/quiz/ans-analyze/ans-analyze.wxml</text> -->
 <ans-top bind:exitClick="showBtnFn"/>
 <view class='analyze-wrap'>
-  <view class='tit'>春节假期再次延长至2月20日？</view>
-  <view class='anl'>解析：其实，仔细看这张截图，可以看出诸多可疑之处。如新闻标题“延长2020年春节假期至2月20日起正常上班”就是一个并不通顺、词不达意的句</view>
+  <block wx:if="{{showAnl}}">
+    <view 
+      class="iconfont icon-fenxiang" 
+      style="font-size:50rpx;text-align:right;"
+      bindtap="showShare"/>
+    <view class='tit'>春节假期再次延长至2月20日？</view>
+    <view class='anl'>解析：其实，仔细看这张截图，可以看出诸多可疑之处。如新闻标题“延长2020年春节假期至2月20日起正常上班”就是一个并不通顺、词不达意的句</view>
+    <view class="falseFlag">假</view>
+  </block>
 </view>
-<button class='btn' style="width:680rpx;line-height:120rpx;">下一题</button>
+<button class='btn' style="width:680rpx;line-height:120rpx;" bindtap="showAnl">下一题</button>
+<view class="share-wrap" wx:if="{{showShare}}" catchtap='hideShare'>
+  <view class="share" catchtap="cancleBubble">
+    <view class='tit'>春节假期再次延长至2月20日？</view>
+    <view class='true-or-false'>真或假</view>
+    <view class='btn-share'>
+      <button open-type="share" class='btns' style="height:200rpx;width:200rpx;background:none;padding:0">
+        <view class='iconfont icon-weixin-copy share-icon'></view>
+        <text class="share-txt">分享好友</text>
+      </button>
+      <button class="btns"  style="height:200rpx;width:200rpx;background:none;padding:0">
+        <text class='iconfont icon-tupian-xianxing share-icon'
+        style="color:#666;font-size:60rpx;"></text>
+        <text class="share-txt">生成图片</text>
+      </button>
+    </view>
+  </view>
+</view>
+

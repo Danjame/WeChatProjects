@@ -23,6 +23,13 @@ Page({
       showAnalyze: false
     })
   },
+  nextClickFn(){
+    this.setData({
+      showBtn: false,
+      showAns: false,
+      showAnalyze: false
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
