@@ -18,9 +18,10 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    handleStyle(){
+    handleStyle(e){
+      const index = e.currentTarget.dataset.index
       this.setData({
-        isActive: !this.data.isActive
+        isActive: index
       })
     },
     showBtnFn(){

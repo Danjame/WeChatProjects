@@ -5,7 +5,7 @@
   <view class='title'>春节假期再次延长至2月20日？</view>
   <view class='cont'>
     <text class='txt'>请选择以下其中一个选项</text>
-    <button class='btn {{isActive?"active":""}}' style="width:100%;line-height:120rpx;" bindtap="handleStyle">真</button>
-    <button class='btn {{!isActive?"active":""}}' style="width:100%;line-height:120rpx" bindtap="handleStyle">假</button>
+    <button class='btn {{isActive=="true"?"active":""}}' style="width:100%;line-height:120rpx;" bindtap="handleStyle" data-index="true">真</button>
+    <button class='btn {{isActive=="false"?"active":""}}' style="width:100%;line-height:120rpx" bindtap="handleStyle" data-index="false">假</button>
   </view>
 </view>
