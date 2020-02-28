@@ -1,33 +1,15 @@
-// pages/rumor/rumor.js
+// pages/quiz_score/quiz_score.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    showBtn: true, // 首页开始答题
-    showAns: false, // 答题页面
-    showAnalyze: false // 答案解析页面
+
   },
-  btnShowHide(){
-    this.setData({
-      showBtn: false, 
-      showAns: true, 
-      showAnalyze: false 
-    })
-  },
-  exitClickFn(){
-    this.setData({
-      showBtn: true, 
-      showAns: false, 
-      showAnalyze: false
-    })
-  },
-  nextClickFn(){
-    this.setData({
-      showBtn: false,
-      showAns: false,
-      showAnalyze: false
+  toScoreHint(){
+    wx.navigateTo({
+      url:'/pages/score_hint/score_hint'
     })
   },
   /**

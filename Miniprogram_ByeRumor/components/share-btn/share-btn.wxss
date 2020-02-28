@@ -1,0 +1,31 @@
+/* components/share-btn/share-btn.wxss */
+@import "./../../icons/icon.wxss";
+.btn-share{
+  display: flex;
+  width: 520rpx;
+  margin: 0 auto;
+  justify-content: space-between
+}
+.btns{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.share-icon{
+  width: 92rpx;
+  height: 90rpx;
+  line-height: 92rpx;
+  font-size: 92rpx;
+  text-align:center;
+  border-radius:50%;
+  color: #96D968;
+  background: #fff;
+  
+}
+.share-txt{
+  font-weight: normal;
+  font-size: 28rpx;
+  line-height: 96rpx;
+  color: #fff
+}

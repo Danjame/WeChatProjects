@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/quiz_score/quiz_score",
+    "pages/score_hint/score_hint",
     "pages/quiz/quiz",
     "pages/index/index",
     "pages/me/me",

@@ -1,5 +1,5 @@
-/* pages/quiz/ans-analyze/ans-analyze.wxss */
-@import "./../../../icons/icon.wxss";
+/* components/analyze-cmp/analyze-cmp.wxss */
+@import "./../../icons/icon.wxss";
 .analyze-wrap{
   position: relative;
   width: 680rpx;
@@ -38,33 +38,4 @@
   color: #fff;
   font-size: 64rpx;
   text-align: center;
-}
-.btn{
-  margin: 34rpx auto;
-  font-size: 56rpx;
-  font-weight: normal;
-  padding: 0;
-  color: #000;
-  border-radius: 28rpx;
-  background: #E4E4E4
-}
-.share-wrap{
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background:rgba(0,0,0,.4);
-}
-.share{
-  position: absolute;
-  top: 130rpx;
-  left: 50%;
-  margin-left: -340rpx;
-  width: 680rpx;
-  height: 700rpx;
-  padding: 34rpx 50rpx 0;
-  box-sizing: border-box;
-  background: #33CB98;
-  border-radius: 40rpx;
 }

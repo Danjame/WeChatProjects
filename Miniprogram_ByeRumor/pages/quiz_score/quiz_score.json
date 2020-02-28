@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "score-top":"./../../components/score-top/score-top",
+    "share-btn":"./../../components/share-btn/share-btn"
+  }
+}
