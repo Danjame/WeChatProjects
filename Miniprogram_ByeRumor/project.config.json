@@ -50,6 +50,17 @@
 			"list": [
 				{
 					"id": -1,
+					"name": "pages/profile/profile",
+					"pathName": "pages/profile/profile",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/login/login",
+					"pathName": "pages/index/index",
+					"query": "",
+
 					"name": "pages/search/search",
 					"pathName": "pages/search/search",
 					"scene": null

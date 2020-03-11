@@ -6,7 +6,10 @@
     "pages/profile/profile",
     "pages/hot_rumor/hot_rumor",
     "pages/antiepic_science/antiepic_science",
-    "pages/offic_dynamic/offic_dynamic"
+    "pages/offic_dynamic/offic_dynamic",
+    "pages/login/login",
+    "pages/recommend/recommend",
+    "pages/collection/collection"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

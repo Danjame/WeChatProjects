@@ -1,0 +1,8 @@
+<view class='recommend-container'>
+  <view class='textarea-view'>
+    <textarea focus='true' maxlength='300' bindinput='textareaInput' class='recommend-textarea' placeholder='写下对我们的意见~（300字以内）'></textarea>
+  </view>
+  <view class='submit-view'>
+    <button class='recommend-submit' bindtap='submit' type='primary'>提交</button>
+  </view>
+</view>
