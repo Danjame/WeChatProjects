@@ -57,12 +57,15 @@
 				},
 				{
 					"id": -1,
-					"name": "pages/login/login",
-					"pathName": "pages/index/index",
-					"query": "",
-
 					"name": "pages/search/search",
 					"pathName": "pages/search/search",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/recommend/recommend",
+					"pathName": "pages/recommend/recommend",
 					"scene": null
 				}
 			]

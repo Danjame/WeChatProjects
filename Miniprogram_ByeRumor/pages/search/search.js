@@ -92,7 +92,7 @@ Page({
       focus: false,
       searchState: false,
       searchResult: true,
-      inputValue: e.detail.item
+      inputValue: e.detail.item.text
     })
     console.log("匹配结果搜索");
   },
