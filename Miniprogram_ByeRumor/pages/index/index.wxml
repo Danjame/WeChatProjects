@@ -13,24 +13,26 @@
   <swiper style="height:{{clientHeight-searchHeight-tabHeight+'px'}}" current="{{currentIndex}}" bindchange="slideChange">
 
     <swiper-item>
-      <scroll-view scroll-y="{{true}}" style="height:{{clientHeight-searchHeight-tabHeight+'px'}}">
+      <scroll-view scroll-y="{{true}}" style="height:{{clientHeight-searchHeight-tabHeight+'px'}}" bindscrolltolower="reachBottomHandler">
         <view class="dataWrapper">
-          <view class="info" wx:for="{{rumors}}" data-index="{{index}}" wx:key="index" bindtap="enterDetail">
+          <view wx:for="{{rumors}}" data-index="{{index}}" wx:key="index">
+          <view class="info" wx:for="{{item}}" wx:for-item="subItem" data-index="{{subItem.id}}" wx:key="id" bindtap="enterDetail">
             <view class="sideBar ruBar"></view>
             <view class="infoItem">
               <view>
                 <view>
                   <text>
-                    <text wx:if="{{item.rStatus === 1}}" class="truth">真</text>
-                  <text wx:elif="{{item.rStatus === -1}}" class="truth">假</text>
-                  <text wx:else class="truth">待</text>{{item.rTitle}}
+                    <text wx:if="{{subItem.rStatus === 1}}" class="truth">真</text>
+                  <text wx:elif="{{subItem.rStatus === -1}}" class="truth">假</text>
+                  <text wx:else class="truth">待</text>{{subItem.rTitle}}
                   </text>
                 </view>
-                <view>{{item.releaseTime}}</view>
+                <view>{{subItem.releaseTime}}</view>
               </view>
               <view>
-                <image src="{{item.rImgSrc}}" onerror="errorImg"></image>
+                <image src="{{subItem.rImgSrc}}" onerror="errorImg"></image>
               </view>
+            </view>
             </view>
           </view>
         </view>
@@ -45,9 +47,11 @@
             <view class="infoItem">
               <view>
                 <view>
-                  {{item.psTitle}}
+                  <!-- {{item.psTitle}} -->
                 </view>
-                <view>{{item.releaseTime}}</view>
+                <view>
+                  <!-- {{item.releaseTime}} -->
+                </view>
               </view>
               <view>
                 <image src="{{item.psImgSrc}}" onerror="errorImg"></image>
@@ -66,9 +70,11 @@
             <view class="infoItem">
               <view>
                 <view>
-                  {{item.diTitle}}
+                  <!-- {{item.diTitle}} -->
                 </view>
-                <view>{{item.releaseTime}}</view>
+                <view>
+                  <!-- {{item.releaseTime}} -->
+                </view>
               </view>
               <view>
                 <!-- <image src="{{item.diImgSrc}}" onerror="errorImg"></image> -->

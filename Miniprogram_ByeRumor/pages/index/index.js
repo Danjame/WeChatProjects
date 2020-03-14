@@ -7,6 +7,11 @@ Page({
     tabHeight: "",
     tabTitles: ["热门谣言", "防疫科普", "官方动态"],
     currentIndex: 0,
+    page: {
+      pageSize: 10,
+      pageNum: 0,
+      total: 0
+    },
     rumors: [],
     science: [],
     dynamic: [],
@@ -24,18 +29,19 @@ Page({
     })
   },
   //页面跳转
-  enterDetail() {
-    switch (this.data.currentIndex) {
-      case 0:
-        app.toHot_rumor();
-        break;
-      case 1:
-        app.toAntiepic_science();
-        break;
-      case 2:
-        app.toOffic_dynamic();
-        break;
-    }
+  enterDetail(e) {
+    console.log(e);
+    // switch (this.data.currentIndex) {
+    //   case 0:
+    //     app.toHot_rumor();
+    //     break;
+    //   case 1:
+    //     app.toAntiepic_science();
+    //     break;
+    //   case 2:
+    //     app.toOffic_dynamic();
+    //     break;
+    // }
   },
   //获取屏幕剩余高度
   getHightStyle() {
@@ -60,24 +66,38 @@ Page({
   },
   getData() {
     const _this = this;
-    // wx.request({
-    //   url: 'https://wdd.free.qydev.com/rumor/list',
-    //   success(res) {
-    //     if (res.statusCode === 200) {
-    //       const result = res.data;
-    //       result.forEach((item) => {
-    //         item.releaseTime = item.releaseTime.slice(0, 10);
-    //       })
+    wx.request({
+      url: 'https://wdd.free.qydev.com/rumor/list',
+      success(res) {
+        if (res.statusCode === 200) {
+          const pageSize = _this.data.page.pageSize;
+          const total = _this.data.page.total + pageSize;
+          const pageNum = _this.data.page.pageNum + 1;
+          const result = _this.data.rumors;
+          //二维数组
+          result[pageNum - 1] = [];
+          for (let i = (pageNum - 1) * pageSize; i < total; i++) {
+            result[pageNum - 1].push(res.data[i]);
+          }
+          //截取时间
+          result[pageNum - 1].forEach((item) => {
+            item.releaseTime = item.releaseTime.slice(0, 10);
+          })
 
-    //       _this.setData({
-    //         rumors: result
-    //       })
-    //     }
-    //   },
-    //   fail(err) {
-    //     console.log(err);
-    //   }
-    // });
+          _this.setData({
+            rumors: result,
+            page:{
+              pageSize,
+              total,
+              pageNum
+            }
+          })
+        }
+      },
+      fail(err) {
+        console.log(err);
+      }
+    });
     // wx.request({
     //   url: 'https://wdd.free.qydev.com/science/list',
     //   success(res) {
@@ -99,27 +119,30 @@ Page({
     //     console.log(err);
     //   }
     // });
-    wx.request({
-      url: 'https://wdd.free.qydev.com/dynamic/list',
-      success(res) {
-        if (res.statusCode === 200) {
-          const result = res.data;
-          result.forEach((item) => {
-            item.releaseTime = item.releaseTime.slice(0, 10);
-          })
-          _this.setData({
-            dynamic: result
-          })
-          console.log(_this.data.dynamic);
-        }
-      },
-      fail(err) {
-        console.log(err);
-      }
-    })
+    // wx.request({
+    //   url: 'https://wdd.free.qydev.com/dynamic/list',
+    //   success(res) {
+    //     if (res.statusCode === 200) {
+    //       const result = res.data;
+    //       result.forEach((item) => {
+    //         item.releaseTime = item.releaseTime.slice(0, 10);
+    //       })
+    //       _this.setData({
+    //         dynamic: result
+    //       })
+    //     }
+    //   },
+    //   fail(err) {
+    //     console.log(err);
+    //   }
+    // })
   },
   errorImg(e) {
     console.log(e);
+  },
+  //下拉触底添加数据
+  reachBottomHandler() {
+    this.getData();
   },
   /**
    * 生命周期函数--监听页面加载
