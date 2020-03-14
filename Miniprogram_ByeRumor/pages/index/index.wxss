@@ -73,14 +73,17 @@ swiper .dataWrapper .info .infoItem {
 swiper .dataWrapper .info .infoItem>view:first-child {
   display: flex;
   flex-direction: column;
+  align-content: center;
 }
 
 swiper .dataWrapper .info .infoItem>view:first-child>view:first-child {
   margin-bottom: 14rpx;
-    /* text-overflow: ellipsis; */
-    /* white-space: nowrap; */
-    /* line-clamp: 2;
-    overflow: hidden; */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  word-wrap: break-word;
+  overflow: hidden;
+  -webkit-box-pack: center;
 }
 
 swiper .dataWrapper .info .infoItem>view:first-child>view:last-child {
@@ -102,7 +105,7 @@ swiper .dataWrapper .info .infoItem image {
   display: inline-block;
   width: 46rpx;
   height: 46rpx;
-  border:solid 1rpx;
+  border: solid 1rpx;
   text-align: center;
-  border-radius:50%;
+  border-radius: 50%;
 }

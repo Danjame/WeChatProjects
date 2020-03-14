@@ -16,45 +16,20 @@
       <scroll-view scroll-y="{{true}}" style="height:{{clientHeight-searchHeight-tabHeight+'px'}}" bindscrolltolower="reachBottomHandler">
         <view class="dataWrapper">
           <view wx:for="{{rumors}}" data-index="{{index}}" wx:key="index">
-          <view class="info" wx:for="{{item}}" wx:for-item="subItem" data-index="{{subItem.id}}" wx:key="id" bindtap="enterDetail">
-            <view class="sideBar ruBar"></view>
-            <view class="infoItem">
-              <view>
+            <view class="info" wx:for="{{item}}" wx:for-item="subItem" data-index="{{subItem.id}}" wx:key="id" bindtap="enterDetail">
+              <view class="sideBar ruBar"></view>
+              <view class="infoItem">
                 <view>
-                  <text>
+                  <view>
                     <text wx:if="{{subItem.rStatus === 1}}" class="truth">真</text>
-                  <text wx:elif="{{subItem.rStatus === -1}}" class="truth">假</text>
-                  <text wx:else class="truth">待</text>{{subItem.rTitle}}
-                  </text>
-                </view>
-                <view>{{subItem.releaseTime}}</view>
-              </view>
-              <view>
-                <image src="{{subItem.rImgSrc}}" onerror="errorImg"></image>
-              </view>
-            </view>
-            </view>
-          </view>
-        </view>
-      </scroll-view>
-    </swiper-item>
-
-    <swiper-item>
-      <scroll-view scroll-y="{{true}}" style="height:{{clientHeight-searchHeight-tabHeight+'px'}}">
-        <view class="dataWrapper">
-          <view class="info" wx:for="{{science}}" data-index="{{index}}" wx:key="index" bindtap="enterDetail">
-            <view class="sideBar scBar"></view>
-            <view class="infoItem">
-              <view>
-                <view>
-                  <!-- {{item.psTitle}} -->
+                    <text wx:elif="{{subItem.rStatus === -1}}" class="truth">假</text>
+                    <text wx:else class="truth">待</text>{{subItem.rTitle}}
+                  </view>
+                  <view>{{subItem.releaseTime}}</view>
                 </view>
                 <view>
-                  <!-- {{item.releaseTime}} -->
+                  <image src="{{subItem.rImgSrc}}" onerror="errorImg"></image>
                 </view>
-              </view>
-              <view>
-                <image src="{{item.psImgSrc}}" onerror="errorImg"></image>
               </view>
             </view>
           </view>
@@ -63,21 +38,44 @@
     </swiper-item>
 
     <swiper-item>
-      <scroll-view scroll-y="{{true}}" style="height:{{clientHeight-searchHeight-tabHeight+'px'}}">
+      <scroll-view scroll-y="{{true}}" style="height:{{clientHeight-searchHeight-tabHeight+'px'}}" bindscrolltolower="reachBottomHandler">
         <view class="dataWrapper">
-          <view class="info" wx:for="{{dynamic}}" data-index="{{index}}" wx:key="index" bindtap="enterDetail">
-            <view class="sideBar dyBar"></view>
-            <view class="infoItem">
-              <view>
+          <view wx:for="{{science}}" data-index="{{index}}" wx:key="index">
+            <view class="info" wx:for="{{item}}" wx:for-item="subItem" data-index="{{subItem.id}}" wx:key="id" bindtap="enterDetail">
+              <view class="sideBar scBar"></view>
+              <view class="infoItem">
                 <view>
-                  <!-- {{item.diTitle}} -->
+                  <view>
+                    {{subItem.psTitle}}
+                  </view>
+                  <view>{{subItem.releaseTime}}</view>
                 </view>
                 <view>
-                  <!-- {{item.releaseTime}} -->
+                  <!-- <image src="{{subItem.psImgSrc}}" onerror="errorImg"></image> -->
                 </view>
               </view>
-              <view>
-                <!-- <image src="{{item.diImgSrc}}" onerror="errorImg"></image> -->
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </swiper-item>
+
+    <swiper-item>
+      <scroll-view scroll-y="{{true}}" style="height:{{clientHeight-searchHeight-tabHeight+'px'}}" bindscrolltolower="reachBottomHandler">
+        <view class="dataWrapper">
+          <view wx:for="{{dynamic}}" data-index="{{index}}" wx:key="index">
+            <view class="info" wx:for="{{item}}" wx:for-item="subItem" data-index="{{subItem.id}}" wx:key="id" bindtap="enterDetail">
+              <view class="sideBar dyBar"></view>
+              <view class="infoItem">
+                <view>
+                  <view>
+                    {{subItem.diTitle}}
+                  </view>
+                  <view>{{subItem.releaseTime}}</view>
+                </view>
+                <view>
+                  <!-- <image src="{{subItem.diImgSrc}}" onerror="errorImg"></image> -->
+                </view>
               </view>
             </view>
           </view>

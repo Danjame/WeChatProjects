@@ -6,8 +6,18 @@ Page({
     searchHeight: "",
     tabHeight: "",
     tabTitles: ["热门谣言", "防疫科普", "官方动态"],
-    currentIndex: 0,
-    page: {
+    currentIndex: 2,
+    ruPage: {
+      pageSize: 10,
+      pageNum: 0,
+      total: 0
+    },
+    scPage: {
+      pageSize: 10,
+      pageNum: 0,
+      total: 0
+    },
+    dyPage:{
       pageSize: 10,
       pageNum: 0,
       total: 0
@@ -30,7 +40,8 @@ Page({
   },
   //页面跳转
   enterDetail(e) {
-    console.log(e);
+    console.log(e.currentTarget.dataset.index);
+    console.log(this.data.currentIndex);
     // switch (this.data.currentIndex) {
     //   case 0:
     //     app.toHot_rumor();
@@ -64,15 +75,15 @@ Page({
       }
     })
   },
-  getData() {
+  getRumors() {
     const _this = this;
     wx.request({
       url: 'https://wdd.free.qydev.com/rumor/list',
       success(res) {
         if (res.statusCode === 200) {
-          const pageSize = _this.data.page.pageSize;
-          const total = _this.data.page.total + pageSize;
-          const pageNum = _this.data.page.pageNum + 1;
+          const pageSize = _this.data.ruPage.pageSize;
+          const total = _this.data.ruPage.total + pageSize;
+          const pageNum = _this.data.ruPage.pageNum + 1;
           const result = _this.data.rumors;
           //二维数组
           result[pageNum - 1] = [];
@@ -86,7 +97,7 @@ Page({
 
           _this.setData({
             rumors: result,
-            page:{
+            ruPage: {
               pageSize,
               total,
               pageNum
@@ -95,61 +106,110 @@ Page({
         }
       },
       fail(err) {
-        console.log(err);
+        console.log("can not get rumors");
       }
-    });
-    // wx.request({
-    //   url: 'https://wdd.free.qydev.com/science/list',
-    //   success(res) {
-    //     if (res.statusCode === 200) {
-    //       const result = res.data;
-    //       result.forEach((item) => {
-    //         item.releaseTime = item.releaseTime.slice(0, 10);
-    //         if (item.psImgSr){
-    //           item.psImgSrc = item.psImgSrc.slice(0, -2);
-    //         }
-    //       })
+    })
+  },
+  getScience() {
+    const _this = this;
+    wx.request({
+      url: 'https://wdd.free.qydev.com/science/list',
+      success(res) {
+        if (res.statusCode === 200) {
+          const pageSize = _this.data.scPage.pageSize;
+          const total = _this.data.scPage.total + pageSize;
+          const pageNum = _this.data.scPage.pageNum + 1;
+          const result = _this.data.science;
+          //二维数组
+          result[pageNum - 1] = [];
+          for (let i = (pageNum - 1) * pageSize; i < total; i++) {
+            result[pageNum - 1].push(res.data[i]);
+          }
+          //截取时间和修正图片src
+          result[pageNum - 1].forEach((item) => {
+            item.releaseTime = item.releaseTime.slice(0, 10);
+            if (item.psImgSr) {
+              item.psImgSrc = item.psImgSrc.slice(0, -2);
+            }
+          })
 
-    //       _this.setData({
-    //         science: result
-    //       })
-    //     }
-    //   },
-    //   fail(err) {
-    //     console.log(err);
-    //   }
-    // });
-    // wx.request({
-    //   url: 'https://wdd.free.qydev.com/dynamic/list',
-    //   success(res) {
-    //     if (res.statusCode === 200) {
-    //       const result = res.data;
-    //       result.forEach((item) => {
-    //         item.releaseTime = item.releaseTime.slice(0, 10);
-    //       })
-    //       _this.setData({
-    //         dynamic: result
-    //       })
-    //     }
-    //   },
-    //   fail(err) {
-    //     console.log(err);
-    //   }
-    // })
+          _this.setData({
+            science: result,
+            scPage: {
+              pageSize,
+              total,
+              pageNum
+            }
+          });
+          console.log(_this.data.science);
+        }
+      },
+      fail(err) {
+        console.log("can not get science");
+      }
+    })
+  },
+  getDynamic() {
+    const _this = this;
+    wx.request({
+      url: 'https://wdd.free.qydev.com/dynamic/list',
+      success(res) {
+        if (res.statusCode === 200) {
+          const pageSize = _this.data.dyPage.pageSize;
+          const total = _this.data.dyPage.total + pageSize;
+          const pageNum = _this.data.dyPage.pageNum + 1;
+          const result = _this.data.dynamic;
+          //二维数组
+          result[pageNum - 1] = [];
+          for (let i = (pageNum - 1) * pageSize; i < total; i++) {
+            result[pageNum - 1].push(res.data[i]);
+          }
+          //截取时间
+          result[pageNum - 1].forEach((item) => {
+            item.releaseTime = item.releaseTime.slice(0, 10);
+          })
+
+          _this.setData({
+            dynamic: result,
+            dyPage: {
+              pageSize,
+              total,
+              pageNum
+            }
+          })
+          console.log(_this.data.dynamic);
+        }
+      },
+      fail(err) {
+        console.log("can not get dynamic");
+      }
+    })
   },
   errorImg(e) {
     console.log(e);
   },
   //下拉触底添加数据
   reachBottomHandler() {
-    this.getData();
+    switch (this.data.currentIndex) {
+      case 0:
+        this.getRumors();
+        break;
+      case 1:
+        this.getScience();
+        break;
+      case 2:
+      this.getDynamic();
+      break;
+    }
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
     this.getHightStyle();
-    this.getData();
+    this.getRumors();
+    this.getScience();
+    this.getDynamic();
   },
 
   /**
