@@ -7,9 +7,9 @@ Page({
     tabHeight: "",
     tabTitles: ["热门谣言", "防疫科普", "官方动态"],
     currentIndex: 0,
-    rumors: app.data.rumors,
-    science: app.data.science,
-    dynamic: app.data.dynamic
+    rumors: [],
+    science: [],
+    dynamic: [],
   },
 
   tabChange(e) {
@@ -37,11 +37,8 @@ Page({
         break;
     }
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function(options) {
-    //获取屏幕剩余高度
+  //获取屏幕剩余高度
+  getHightStyle() {
     const _this = this;
     wx.createSelectorQuery().select(".searchWrapper").boundingClientRect(rect => {
       _this.setData({
@@ -54,12 +51,82 @@ Page({
       });
     }).exec();
     wx.getSystemInfo({
-      success: function (res) {
+      success: function(res) {
         _this.setData({
           clientHeight: res.windowHeight
         });
       }
-    });
+    })
+  },
+  getData() {
+    const _this = this;
+    // wx.request({
+    //   url: 'https://wdd.free.qydev.com/rumor/list',
+    //   success(res) {
+    //     if (res.statusCode === 200) {
+    //       const result = res.data;
+    //       result.forEach((item) => {
+    //         item.releaseTime = item.releaseTime.slice(0, 10);
+    //       })
+
+    //       _this.setData({
+    //         rumors: result
+    //       })
+    //     }
+    //   },
+    //   fail(err) {
+    //     console.log(err);
+    //   }
+    // });
+    // wx.request({
+    //   url: 'https://wdd.free.qydev.com/science/list',
+    //   success(res) {
+    //     if (res.statusCode === 200) {
+    //       const result = res.data;
+    //       result.forEach((item) => {
+    //         item.releaseTime = item.releaseTime.slice(0, 10);
+    //         if (item.psImgSr){
+    //           item.psImgSrc = item.psImgSrc.slice(0, -2);
+    //         }
+    //       })
+
+    //       _this.setData({
+    //         science: result
+    //       })
+    //     }
+    //   },
+    //   fail(err) {
+    //     console.log(err);
+    //   }
+    // });
+    wx.request({
+      url: 'https://wdd.free.qydev.com/dynamic/list',
+      success(res) {
+        if (res.statusCode === 200) {
+          const result = res.data;
+          result.forEach((item) => {
+            item.releaseTime = item.releaseTime.slice(0, 10);
+          })
+          _this.setData({
+            dynamic: result
+          })
+          console.log(_this.data.dynamic);
+        }
+      },
+      fail(err) {
+        console.log(err);
+      }
+    })
+  },
+  errorImg(e) {
+    console.log(e);
+  },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function(options) {
+    this.getHightStyle();
+    this.getData();
   },
 
   /**

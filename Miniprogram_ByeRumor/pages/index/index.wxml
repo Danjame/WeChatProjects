@@ -17,7 +17,21 @@
         <view class="dataWrapper">
           <view class="info" wx:for="{{rumors}}" data-index="{{index}}" wx:key="index" bindtap="enterDetail">
             <view class="sideBar ruBar"></view>
-            <view class="infoItem">{{item.text}}</view>
+            <view class="infoItem">
+              <view>
+                <view>
+                  <text>
+                    <text wx:if="{{item.rStatus === 1}}" class="truth">真</text>
+                  <text wx:elif="{{item.rStatus === -1}}" class="truth">假</text>
+                  <text wx:else class="truth">待</text>{{item.rTitle}}
+                  </text>
+                </view>
+                <view>{{item.releaseTime}}</view>
+              </view>
+              <view>
+                <image src="{{item.rImgSrc}}" onerror="errorImg"></image>
+              </view>
+            </view>
           </view>
         </view>
       </scroll-view>
@@ -28,7 +42,17 @@
         <view class="dataWrapper">
           <view class="info" wx:for="{{science}}" data-index="{{index}}" wx:key="index" bindtap="enterDetail">
             <view class="sideBar scBar"></view>
-            <view class="infoItem">{{item.text}}</view>
+            <view class="infoItem">
+              <view>
+                <view>
+                  {{item.psTitle}}
+                </view>
+                <view>{{item.releaseTime}}</view>
+              </view>
+              <view>
+                <image src="{{item.psImgSrc}}" onerror="errorImg"></image>
+              </view>
+            </view>
           </view>
         </view>
       </scroll-view>
@@ -39,7 +63,17 @@
         <view class="dataWrapper">
           <view class="info" wx:for="{{dynamic}}" data-index="{{index}}" wx:key="index" bindtap="enterDetail">
             <view class="sideBar dyBar"></view>
-            <view class="infoItem">{{item.text}}</view>
+            <view class="infoItem">
+              <view>
+                <view>
+                  {{item.diTitle}}
+                </view>
+                <view>{{item.releaseTime}}</view>
+              </view>
+              <view>
+                <!-- <image src="{{item.diImgSrc}}" onerror="errorImg"></image> -->
+              </view>
+            </view>
           </view>
         </view>
       </scroll-view>

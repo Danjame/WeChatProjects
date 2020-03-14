@@ -11,7 +11,6 @@ Page({
     searchResult: false,
     keyWords: [],
 
-
     tabTitles: ["显示全部", "热门谣言", "防疫科普", "官方动态"],
     hisList: ["防疫种类", "防疫手段", "口罩", "酒精喷雾", "新增确诊", "国外疫情"],
     rankList: ["99.7的无水乙醇可以稀释到75%后做消毒用",
@@ -56,7 +55,7 @@ Page({
   },
   //搜索关键字匹配
   lastSearch: Date.now(),
-  throttle: 300,
+  throttle: 500,
   inputChange(e) {
     const _this = this;
     let result = _this.data.result;

@@ -45,7 +45,8 @@ swiper .dataWrapper .info {
 }
 
 swiper .dataWrapper .info .sideBar {
-  width: 25rpx;
+  width: 18rpx;
+  flex-shrink: 0;
 }
 
 swiper .dataWrapper .info .ruBar {
@@ -62,5 +63,46 @@ swiper .dataWrapper .info .dyBar {
 
 swiper .dataWrapper .info .infoItem {
   flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 32rpx;
   border-bottom: solid 5rpx #e3e3e3;
+}
+
+swiper .dataWrapper .info .infoItem>view:first-child {
+  display: flex;
+  flex-direction: column;
+}
+
+swiper .dataWrapper .info .infoItem>view:first-child>view:first-child {
+  margin-bottom: 14rpx;
+      text-overflow: ellipsis;
+    /* white-space: nowrap; */
+    line-clamp: 2;
+    overflow: hidden;
+}
+
+swiper .dataWrapper .info .infoItem>view:first-child>view:last-child {
+  font-size: 24rpx;
+}
+
+swiper .dataWrapper .info .infoItem>view:last-child {
+  width: 174rpx;
+  height: 174rpx;
+  margin-left: 32rpx;
+}
+
+swiper .dataWrapper .info .infoItem image {
+  width: 174rpx;
+  height: 174rpx;
+}
+
+.truth {
+  display: inline-block;
+  width: 46rpx;
+  height: 46rpx;
+  border:solid 1rpx;
+  text-align: center;
+  border-radius:50%;
 }
