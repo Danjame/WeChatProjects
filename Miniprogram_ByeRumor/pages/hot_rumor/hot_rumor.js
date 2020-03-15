@@ -5,14 +5,38 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    result: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    const _this= this;
+    wx.request({
+      url: 'https://wdd.free.qydev.com/rumor/click',
+      data:{
+        id: 3030
+      },
+      success(res){
+        const result = res.data;
+        if (result.rContext.includes("要点：")){
+          const targetIndex = result.rContext.indexOf("要点：");
+          result.rSummary = result.rContext.slice(targetIndex +3);
+          result.rDescription = result.rContext.slice(0, targetIndex);
+          result.releaseTime = result.releaseTime.slice(0, 10);
+        }
+        _this.setData({
+          result: res.data
+        })
+      },
+      fail(error){
+        console.log("something wrong")
+      },
+      complete(){
+        console.log(_this.data.result);
+      }
+    })
   },
 
   /**

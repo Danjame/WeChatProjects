@@ -6,7 +6,8 @@ Page({
     searchHeight: "",
     tabHeight: "",
     tabTitles: ["热门谣言", "防疫科普", "官方动态"],
-    currentIndex: 2,
+    currentIndex: 0,
+    updating: true,
     ruPage: {
       pageSize: 10,
       pageNum: 0,
@@ -17,7 +18,7 @@ Page({
       pageNum: 0,
       total: 0
     },
-    dyPage:{
+    dyPage: {
       pageSize: 10,
       pageNum: 0,
       total: 0
@@ -40,19 +41,19 @@ Page({
   },
   //页面跳转
   enterDetail(e) {
-    console.log(e.currentTarget.dataset.index);
-    console.log(this.data.currentIndex);
-    // switch (this.data.currentIndex) {
-    //   case 0:
-    //     app.toHot_rumor();
-    //     break;
-    //   case 1:
-    //     app.toAntiepic_science();
-    //     break;
-    //   case 2:
-    //     app.toOffic_dynamic();
-    //     break;
-    // }
+    // console.log(e.currentTarget.dataset.index);
+    // console.log(this.data.currentIndex);
+    switch (this.data.currentIndex) {
+      case 0:
+        app.toHot_rumor();
+        break;
+      case 1:
+        app.toAntiepic_science();
+        break;
+      case 2:
+        app.toOffic_dynamic();
+        break;
+    }
   },
   //获取屏幕剩余高度
   getHightStyle() {
@@ -84,19 +85,19 @@ Page({
           const pageSize = _this.data.ruPage.pageSize;
           const total = _this.data.ruPage.total + pageSize;
           const pageNum = _this.data.ruPage.pageNum + 1;
-          const result = _this.data.rumors;
+          const result = [];
           //二维数组
-          result[pageNum - 1] = [];
+          result[0] = [];
           for (let i = (pageNum - 1) * pageSize; i < total; i++) {
-            result[pageNum - 1].push(res.data[i]);
+            result[0].push(res.data[i]);
           }
           //截取时间
-          result[pageNum - 1].forEach((item) => {
+          result[0].forEach((item) => {
             item.releaseTime = item.releaseTime.slice(0, 10);
           })
 
           _this.setData({
-            rumors: result,
+            rumors: _this.data.rumors.concat(result),
             ruPage: {
               pageSize,
               total,
@@ -107,6 +108,11 @@ Page({
       },
       fail(err) {
         console.log("can not get rumors");
+      },
+      complete() {
+        _this.setData({
+          updating: false,
+        })
       }
     })
   },
@@ -119,14 +125,14 @@ Page({
           const pageSize = _this.data.scPage.pageSize;
           const total = _this.data.scPage.total + pageSize;
           const pageNum = _this.data.scPage.pageNum + 1;
-          const result = _this.data.science;
+          const result = [];
           //二维数组
-          result[pageNum - 1] = [];
+          result[0] = [];
           for (let i = (pageNum - 1) * pageSize; i < total; i++) {
-            result[pageNum - 1].push(res.data[i]);
+            result[0].push(res.data[i]);
           }
           //截取时间和修正图片src
-          result[pageNum - 1].forEach((item) => {
+          result[0].forEach((item) => {
             item.releaseTime = item.releaseTime.slice(0, 10);
             if (item.psImgSr) {
               item.psImgSrc = item.psImgSrc.slice(0, -2);
@@ -134,18 +140,23 @@ Page({
           })
 
           _this.setData({
-            science: result,
+            science: _this.data.science.concat(result),
             scPage: {
               pageSize,
               total,
               pageNum
             }
           });
-          console.log(_this.data.science);
+          // console.log(_this.data.science);
         }
       },
       fail(err) {
         console.log("can not get science");
+      },
+      complete() {
+        _this.setData({
+          updating: false,
+        })
       }
     })
   },
@@ -158,38 +169,46 @@ Page({
           const pageSize = _this.data.dyPage.pageSize;
           const total = _this.data.dyPage.total + pageSize;
           const pageNum = _this.data.dyPage.pageNum + 1;
-          const result = _this.data.dynamic;
+          const result = [];
           //二维数组
-          result[pageNum - 1] = [];
+          result[0] = [];
           for (let i = (pageNum - 1) * pageSize; i < total; i++) {
-            result[pageNum - 1].push(res.data[i]);
+            result[0].push(res.data[i]);
           }
           //截取时间
-          result[pageNum - 1].forEach((item) => {
+          result[0].forEach((item) => {
             item.releaseTime = item.releaseTime.slice(0, 10);
           })
 
           _this.setData({
-            dynamic: result,
+            dynamic: _this.data.dynamic.concat(result),
             dyPage: {
               pageSize,
               total,
               pageNum
             }
           })
-          console.log(_this.data.dynamic);
+          // console.log(_this.data.dynamic);
         }
       },
       fail(err) {
         console.log("can not get dynamic");
+      },
+      complete() {
+        _this.setData({
+          updating: false,
+        })
       }
     })
   },
   errorImg(e) {
     console.log(e);
   },
-  //下拉触底添加数据
-  reachBottomHandler() {
+
+  getData() {
+    this.setData({
+      updating: true,
+    });
     switch (this.data.currentIndex) {
       case 0:
         this.getRumors();
@@ -198,8 +217,14 @@ Page({
         this.getScience();
         break;
       case 2:
-      this.getDynamic();
-      break;
+        this.getDynamic();
+        break;
+    }
+  },
+  //下拉触底添加数据
+  reachBottomHandler() {
+    if (!this.data.updating) {
+      this.getData();
     }
   },
   /**

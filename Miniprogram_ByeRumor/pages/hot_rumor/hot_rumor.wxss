@@ -1,1 +1,28 @@
-/* pages/hot_rumor/hot_rumor.wxss */
+.header{
+  padding: 20rpx 30rpx;
+}
+.header .titleDesc {
+  margin-top: 16rpx
+}
+
+.content{
+  padding: 16rpx 30rpx;
+
+}
+
+.content .truth, .content .text>view:first-child{
+  margin-bottom: 16rpx
+}
+
+.title{
+  font-weight: bold;
+}
+
+.infoSrc{
+  font-size: 26rpx;
+  margin-top: 16rpx;
+}
+
+.infoSrc .title:last-child{
+  margin-left: 26rpx;
+}

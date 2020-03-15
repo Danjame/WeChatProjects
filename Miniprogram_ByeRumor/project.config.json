@@ -75,6 +75,13 @@
 					"id": -1,
 					"name": "pages/recommend/recommend",
 					"pathName": "pages/recommend/recommend",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/hot_rumor/hot_rumor",
+					"pathName": "pages/hot_rumor/hot_rumor",
 					"scene": null
 				}
 			]
