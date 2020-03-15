@@ -82,6 +82,13 @@
 					"id": -1,
 					"name": "pages/hot_rumor/hot_rumor",
 					"pathName": "pages/hot_rumor/hot_rumor",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/antiepic_science/antiepic_science",
+					"pathName": "pages/antiepic_science/antiepic_science",
 					"scene": null
 				}
 			]

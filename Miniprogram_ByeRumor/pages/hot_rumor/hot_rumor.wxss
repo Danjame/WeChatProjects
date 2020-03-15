@@ -14,11 +14,7 @@
   margin-bottom: 16rpx
 }
 
-.title{
-  font-weight: bold;
-}
-
-.infoSrc{
+.content .infoSrc{
   font-size: 26rpx;
   margin-top: 16rpx;
 }
@@ -26,3 +22,13 @@
 .infoSrc .title:last-child{
   margin-left: 26rpx;
 }
+
+.title{
+  font-weight: bold;
+}
+
+.readMore>view:first-child{
+  margin-left: 30rpx;
+  margin-bottom: 16rpx;
+}
+

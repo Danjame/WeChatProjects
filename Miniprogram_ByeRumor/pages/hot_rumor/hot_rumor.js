@@ -7,7 +7,6 @@ Page({
   data: {
     result: {}
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -34,7 +33,7 @@ Page({
         console.log("something wrong")
       },
       complete(){
-        console.log(_this.data.result);
+        // console.log(_this.data.result);
       }
     })
   },

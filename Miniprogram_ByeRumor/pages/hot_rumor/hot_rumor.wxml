@@ -14,8 +14,8 @@
     </view>
 
     <view class="infoSrc">
-    <text class="title">辟谣来源：</text>{{result.rInfoFrom}}
-    <text class="title">发布时间：</text>{{result.releaseTime}}
+      <text class="title">辟谣来源：</text>{{result.rInfoFrom}}
+      <text class="title">发布时间：</text>{{result.releaseTime}}
     </view>
   </view>
 
@@ -36,10 +36,5 @@
     </view>
   </view>
 
-  <view class="footer">
-    <view></view>
-    <view></view>
-    <view></view>
-  </view>
-
+  <footer></footer>
 </view>

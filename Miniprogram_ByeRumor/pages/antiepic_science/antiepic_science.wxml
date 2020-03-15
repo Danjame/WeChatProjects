@@ -1,2 +1,40 @@
-<!--pages/antiepic_science/antiepic_science.wxml-->
-<text>pages/antiepic_science/antiepic_science.wxml</text>
+<view>
+  <view class="header">
+    <view class="title">{{result.rTitle}}</view>
+    <!-- <image class="titleDesc" src="{{result.psImgSrc}}"></image> -->
+  </view>
+
+  <view class="content">
+    <view class="truth title">
+      <text>{{result.rConclusion}}</text>
+    </view>
+    <view class="text">
+      <view class="title">查证要点：</view>
+      <view>{{result.rSummary}}</view>
+    </view>
+
+    <view class="infoSrc">
+      <text class="title">辟谣来源：</text>{{result.rInfoFrom}}
+      <text class="title">发布时间：</text>{{result.releaseTime}}
+    </view>
+  </view>
+
+  <view class="readMore">
+    <view class="title">相关阅读</view>
+    <view class="infoItem">
+      <view>
+        <view>
+          <text wx:if="{{subItem.rStatus === 1}}" class="truth">真</text>
+          <text wx:elif="{{subItem.rStatus === -1}}" class="truth">假</text>
+          <text wx:else class="truth">待</text>{{e}}
+        </view>
+        <view>{{}}</view>
+      </view>
+      <view>
+        <image src="{{}}"></image>
+      </view>
+    </view>
+  </view>
+
+  <footer></footer>
+</view>
