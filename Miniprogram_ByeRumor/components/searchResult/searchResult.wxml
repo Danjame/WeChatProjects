@@ -1,0 +1,53 @@
+ <view>
+    <view class="tabWrapper">
+      <view wx:for="{{tabTitles}}" class="tab {{index == currentIndex ? 'selected':'unSelected'}}" data-index="{{index}}" wx:key="index" bindtap="tabChange">{{item}}</view>
+    </view>
+
+    <swiper style="height:{{clientHeight-searchHeight-tabHeight+'px'}}" current="{{currentIndex}}" bindchange="slideChange">
+
+      <swiper-item>
+        <scroll-view scroll-y="{{true}}" style="height:{{clientHeight-searchHeight-tabHeight+'px'}}">
+          <view class="dataWrapper">
+            <view class="info" wx:for="{{result}}" data-index="{{index}}" wx:key="index" bindtap="enterDetail">
+              <view class="sideBar ruBar"></view>
+              <view class="infoItem">{{item.text}}</view>
+            </view>
+          </view>
+        </scroll-view>
+      </swiper-item>
+
+      <swiper-item>
+        <scroll-view scroll-y="{{true}}" style="height:{{clientHeight-searchHeight-tabHeight+'px'}}">
+          <view class="dataWrapper">
+            <view class="info" wx:for="{{result}}" data-index="{{index}}" wx:key="index" bindtap="enterDetail">
+              <view class="sideBar ruBar"></view>
+              <view class="infoItem">{{item.text}}</view>
+            </view>
+          </view>
+        </scroll-view>
+      </swiper-item>
+
+      <swiper-item>
+        <scroll-view scroll-y="{{true}}" style="height:{{clientHeight-searchHeight-tabHeight+'px'}}">
+          <view class="dataWrapper">
+            <view class="info" wx:for="{{science}}" data-index="{{index}}" wx:key="index" bindtap="enterDetail">
+              <view class="sideBar scBar"></view>
+              <view class="infoItem">{{item.text}}</view>
+            </view>
+          </view>
+        </scroll-view>
+      </swiper-item>
+
+      <swiper-item>
+        <scroll-view scroll-y="{{true}}" style="height:{{clientHeight-searchHeight-tabHeight+'px'}}">
+          <view class="dataWrapper">
+            <view class="info" wx:for="{{dynamic}}" data-index="{{index}}" wx:key="index" bindtap="enterDetail">
+              <view class="sideBar dyBar"></view>
+              <view class="infoItem">{{item.text}}</view>
+            </view>
+          </view>
+        </scroll-view>
+      </swiper-item>
+    </swiper>
+
+  </view>

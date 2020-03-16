@@ -1,47 +1,121 @@
-.tabWrapper{
+.searchWrapper {
+  height: 100rpx;
+  box-sizing: border-box;
+  padding: 20rpx 30rpx;
+}
+
+.searchWrapper navigator {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60rpx;
+  border: solid 2rpx #ddd;
+  border-radius: 6rpx;
+  padding: 0 28rpx 0 28rpx;
+  color: #aaa;
+  font-size: 28rpx;
+}
+
+.searchWrapper navigator icon {
+  margin-right: 0;
+}
+
+.tabWrapper {
   display: flex;
   justify-content: space-around;
   height: 65rpx;
   padding-top: 15rpx;
-  border-top: solid 2rpx #aaaaaa;
-  border-bottom: solid 1rpx #dddddd;
+  border-top: solid 3rpx #aaa;
+  border-bottom: solid 2rpx #ddd;
   font-size: 28rpx;
   color: #7f7f7f;
 }
 
-.tab{
+.tab {
   height: 45rpx;
 }
 
-.tabSelected{
-  border-bottom: solid 5rpx #3A9BD5;
+.selected {
+  border-bottom: solid 5rpx #3a9bd5;
 }
 
-swiper .dataWrapper{
+swiper .dataWrapper .info {
   display: flex;
-}
-
-swiper .dataWrapper .sideBar{
-  width: 25rpx;
-}
-
-swiper .dataWrapper .ruBar{
-background-color: #CD672F;
-}
-
-swiper .dataWrapper .scBar{
-background-color: #FACC48
-}
-
-swiper .dataWrapper .dyBar{
-background-color: #3499F7;
-}
-
-swiper .dataWrapper .infoWrapper{
-  flex-grow: 1;
-}
-
-swiper .dataWrapper .infoWrapper .info{
   height: 205rpx;
+}
+
+swiper .dataWrapper .info .sideBar {
+  width: 18rpx;
+  flex-shrink: 0;
+}
+
+swiper .dataWrapper .info .ruBar {
+  background-color: #cd672f;
+}
+
+swiper .dataWrapper .info .scBar {
+  background-color: #facc48;
+}
+
+swiper .dataWrapper .info .dyBar {
+  background-color: #3499f7;
+}
+
+swiper .dataWrapper .info .infoItem {
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 26rpx;
   border-bottom: solid 5rpx #e3e3e3;
+}
+
+swiper .dataWrapper .info .infoItem>.itemLeft {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+swiper .dataWrapper .info .infoItem>.itemLeft>.title {
+  margin-bottom: 14rpx;
+  text-align: justify;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  word-wrap: break-word;
+  overflow: hidden;
+  -webkit-box-pack: center;
+}
+
+swiper .dataWrapper .info .infoItem>.itemLeft>.time {
+  font-size: 24rpx;
+}
+
+swiper .dataWrapper .info .infoItem>.itemRight {
+  width: 178rpx;
+  height: 178rpx;
+  margin-left: 32rpx;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: solid 1rpx #ccc;
+}
+
+swiper .dataWrapper .info .infoItem image{
+  width: 174rpx;
+  height: 174rpx;
+}
+
+swiper .dataWrapper .info .infoItem .iconfont{
+  font-size: 60rpx;
+}
+
+.truth {
+  display: inline-block;
+  width: 46rpx;
+  height: 46rpx;
+  border: solid 1rpx;
+  text-align: center;
+  border-radius: 50%;
 }

@@ -1,1 +1,56 @@
-/* pages/hot_rumor/hot_rumor.wxss */
+.header{
+  min-height: 46rpx;
+  padding: 20rpx 30rpx;
+}
+
+.header>view:first-child{
+  width: 100rpx;
+  height: 100rpx;
+  position: absolute;
+  top: 46rpx;
+  right: 70rpx;
+  border-radius: 50%;
+  border: solid 4rpx red;
+  font-size: 70rpx;
+  font-weight: 300;
+  color: red;
+  text-align: center;
+  line-height: 100rpx;
+}
+
+.content{
+  padding: 16rpx 30rpx;
+}
+
+.content .text{
+  min-height: 100rpx;
+}
+
+.content .head{
+  margin-bottom: 16rpx
+}
+
+.header>view:last-child,
+.content .text>view:last-child{
+  margin-top: 16rpx;
+  font-size: 30rpx;
+  text-align: justify;
+}
+
+.content .infoSrc{
+  font-size: 26rpx;
+  margin-top: 16rpx;
+}
+
+.content .infoSrc .head:last-child{
+  margin-left: 26rpx;
+}
+
+.head{
+  font-weight: bold;
+}
+
+.readMore>view:first-child{
+  margin-left: 30rpx;
+  margin-bottom: 16rpx;
+}

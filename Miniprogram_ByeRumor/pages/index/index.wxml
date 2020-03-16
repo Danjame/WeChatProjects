@@ -1,40 +1,81 @@
 <view class="container">
   <view class="searchWrapper">
-    <mp-searchbar></mp-searchbar>
+    <navigator url="../search/search">
+      <text>输入要搜索的内容</text>
+      <icon type="search" size="20"></icon>
+    </navigator>
   </view>
+
   <view class="tabWrapper">
-    <view wx:for="{{tabTitles}}" class="tab {{index == curIndex ? 'tabSelected':''}}" data-index="{{index}}" wx:key="index" bindtap="tabHandler">{{item}}</view>
+    <view wx:for="{{tabTitles}}" class="tab {{index == currentIndex ? 'selected':''}}" data-index="{{index}}" wx:key="index" bindtap="tabChange">{{item}}</view>
   </view>
 
-  <swiper style="height:{{clientHeight-searchHeight-tabHeight+'px'}}" current="{{curIndex}}" bindchange="curChange">
+  <swiper style="height:{{clientHeight-searchHeight-tabHeight+'px'}}" current="{{currentIndex}}" bindchange="slideChange">
+
     <swiper-item>
-      <scroll-view scroll-y="{{true}}" style="height:{{clientHeight-searchHeight-tabHeight+'px'}}">
+      <scroll-view scroll-y="{{true}}" style="height:{{clientHeight-searchHeight-tabHeight+'px'}}" bindscrolltolower="reachBottomHandler">
         <view class="dataWrapper">
-          <view class="sideBar ruBar"></view>
-          <view class="infoWrapper">
-            <view class="info" wx:for="{{rumors}}" data-index="{{index}}" wx:key="index" bindtap="enterDetail">{{item}}</view>
+          <view wx:for="{{rumors}}" data-index="{{index}}" wx:key="index">
+            <view class="info" wx:for="{{item}}" wx:for-item="subItem" data-index="{{subItem.id}}" wx:key="id" bindtap="enterDetail">
+              <view class="sideBar ruBar"></view>
+              <view class="infoItem">
+                <view class="itemLeft">
+                  <view class="title">
+                    <text wx:if="{{subItem.rStatus === 1}}" class="truth">真</text>
+                    <text wx:elif="{{subItem.rStatus === -1}}" class="truth">假</text>
+                    <text wx:else class="truth">待</text>{{subItem.rTitle}}
+                  </view>
+                  <view class="time">{{subItem.releaseTime}}</view>
+                </view>
+                <view class="itemRight">
+                  <image src="{{subItem.rImgSrc}}" onerror="errorImg"></image>
+                </view>
+              </view>
+            </view>
           </view>
         </view>
       </scroll-view>
     </swiper-item>
 
     <swiper-item>
-      <scroll-view scroll-y="{{true}}" style="height:{{clientHeight-searchHeight-tabHeight+'px'}}">
+      <scroll-view scroll-y="{{true}}" style="height:{{clientHeight-searchHeight-tabHeight+'px'}}" bindscrolltolower="reachBottomHandler">
         <view class="dataWrapper">
-          <view class="sideBar scBar"></view>
-          <view class="infoWrapper">
-            <view class="info" wx:for="{{science}}" data-index="{{index}}" wx:key="index" bindtap="enterDetail">{{item}}</view>
+          <view wx:for="{{science}}" data-index="{{index}}" wx:key="index">
+            <view class="info" wx:for="{{item}}" wx:for-item="subItem" data-index="{{subItem.id}}" wx:key="id" bindtap="enterDetail">
+              <view class="sideBar scBar"></view>
+              <view class="infoItem">
+                <view class="itemLeft">
+                  <view class="title">
+                    {{subItem.psTitle}}
+                  </view>
+                  <view class="time">{{subItem.releaseTime}}</view>
+                </view>
+                <view class="itemRight">
+                <image wx:if="{{subItem.hasImg}}" src="{{subItem.psImgSrc}}" mode="aspectFit"></image>
+                <view wx:else class="iconfont icon-play"></view>
+                </view>
+              </view>
+            </view>
           </view>
         </view>
       </scroll-view>
     </swiper-item>
 
     <swiper-item>
-      <scroll-view scroll-y="{{true}}" style="height:{{clientHeight-searchHeight-tabHeight+'px'}}">
+      <scroll-view scroll-y="{{true}}" style="height:{{clientHeight-searchHeight-tabHeight+'px'}}" bindscrolltolower="reachBottomHandler">
         <view class="dataWrapper">
-          <view class="sideBar dyBar"></view>
-          <view class="infoWrapper">
-            <view class="info" wx:for="{{dynamic}}" data-index="{{index}}" wx:key="index" bindtap="enterDetail">{{item}}</view>
+          <view wx:for="{{dynamic}}" data-index="{{index}}" wx:key="index">
+            <view class="info" wx:for="{{item}}" wx:for-item="subItem" data-index="{{subItem.id}}" wx:key="id" bindtap="enterDetail">
+              <view class="sideBar dyBar"></view>
+              <view class="infoItem">
+                <view class="itemLeft">
+                  <view class="title">
+                    {{subItem.diTitle}}
+                  </view>
+                  <view class="time">{{subItem.releaseTime}}</view>
+                </view>
+              </view>
+            </view>
           </view>
         </view>
       </scroll-view>

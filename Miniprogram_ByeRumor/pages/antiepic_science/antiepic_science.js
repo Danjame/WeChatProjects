@@ -1,18 +1,39 @@
-// pages/antiepic_science/antiepic_science.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    result: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    const _this = this;
+    wx.request({
+      url: 'https://wdd.free.qydev.com/science/get',
+      data: {
+        id: options.id
+      },
+      success(res) {
+        if(res.statusCode === 200){
+          const result = res.data;
+          result.hasImg = result.psImgSrc.indexOf('.mp4') !== -1 ? false : true;
+          result.releaseTime = result.releaseTime.slice(0, 10);
+          _this.setData({
+            result
+          })
+        }
+      },
+      fail(error) {
+        console.log("something wrong")
+      },
+      complete() {
+        // console.log(_this.data.result);
+      }
+    })
   },
 
   /**

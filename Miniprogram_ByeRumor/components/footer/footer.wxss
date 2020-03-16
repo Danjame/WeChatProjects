@@ -1,0 +1,17 @@
+.container{
+  height: 225rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-top: solid 2rpx #ddd;
+}
+
+.container>view>view:first-child{
+  font-size: 70rpx;
+}
+
+.container>view>view:last-child{
+  margin-top: 2rpx;
+  text-align: center;
+  font-size: 20rpx;
+}

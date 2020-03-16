@@ -1,38 +1,23 @@
+// pages/profile/profile.js
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-    result: {}
+    userinfo:{},
+    userName:''
   },
-
+  goToLogin: function(){
+    // console.log('123')
+    wx.navigateTo({
+      url: "../login/login",
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options){
-    const _this = this;
-    wx.request({
-      url: 'https://wdd.free.qydev.com/dynamic/get',
-      data: {
-        id: 1
-      },
-      success(res) {
-        if (res.statusCode === 200) {
-          const result = res.data;
-          result.releaseTime = result.releaseTime.slice(0, 10);
-          _this.setData({
-            result
-          })
-        }
-      },
-      fail(error) {
-        console.log("something wrong")
-      },
-      complete() {
-        // console.log(_this.data.result);
-      }
-    })
+  onLoad: function (options) {
+
   },
 
   /**
@@ -46,6 +31,26 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+
+    const userinfo = wx.getStorageSync("userinfo");
+    this.setData({userinfo});
+  },
+  /**
+ * 生命周期函数--监听页面初次渲染完成
+ */
+  onReady: function () {
+    console.log(this.data.userinfo)
+    if (this.data.userinfo && this.data.userinfo.length !== 0) {
+      this.setData({
+        userName: this.data.userName = this.data.userinfo.nickName
+      })
+    } else {
+      this.setData({
+        userName: this.data.userName = "未登录"
+      })
+    }
+    console.log(this.data.userName)
+
 
   },
 
@@ -81,6 +86,7 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
+
 
   }
 })

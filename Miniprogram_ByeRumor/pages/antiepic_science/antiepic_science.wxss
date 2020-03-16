@@ -1,1 +1,48 @@
-/* pages/antiepic_science/antiepic_science.wxss */
+.header{
+  min-height: 46rpx;
+  padding: 20rpx 30rpx;
+}
+
+.header>view:first-child{
+  margin-bottom: 32rpx;
+}
+
+.header>video{
+width: 690rpx;
+}
+
+.header>image{
+width: 100%;
+}
+
+.content{
+  padding: 16rpx 30rpx;
+}
+
+.content .text{
+  min-height: 100rpx;
+}
+
+.content .text{
+  margin-top: 16rpx;
+  font-size: 30rpx;
+  text-align: justify;
+}
+
+.content .infoSrc{
+  font-size: 26rpx;
+  margin-top: 16rpx;
+}
+
+.content .infoSrc .head:last-child{
+  margin-left: 26rpx;
+}
+
+.head{
+  font-weight: bold;
+}
+
+.readMore>view:first-child{
+  margin-left: 30rpx;
+  margin-bottom: 16rpx;
+}

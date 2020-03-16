@@ -1,0 +1,10 @@
+<!--pages/collection/colect.wxml-->
+<view class="collection_container">
+  <view class="page-section">
+      <view class="flex-wrp" style="flex-direction:column;">
+        <view class="flex-item flex-item-V demo-text-1">AAAA</view>
+        <view class="flex-item flex-item-V demo-text-2">BBBB</view>
+        <view class="flex-item flex-item-V demo-text-3">CCCC</view>
+      </view>
+  </view>
+</view>

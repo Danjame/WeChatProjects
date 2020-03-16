@@ -1,0 +1,18 @@
+<view>
+    <view class="historyWrapper">
+      <view class="historyTitle">
+        <text class="titleText">搜索记录</text>
+        <text class="deleteBtn" bindtap="deleteHistory">全部删除</text>
+      </view>
+      <view class="historyList">
+        <view wx:for="{{hisList}}" wx:key="index" data-index="{{index}}" bindtap="selectHistory">{{item}}</view>
+      </view>
+    </view>
+    <view class="rankingWrapper">
+      <view class="titleText">谣言排行榜</view>
+      <view wx:for="{{rankList}}" class="rankingList" wx:key="index" data-index="{{index}}" bindtap="selectRanking">
+        <view class="rankingNum">{{index+1}}</view>
+        <view class="rankingItem">{{item}}</view>
+      </view>
+    </view>
+  </view>

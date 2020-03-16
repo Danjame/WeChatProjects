@@ -1,0 +1,57 @@
+.historyWrapper {
+  border-top: solid 2rpx #bbb;
+  border-bottom: solid 2rpx #bbb;
+}
+
+.historyWrapper .historyTitle {
+  display: flex;
+  justify-content: space-between;
+  padding: 12rpx 22rpx;
+}
+
+.historyWrapper .historyTitle .titleText {
+  font-size: 28rpx;
+}
+
+.historyWrapper .historyTitle .deleteBtn {
+  font-size: 24rpx;
+}
+
+.historyWrapper .historyList {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 16rpx;
+}
+
+.historyWrapper .historyList view {
+  height: 50rpx;
+  margin-right: 16rpx;
+  margin-bottom: 10rpx;
+  padding: 6rpx 48rpx;
+  border-radius: 50rpx;
+  background-color: #f2f2f2;
+  line-height: 50rpx;
+  text-align: center;
+  font-size: 24rpx;
+}
+
+.rankingWrapper .titleText {
+  padding: 12rpx 22rpx;
+}
+
+.rankingWrapper .rankingList {
+  display: flex;
+  padding: 12rpx 22rpx;
+  border-bottom: solid 2rpx #bbb;
+  font-size: 31rpx;
+}
+
+.rankingWrapper .rankingList .rankingNum {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 60rpx;
+  background-color: red;
+  text-align: center;
+  line-height: 40rpx;
+  color: #fff;
+}

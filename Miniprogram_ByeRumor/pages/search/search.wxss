@@ -1,0 +1,24 @@
+.searchWrapper {
+  height: 100rpx;
+  box-sizing: border-box;
+  padding: 20rpx 30rpx;
+}
+
+.searchWrapper .searchBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60rpx;
+  border: solid 2rpx #ddd;
+  border-radius: 6rpx;
+  padding: 0 28rpx 0 28rpx;
+  color: #aaa;
+  font-size: 28rpx;
+}
+.searchWrapper .searchBar input{
+  width: 100%;
+  height: 100%;
+}
+.searchWrapper .searchBar icon {
+  margin-right: 0;
+}

@@ -1,2 +1,44 @@
-<!--pages/hot_rumor/hot_rumor.wxml-->
-<text>pages/hot_rumor/hot_rumor.wxml</text>
+<view>
+  <view class="header">
+    <view wx:if="{{result.rStatus == 1}}">真</view>
+    <view wx:elif="{{result.rStatus == -1}}">假</view>
+    <view wx:else>待</view>
+    <view class="head">{{result.rTitle}}</view>
+    <view>{{result.rDescription}}</view>
+  </view>
+
+  <view class="content">
+    <view class="head">{{result.rConclusion}}</view>
+    <view class="text">
+      <view class="head">查证要点：</view>
+      <view>
+        <text>{{result.rSummary}}</text>
+      </view>
+    </view>
+
+    <view class="infoSrc">
+      <text class="head">辟谣来源：</text>{{result.rInfoFrom}}
+      <text class="head">发布时间：</text>{{result.releaseTime}}
+    </view>
+  </view>
+
+  <view class="readMore">
+    <view class="head">相关阅读</view>
+
+    <!-- <view class="infoItem">
+      <view>
+        <view>
+          <text wx:if="{{subItem.rStatus === 1}}" class="truth">真</text>
+          <text wx:elif="{{subItem.rStatus === -1}}" class="truth">假</text>
+          <text wx:else class="truth">待</text>{{e}}
+        </view>
+        <view>{{}}</view>
+      </view>
+      <view>
+        <image src="{{}}"></image>
+      </view>
+    </view> -->
+
+  </view>
+  <footer></footer>
+</view>

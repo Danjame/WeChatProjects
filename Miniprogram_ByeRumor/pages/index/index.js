@@ -6,62 +6,205 @@ Page({
     searchHeight: "",
     tabHeight: "",
     tabTitles: ["热门谣言", "防疫科普", "官方动态"],
-    curIndex: 0,
-    rumors: app.data.rumors,
-    science: app.data.science,
-    dynamic: app.data.dynamic
+    currentIndex: 0,
+    updating: true,
+    ruPage: {
+      pageSize: 10,
+      pageNum: 0,
+      total: 0
+    },
+    scPage: {
+      pageSize: 10,
+      pageNum: 0,
+      total: 0
+    },
+    dyPage: {
+      pageSize: 10,
+      pageNum: 0,
+      total: 0
+    },
+    rumors: [],
+    science: [],
+    dynamic: [],
   },
 
-  tabHandler(e) {
+  tabChange(e) {
     this.setData({
-      curIndex: e.currentTarget.dataset.index
+      currentIndex: e.currentTarget.dataset.index
     });
   },
 
-  curChange(e) {
+  slideChange(e) {
     this.setData({
-      curIndex: e.detail.current
+      currentIndex: e.detail.current
     })
   },
-
-  enterDetail() {
-    switch(this.data.curIndex) {
+  //页面跳转
+  enterDetail(e) {
+    const id = e.currentTarget.dataset.index
+    switch (this.data.currentIndex) {
       case 0:
-        app.toHot_rumor();
+        app.toHot_rumor(id);
         break;
       case 1:
-        app.toAntiepic_science();
+        app.toAntiepic_science(id);
         break;
       case 2:
-        app.toOffic_dynamic();
+        app.toOffic_dynamic(id);
         break;
+    }
+  },
+  //获取屏幕剩余高度
+  getHightStyle() {
+    const _this = this;
+    wx.createSelectorQuery().select(".searchWrapper").boundingClientRect(rect => {
+      _this.setData({
+        searchHeight: rect.height
+      });
+    }).exec();
+    wx.createSelectorQuery().select(".tabWrapper").boundingClientRect(rect => {
+      _this.setData({
+        tabHeight: rect.height
+      });
+    }).exec();
+    wx.getSystemInfo({
+      success: function(res) {
+        _this.setData({
+          clientHeight: res.windowHeight
+        });
+      }
+    })
+  },
+  getRumors() {
+    const _this = this;
+    wx.request({
+      url: 'https://wdd.free.qydev.com/rumor/list',
+      success(res) {
+        if (res.statusCode === 200) {
+          const result = _this.dataSetting.call(_this, _this.data.ruPage, res.data);
+          _this.setData({
+            rumors: _this.data.rumors.concat(result.arr),
+            ruPage: result.data
+          });
+        }
+      },
+      fail(err) {
+        console.log("can not get rumors");
+      },
+      complete() {
+        _this.setData({
+          updating: false,
+        })
+      }
+    })
+  },
+  getScience() {
+    const _this = this;
+    wx.request({
+      url: 'https://wdd.free.qydev.com/science/list',
+      success(res) {
+        if (res.statusCode === 200) {
+          const result = _this.dataSetting.call(_this, _this.data.scPage, res.data);
+          result.arr[0].forEach(item => {
+            item.hasImg = item.psImgSrc.indexOf('.mp4') !== -1 ? false : true;
+          })
+          _this.setData({
+            science: _this.data.science.concat(result.arr),
+            scPage: result.data
+          });
+          // console.log(_this.data.science);
+        }
+      },
+      fail(err) {
+        console.log("can not get science");
+      },
+      complete() {
+        _this.setData({
+          updating: false,
+        })
+      }
+    })
+  },
+  getDynamic() {
+    const _this = this;
+    wx.request({
+      url: 'https://wdd.free.qydev.com/dynamic/list',
+      success(res) {
+        if (res.statusCode === 200) {
+          const result = _this.dataSetting.call(_this, _this.data.dyPage, res.data);
+          _this.setData({
+            dynamic: _this.data.dynamic.concat(result.arr),
+            dyPage: result.data
+          })
+          // console.log(_this.data.dynamic);
+        }
+      },
+      fail(err) {
+        console.log("can not get dynamic");
+      },
+      complete() {
+        _this.setData({
+          updating: false,
+        })
+      }
+    })
+  },
+  dataSetting(page, target) {
+    const pageSize = page.pageSize;
+    const total = page.total + pageSize;
+    const pageNum = page.pageNum + 1;
+    const arr = [];
+    //二维数组
+    arr[0] = [];
+    for (let i = (pageNum - 1) * pageSize; i < total; i++) {
+      arr[0].push(target[i]);
+    }
+    //截取时间
+    arr[0].forEach((item, index) => {
+      item.releaseTime = item.releaseTime.slice(0, 10);
+    })
+    return {
+      arr,
+      data:{
+        pageSize,
+        total,
+        pageNum
+      }
+    }
+  },
+  errorImg(e) {
+    console.log(e);
+  },
+  getData() {
+    this.setData({
+      updating: true,
+    });
+    switch (this.data.currentIndex) {
+      case 0:
+        this.getRumors();
+        break;
+      case 1:
+        this.getScience();
+        break;
+      case 2:
+        this.getDynamic();
+        break;
+    }
+  },
+  //下拉触底添加数据
+  reachBottomHandler() {
+    if (!this.data.updating) {
+      this.getData();
     }
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    const self = this;
-    //获取搜索栏高度
-    app.getElementStyle(".searchWrapper", rect => {
-      self.setData({
-        searchHeight: rect.height
-      })
-    });
-    //获取导航栏高度
-    app.getElementStyle(".tabWrapper", rect => {
-      self.setData({
-        tabHeight: rect.height
-      })
-    });
-    //获取可用高度
-    wx.getSystemInfo({
-      success: function(res) {
-        self.setData({
-          clientHeight: res.windowHeight
-        });
-      },
-    })
+    this.getHightStyle();
+    this.getRumors();
+    this.getScience();
+    this.getDynamic();
   },
 
   /**

@@ -1,0 +1,34 @@
+<view class="container">
+  <view class="searchWrapper">
+    <view class="searchBar">
+      <input type="text" 
+             placeholder="{{placeholder}}" 
+             value="{{inputValue}}" 
+             bindblur="inputBlur" 
+             bindfocus="inputFocus" 
+             bindinput="inputChange">
+      </input>
+      <icon type="search" size="20"></icon>
+    </view>
+  </view>
+
+  <searchHistory wx:if="{{!focus && !inputValue}}" 
+                 hisList="{{hisList}}" 
+                 rankList="{{rankList}}" 
+                 bind:selectResult="selectResult" 
+                 bind:deleteHis="deleteHis">
+  </searchHistory>
+
+  <searchState wx:if="{{(focus || inputValue) && !searchResult}}" 
+               keyWords="{{keyWords}}" 
+               bind:selectResult="selectResult">
+  </searchState>
+
+  <searchResult wx:if="{{searchResult && !focus}}"
+                tabTitles="{{tabTitles}}"
+                result="{{result}}"
+                science="{{science}}"
+                dynamic="{{dynamic}}">
+  </searchResult>
+
+</view>

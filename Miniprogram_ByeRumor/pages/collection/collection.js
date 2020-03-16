@@ -1,38 +1,18 @@
+// pages/collection/colect.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    result: {}
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options){
-    const _this = this;
-    wx.request({
-      url: 'https://wdd.free.qydev.com/dynamic/get',
-      data: {
-        id: 1
-      },
-      success(res) {
-        if (res.statusCode === 200) {
-          const result = res.data;
-          result.releaseTime = result.releaseTime.slice(0, 10);
-          _this.setData({
-            result
-          })
-        }
-      },
-      fail(error) {
-        console.log("something wrong")
-      },
-      complete() {
-        // console.log(_this.data.result);
-      }
-    })
+  onLoad: function (options) {
+
   },
 
   /**

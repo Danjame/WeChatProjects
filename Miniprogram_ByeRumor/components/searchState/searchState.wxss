@@ -1,0 +1,26 @@
+.stateWrapper {
+  border-top: solid 3rpx #ccc;
+  padding: 4rpx 38rpx;
+}
+
+.keysList {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32rpx 22rpx;
+  border-bottom: solid 3rpx #bbb;
+}
+
+.keysItem {
+  display: flex;
+}
+
+.keysItem icon {
+  margin-right: 18rpx;
+}
+
+.truth {
+  width: 70rpx;
+  height: 35rpx;
+  background-color: blue;
+}
