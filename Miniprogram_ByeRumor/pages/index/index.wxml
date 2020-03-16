@@ -19,15 +19,15 @@
             <view class="info" wx:for="{{item}}" wx:for-item="subItem" data-index="{{subItem.id}}" wx:key="id" bindtap="enterDetail">
               <view class="sideBar ruBar"></view>
               <view class="infoItem">
-                <view>
-                  <view>
+                <view class="itemLeft">
+                  <view class="title">
                     <text wx:if="{{subItem.rStatus === 1}}" class="truth">真</text>
                     <text wx:elif="{{subItem.rStatus === -1}}" class="truth">假</text>
                     <text wx:else class="truth">待</text>{{subItem.rTitle}}
                   </view>
-                  <view>{{subItem.releaseTime}}</view>
+                  <view class="time">{{subItem.releaseTime}}</view>
                 </view>
-                <view>
+                <view class="itemRight">
                   <image src="{{subItem.rImgSrc}}" onerror="errorImg"></image>
                 </view>
               </view>
@@ -44,14 +44,15 @@
             <view class="info" wx:for="{{item}}" wx:for-item="subItem" data-index="{{subItem.id}}" wx:key="id" bindtap="enterDetail">
               <view class="sideBar scBar"></view>
               <view class="infoItem">
-                <view>
-                  <view>
+                <view class="itemLeft">
+                  <view class="title">
                     {{subItem.psTitle}}
                   </view>
-                  <view>{{subItem.releaseTime}}</view>
+                  <view class="time">{{subItem.releaseTime}}</view>
                 </view>
-                <view>
-                  <!-- <image src="{{subItem.psImgSrc}}" onerror="errorImg"></image> -->
+                <view class="itemRight">
+                <image wx:if="{{subItem.hasImg}}" src="{{subItem.psImgSrc}}" mode="aspectFit"></image>
+                <view wx:else class="iconfont icon-play"></view>
                 </view>
               </view>
             </view>
@@ -67,14 +68,11 @@
             <view class="info" wx:for="{{item}}" wx:for-item="subItem" data-index="{{subItem.id}}" wx:key="id" bindtap="enterDetail">
               <view class="sideBar dyBar"></view>
               <view class="infoItem">
-                <view>
-                  <view>
+                <view class="itemLeft">
+                  <view class="title">
                     {{subItem.diTitle}}
                   </view>
-                  <view>{{subItem.releaseTime}}</view>
-                </view>
-                <view>
-                  <!-- <image src="{{subItem.diImgSrc}}" onerror="errorImg"></image> -->
+                  <view class="time">{{subItem.releaseTime}}</view>
                 </view>
               </view>
             </view>

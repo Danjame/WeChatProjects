@@ -1,7 +1,8 @@
 <view>
   <view class="header">
-    <view class="title">{{result.rTitle}}</view>
+    <view class="title">{{result.psTitle}}</view>
     <!-- <image class="titleDesc" src="{{result.psImgSrc}}"></image> -->
+    <video src="http://www.nhc.gov.cn/xcs/kpzs/202002/af330c0037ad49f8a50d6a58b17f307d/files/e053d02cc6734acabccf15397e32f2d2.mp4" controls autoplay></video>
   </view>
 
   <view class="content">
@@ -10,11 +11,11 @@
     </view>
     <view class="text">
       <view class="title">查证要点：</view>
-      <view>{{result.rSummary}}</view>
+      <view>{{}}</view>
     </view>
 
     <view class="infoSrc">
-      <text class="title">辟谣来源：</text>{{result.rInfoFrom}}
+      <text class="title">辟谣来源：</text>{{result.psInfoFrom}}
       <text class="title">发布时间：</text>{{result.releaseTime}}
     </view>
   </view>
@@ -26,7 +27,7 @@
         <view>
           <text wx:if="{{subItem.rStatus === 1}}" class="truth">真</text>
           <text wx:elif="{{subItem.rStatus === -1}}" class="truth">假</text>
-          <text wx:else class="truth">待</text>{{e}}
+          <text wx:else class="truth">待</text>{{}}
         </view>
         <view>{{}}</view>
       </view>

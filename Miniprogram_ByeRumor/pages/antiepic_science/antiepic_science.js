@@ -14,9 +14,9 @@ Page({
   onLoad: function (options) {
     const _this = this;
     wx.request({
-      url: 'https://wdd.free.qydev.com/science/get',
+      url: 'https://wdd.free.qydev.com/dynamic/get',
       data: {
-        id: 617
+        id: 3853
       },
       success(res) {
         const result = res.data;
@@ -25,11 +25,11 @@ Page({
       //     const targetIndex = result.rContext.indexOf("要点：");
       //     result.rSummary = result.rContext.slice(targetIndex + 3);
       //     result.rDescription = result.rContext.slice(0, targetIndex);
-      //     result.releaseTime = result.releaseTime.slice(0, 10);
+          result.releaseTime = result.releaseTime.slice(0, 10);
       //   }
-      //   _this.setData({
-      //     result: res.data
-      //   })
+        _this.setData({
+          result: res.data
+        })
       },
       fail(error) {
         console.log("something wrong")

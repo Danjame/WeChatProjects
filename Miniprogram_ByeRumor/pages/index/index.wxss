@@ -66,17 +66,17 @@ swiper .dataWrapper .info .infoItem {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 32rpx;
+  padding: 0 26rpx;
   border-bottom: solid 5rpx #e3e3e3;
 }
 
-swiper .dataWrapper .info .infoItem>view:first-child {
+swiper .dataWrapper .info .infoItem>.itemLeft {
   display: flex;
   flex-direction: column;
   align-content: center;
 }
 
-swiper .dataWrapper .info .infoItem>view:first-child>view:first-child {
+swiper .dataWrapper .info .infoItem>.itemLeft>.title {
   margin-bottom: 14rpx;
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -86,19 +86,28 @@ swiper .dataWrapper .info .infoItem>view:first-child>view:first-child {
   -webkit-box-pack: center;
 }
 
-swiper .dataWrapper .info .infoItem>view:first-child>view:last-child {
+swiper .dataWrapper .info .infoItem>.itemLeft>.time {
   font-size: 24rpx;
 }
 
-swiper .dataWrapper .info .infoItem>view:last-child {
-  width: 174rpx;
-  height: 174rpx;
+swiper .dataWrapper .info .infoItem>.itemRight {
+  width: 178rpx;
+  height: 178rpx;
   margin-left: 32rpx;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: solid 1rpx #ccc;
 }
 
-swiper .dataWrapper .info .infoItem image {
+swiper .dataWrapper .info .infoItem image{
   width: 174rpx;
   height: 174rpx;
+}
+
+swiper .dataWrapper .info .infoItem .iconfont{
+  font-size: 60rpx;
 }
 
 .truth {
