@@ -1,4 +1,3 @@
-// pages/hot_rumor/hot_rumor.js
 Page({
 
   /**
@@ -15,19 +14,21 @@ Page({
     wx.request({
       url: 'https://wdd.free.qydev.com/rumor/click',
       data:{
-        id: 3030
+        id: options.id
       },
       success(res){
-        const result = res.data;
-        if (result.rContext.includes("要点：")){
-          const targetIndex = result.rContext.indexOf("要点：");
-          result.rSummary = result.rContext.slice(targetIndex +3);
-          result.rDescription = result.rContext.slice(0, targetIndex);
-          result.releaseTime = result.releaseTime.slice(0, 10);
+        if (res.statusCode === 200) {
+          const result = res.data;
+          if (result.rContext.includes("要点：")) {
+            const targetIndex = result.rContext.indexOf("要点：");
+            result.rSummary = result.rContext.slice(targetIndex + 3);
+            result.rDescription = result.rContext.slice(0, targetIndex);
+            result.releaseTime = result.releaseTime.slice(0, 10);
+          }
+          _this.setData({
+            result
+          })
         }
-        _this.setData({
-          result: res.data
-        })
       },
       fail(error){
         console.log("something wrong")
@@ -56,13 +57,6 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
 
   },
 

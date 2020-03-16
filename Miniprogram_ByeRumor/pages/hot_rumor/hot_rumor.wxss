@@ -1,17 +1,40 @@
 .header{
+  min-height: 46rpx;
   padding: 20rpx 30rpx;
 }
-.header .titleDesc {
-  margin-top: 16rpx
+
+.header>view:first-child{
+  width: 100rpx;
+  height: 100rpx;
+  position: absolute;
+  top: 46rpx;
+  right: 70rpx;
+  border-radius: 50%;
+  border: solid 4rpx red;
+  font-size: 70rpx;
+  font-weight: 300;
+  color: red;
+  text-align: center;
+  line-height: 100rpx;
 }
 
 .content{
   padding: 16rpx 30rpx;
-
 }
 
-.content .truth, .content .text>view:first-child{
+.content .text{
+  min-height: 100rpx;
+}
+
+.content .head{
   margin-bottom: 16rpx
+}
+
+.header>view:last-child,
+.content .text>view:last-child{
+  margin-top: 16rpx;
+  font-size: 30rpx;
+  text-align: justify;
 }
 
 .content .infoSrc{
@@ -19,11 +42,11 @@
   margin-top: 16rpx;
 }
 
-.infoSrc .title:last-child{
+.content .infoSrc .head:last-child{
   margin-left: 26rpx;
 }
 
-.title{
+.head{
   font-weight: bold;
 }
 
@@ -31,4 +54,3 @@
   margin-left: 30rpx;
   margin-bottom: 16rpx;
 }
-

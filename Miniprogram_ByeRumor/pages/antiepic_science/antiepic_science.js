@@ -1,4 +1,3 @@
-// pages/antiepic_science/antiepic_science.js
 Page({
 
   /**
@@ -14,22 +13,19 @@ Page({
   onLoad: function (options) {
     const _this = this;
     wx.request({
-      url: 'https://wdd.free.qydev.com/dynamic/get',
+      url: 'https://wdd.free.qydev.com/science/get',
       data: {
-        id: 3853
+        id: options.id
       },
       success(res) {
-        const result = res.data;
-        console.log(result);
-      //   if (result.rContext.includes("要点：")) {
-      //     const targetIndex = result.rContext.indexOf("要点：");
-      //     result.rSummary = result.rContext.slice(targetIndex + 3);
-      //     result.rDescription = result.rContext.slice(0, targetIndex);
+        if(res.statusCode === 200){
+          const result = res.data;
+          result.hasImg = result.psImgSrc.indexOf('.mp4') !== -1 ? false : true;
           result.releaseTime = result.releaseTime.slice(0, 10);
-      //   }
-        _this.setData({
-          result: res.data
-        })
+          _this.setData({
+            result
+          })
+        }
       },
       fail(error) {
         console.log("something wrong")

@@ -41,17 +41,16 @@ Page({
   },
   //页面跳转
   enterDetail(e) {
-    // console.log(e.currentTarget.dataset.index);
-    // console.log(this.data.currentIndex);
+    const id = e.currentTarget.dataset.index
     switch (this.data.currentIndex) {
       case 0:
-        app.toHot_rumor();
+        app.toHot_rumor(id);
         break;
       case 1:
-        app.toAntiepic_science();
+        app.toAntiepic_science(id);
         break;
       case 2:
-        app.toOffic_dynamic();
+        app.toOffic_dynamic(id);
         break;
     }
   },

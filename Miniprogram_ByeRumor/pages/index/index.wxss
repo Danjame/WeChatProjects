@@ -78,6 +78,7 @@ swiper .dataWrapper .info .infoItem>.itemLeft {
 
 swiper .dataWrapper .info .infoItem>.itemLeft>.title {
   margin-bottom: 14rpx;
+  text-align: justify;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
