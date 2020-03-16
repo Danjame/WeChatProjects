@@ -20,6 +20,7 @@ Page({
       success(res) {
         if(res.statusCode === 200){
           const result = res.data;
+          result.psContext = result.psContext.replace(/^\s+/, '');
           result.hasImg = result.psImgSrc.indexOf('.mp4') !== -1 ? false : true;
           result.releaseTime = result.releaseTime.slice(0, 10);
           _this.setData({
@@ -31,7 +32,7 @@ Page({
         console.log("something wrong")
       },
       complete() {
-        // console.log(_this.data.result);
+        console.log(_this.data.result);
       }
     })
   },

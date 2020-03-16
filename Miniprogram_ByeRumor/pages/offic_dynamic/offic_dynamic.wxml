@@ -1,8 +1,6 @@
 <view>
   <view class="header">
-
     <view class="head">{{result.diTitle}}</view>
-
   </view>
 
   <view class="content">

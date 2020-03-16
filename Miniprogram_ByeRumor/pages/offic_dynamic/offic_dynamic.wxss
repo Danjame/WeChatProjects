@@ -3,10 +3,6 @@
   padding: 20rpx 30rpx;
 }
 
-.header>view:first-child{
-  margin-bottom: 32rpx;
-}
-
 .header>video{
 width: 690rpx;
 }
