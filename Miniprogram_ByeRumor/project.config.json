@@ -24,8 +24,10 @@
 		}
 	},
 	"compileType": "miniprogram",
+
 	"libVersion": "2.10.3",
 	"appid": "wx28081468b65f172e",
+
 	"projectname": "Miniprogram_ByeRumor",
 	"debugOptions": {
 		"hidedInDevtools": []

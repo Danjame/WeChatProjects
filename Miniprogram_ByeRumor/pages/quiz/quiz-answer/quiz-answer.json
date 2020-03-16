@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "ans-top":"./../ans-top/ans-top"
+  }
+}

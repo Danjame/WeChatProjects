@@ -1,0 +1,7 @@
+<!--pages/score_hint/score_hint.wxml-->
+<score-top/>
+<analyze-cmp/>
+<button 
+class='btn' 
+bindtap="toBegin"
+style="width:680rpx;line-height:120rpx;" >返回开始页面</button>

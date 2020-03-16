@@ -1,2 +1,8 @@
 <!--pages/rumor/rumor.wxml-->
-<text>pages/quiz/quiz.wxml</text>
+<!-- <text>pages/quiz/quiz.wxml</text> -->
+<quiz-btn wx:if="{{showBtn}}" bind:btnShowHide="btnShowHide"></quiz-btn>
+<quiz-answer wx:if="{{showAns}}" bind:exitClickFn="exitClickFn"></quiz-answer>
+<ans-analyze 
+  wx:if="{{showAnalyze}}" 
+  bind:exitClickFn="exitClickFn" 
+  bind:nextClickFn="nextClickFn"/>
