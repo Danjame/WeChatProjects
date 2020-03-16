@@ -1,0 +1,13 @@
+<!--pages/quiz/ans-analyze/ans-analyze.wxml-->
+<!-- <text>pages/quiz/ans-analyze/ans-analyze.wxml</text> -->
+<ans-top bind:exitClick="showBtnFn"/>
+<analyze-cmp wx:if="{{showAnl}}" bind:shareClick="showShare"/>
+<button class='btn' style="width:680rpx;line-height:120rpx;">下一题</button>
+<view class="share-wrap" wx:if="{{showShare}}" catchtap='hideShare'>
+  <view class="share" catchtap="cancleBubble">
+    <view class='tit'>春节假期再次延长至2月20日？</view>
+    <view class='true-or-false'>真或假</view>
+    <share-btn class="share-btn"/>
+  </view>
+</view>
+

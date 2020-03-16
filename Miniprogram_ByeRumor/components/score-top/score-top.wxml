@@ -1,0 +1,7 @@
+<!--components/score-top/score-top.wxml-->
+<view class="score-top">
+  <text class='tit'>成绩</text>
+  <text>答对</text>
+  <text style="font-size:52rpx;padding:0 14rpx">9</text>
+  <text>题</text>
+</view>

@@ -1,0 +1,14 @@
+<!--pages/quiz/ans-top/ans-top.wxml-->
+<view class='top'>
+  <view class='btn' bindtap="exit">退出答题</view>
+  <view class='pro-wrap'>
+    <text>答题进度</text>
+    <progress class='pro' 
+    percent="20" 
+    stroke-width='28rpx' 
+    border-radius="14rpx" 
+    show-info 
+    activeColor="#0BBA05"/>
+  </view>
+  <!-- <progress class='pro' percent="20"/> -->
+</view>

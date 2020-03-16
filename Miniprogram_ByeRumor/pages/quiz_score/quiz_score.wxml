@@ -1,0 +1,17 @@
+<!--pages/quiz_score/quiz_score.wxml-->
+<score-top/> 
+<view class="score-order">
+  <view class="order-wrap">
+    <text class='order-num' bindtap='toScoreHint'>1</text>
+    <text class='order-num' bindtap='toScoreHint'>2</text>
+    <text class='order-num' bindtap='toScoreHint'>3</text>
+    <text class='order-num' bindtap='toScoreHint'>4</text>
+    <text class='order-num' bindtap='toScoreHint'>5</text>
+    <text class='order-num' bindtap='toScoreHint'>6</text>
+    <text class='order-num' bindtap='toScoreHint'>7</text>
+    <text class='order-num' bindtap='toScoreHint'>8</text>
+    <text class='order-num' bindtap='toScoreHint'>9</text>
+    <text class='order-num' bindtap='toScoreHint'>10</text>
+  </view>
+  <share-btn/>
+</view>
