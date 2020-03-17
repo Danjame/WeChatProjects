@@ -109,13 +109,9 @@ Page({
           searchState: false,
           searchResult: true,
         })
-        console.log(_this.data.result);
       },
     });
-    const searchResult = this.selectComponent("#searchResult");
-    searchResult.setRumors();
-    searchResult.setScience();
-    searchResult.setDynamic();
+
   },
   //搜索关键字选择
   selectResult(e) {

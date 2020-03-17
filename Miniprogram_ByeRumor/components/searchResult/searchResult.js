@@ -51,7 +51,9 @@ Component({
   methods: {
     //获取当前index
     tabChange(e) {
-
+      // this.setRumors();
+      // this.setScience();
+      // this.setDynamic();
       console.log(this.data);
       this.setData({
         currentIndex: e.currentTarget.dataset.index
@@ -136,30 +138,47 @@ Component({
         dyPage: dyResult.data
       });
     },
-    ready: function () {
-      //获取屏幕剩余高度
-      const _this = this;
-      wx.createSelectorQuery().select(".searchWrapper").boundingClientRect(rect => {
-        _this.setData({
-          searchHeight: rect.height
-        });
-      }).exec();
-      wx.createSelectorQuery().in(this).select(".tabWrapper").boundingClientRect(rect => {
-        _this.setData({
-          tabHeight: rect.height
-        });
-      }).exec();
-      wx.getSystemInfo({
-        success: function (res) {
-          _this.setData({
-            clientHeight: res.windowHeight
-          });
-        }
+  },
+  ready: function () {
+    console.log(123);
+    //获取屏幕剩余高度
+    const _this = this;
+    wx.createSelectorQuery().select(".searchWrapper").boundingClientRect(rect => {
+      _this.setData({
+        searchHeight: rect.height
       });
-      //数据处理
-      this.setRumors();
-      this.setScience();
-      this.setDynamic();
+      console.log(_this.data.searchHeight);
+    }).exec();
+    wx.createSelectorQuery().in(this).select(".tabWrapper").boundingClientRect(rect => {
+      _this.setData({
+        tabHeight: rect.height
+      });
+    }).exec();
+    wx.getSystemInfo({
+      success: function (res) {
+        _this.setData({
+          clientHeight: res.windowHeight
+        });
+      }
+    });
+    //数据处理
+    this.setRumors();
+    this.setScience();
+    this.setDynamic();
+  },
+  pageLifetimes: {
+    show: function () {
+      // 页面被展示
+    console.log(123);
+    this.setRumors();
+    this.setScience();
+    this.setDynamic();
+    },
+    hide: function(){
+      console.log(567);
     }
+  },
+  options: {
+    addGlobalClass: true
   }
 })

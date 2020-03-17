@@ -13,7 +13,7 @@
     </view>
   </view>
 
-  <!-- <searchHistory wx:if="{{!focus && !inputValue}}" 
+  <searchHistory wx:if="{{!focus && !inputValue}}" 
                  hisList="{{hisList}}" 
                  rankList="{{rankList}}" 
                  bind:selectResult="selectResult" 
@@ -23,11 +23,11 @@
   <searchState wx:if="{{(focus || inputValue) && !searchResult}}" 
                keyWords="{{keyWords}}" 
                bind:selectResult="selectResult">
-  </searchState> -->
-<!-- wx:if="{{searchResult && !focus}}" -->
-  <searchResult tabTitles="{{tabTitles}}"
-                result="{{result}}"
-                id = "searchResult">
+  </searchState>
+
+  <searchResult wx:if="{{searchResult && !focus}}"
+                tabTitles="{{tabTitles}}"
+                result="{{result}}">
   </searchResult>
 
 </view>
