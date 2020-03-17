@@ -32,7 +32,7 @@ Page({
         console.log("something wrong")
       },
       complete() {
-        console.log(_this.data.result);
+        // console.log(_this.data.result);
       }
     })
   },

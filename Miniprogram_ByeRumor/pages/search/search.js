@@ -10,16 +10,16 @@ Page({
     searchState: false,
     searchResult: false,
     keyWords: [],
-
+    result:{},
     tabTitles: ["显示全部", "热门谣言", "防疫科普", "官方动态"],
+
     hisList: ["防疫种类", "防疫手段", "口罩", "酒精喷雾", "新增确诊", "国外疫情"],
     rankList: ["99.7的无水乙醇可以稀释到75%后做消毒用",
       "99.7的无水乙醇可以稀释到75%后做消毒用",
     ],
-    science: app.data.science,
-    dynamic: app.data.dynamic,
-    result: [{
-        text: "新型肺炎疫苗出来啦",
+
+    recoWords: [{
+        text: "肺炎",
         type: "ru"
       },
       {
@@ -58,7 +58,7 @@ Page({
   throttle: 500,
   inputChange(e) {
     const _this = this;
-    let result = _this.data.result;
+    let result = _this.data.recoWords;
     this.setData({
       inputValue: e.detail.value
     })
@@ -84,18 +84,49 @@ Page({
       }, this.throttle);
     }
   },
+  //确定搜索关键字
+  searchConfirm(){
+    const _this = this;
+    wx.request({
+      url: 'https://wdd.free.qydev.com/common/search',
+      data: {
+        keyCode: _this.data.inputValue
+      },
+      success(res) {
+        if (res.statusCode === 200) {
+          const result = res.data;
+          _this.setData({
+            result,
+          });
+        }
+      },
+      fail(error) {
+        console.log("something wrong")
+      },
+      complete() {
+        _this.setData({
+          focus: false,
+          searchState: false,
+          searchResult: true,
+        })
+        console.log(_this.data.result);
+      },
+    });
+    const searchResult = this.selectComponent("#searchResult");
+    searchResult.setRumors();
+    searchResult.setScience();
+    searchResult.setDynamic();
+  },
   //搜索关键字选择
   selectResult(e) {
-    console.log(e);
     this.setData({
-      focus: false,
-      searchState: false,
-      searchResult: true,
       inputValue: e.detail.item.text
     })
-    console.log("匹配结果搜索");
+    //确定搜索
+    this.searchConfirm();
   },
 
+  
   /**
    * 生命周期函数--监听页面加载
    */
