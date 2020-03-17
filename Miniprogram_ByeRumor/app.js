@@ -49,5 +49,41 @@ App({
         })
       }
     })
-  }
+  },
+  dataSetting(page, target) {
+    if (page.total >= target.length) {
+      return;
+    } else {
+      let pageSize, total, pageNum;
+      //二维数组
+      let arr = [[]];
+      if (target.length - page.total >= page.pageSize) {
+        pageSize = page.pageSize;
+        total = page.total + pageSize;
+        pageNum = page.pageNum + 1;
+        for (let i = (pageNum - 1) * pageSize; i < total; i++) {
+          arr[0].push(target[i]);
+        }
+      } else {
+        pageSize = page.pageSize;
+        total = page.total + target.length - page.total;
+        pageNum = page.pageNum + 1;
+        for (let i = (pageNum - 1) * pageSize; i < target.length; i++) {
+          arr[0].push(target[i]);
+        }
+      }
+      //截取时间
+      arr[0].forEach((item, index) => {
+        item.releaseTime = item.releaseTime.slice(0, 10);
+      })
+      return {
+        arr,
+        data: {
+          pageSize,
+          total,
+          pageNum
+        }
+      }
+    }
+  },
 })

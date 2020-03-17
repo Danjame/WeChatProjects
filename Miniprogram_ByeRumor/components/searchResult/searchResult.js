@@ -51,20 +51,16 @@ Component({
   methods: {
     //获取当前index
     tabChange(e) {
-      // this.setRumors();
-      // this.setScience();
-      // this.setDynamic();
-      console.log(this.data);
       this.setData({
         currentIndex: e.currentTarget.dataset.index
-      });
+      })
     },
     slideChange(e) {
       this.setData({
         currentIndex: e.detail.current
       })
     },
-    enterDetail(){
+    enterDetail() {
       const id = e.currentTarget.dataset.index
       switch (this.data.currentIndex) {
         case 0:
@@ -78,76 +74,67 @@ Component({
           break;
       }
     },
-    dataSetting(page, target) {
-      const pageSize = page.pageSize;
-      const total = page.total + pageSize;
-      const pageNum = page.pageNum + 1;
-      const arr = [];
-      //二维数组
-      arr[0] = [];
-      for (let i = (pageNum - 1) * pageSize; i < total; i++) {
-        arr[0].push(target[i]);
-      }
-      //截取时间
-      arr[0].forEach((item, index) => {
-        item.releaseTime = item.releaseTime.slice(0, 10);
-      })
-      return {
-        arr,
-        data: {
-          pageSize,
-          total,
-          pageNum
+    reachBottomHandler() {
+      if(!this.data.updating){
+        this.setData({
+          updating: true,
+        });
+        switch (this.data.currentIndex) {
+          case 1:
+            this.getRumors();
+            break;
+          case 2:
+            this.getScience();
+            break;
+          case 3:
+            this.getDynamic();
+            break;
         }
       }
+      console.log(this.data.ruPage);
+      console.log(this.data.rumors);
     },
-    reachBottomHandler() {
-      this.setData({
-        updating: true,
-      });
-      switch (this.data.currentIndex) {
-        case 0:
-          this.setRumors();
-          break;
-        case 1:
-          this.setScience();
-          break;
-        case 2:
-          this.setDynamic();
-          break;
+    getRumors() {
+      if (this.data.ruPage.total !== this.data.result.r.length) {
+        const result = app.dataSetting(this.data.ruPage, this.data.result.r);
+        this.setData({
+          rumors: this.data.rumors.concat(result.arr),
+          ruPage: result.data,
+          updating: false,
+        });
       }
     },
-    setRumors() {
-      const ruResult = this.dataSetting(this.data.ruPage, this.data.result.r);
-      this.setData({
-        rumors: this.data.rumors.concat(ruResult.arr),
-        ruPage: ruResult.data
-      });
+    getScience() {
+      if (this.data.scPage.total !== this.data.result.ps.length) {
+        const result = app.dataSetting(this.data.scPage, this.data.result.ps);
+        result.arr[0].forEach(item => {
+          item.hasImg = item.psImgSrc.indexOf('.mp4') !== -1 ? false : true;
+        })
+        this.setData({
+          science: this.data.science.concat(result.arr),
+          scPage: result.data,
+          updating: false,
+        });
+      }
     },
-    setScience() {
-      const scResult = this.dataSetting(this.data.scPage, this.data.result.ps);
-      this.setData({
-        science: this.data.science.concat(scResult.arr),
-        scPage: scResult.data
-      });
-    },
-    setDynamic() {
-      const dyResult = this.dataSetting(this.data.dyPage, this.data.result.di);
-      this.setData({
-        dynamic: this.data.dynamic.concat(dyResult.arr),
-        dyPage: dyResult.data
-      });
+    getDynamic() {
+      if (this.data.dyPage.total !== this.data.result.di.length){
+        const result = app.dataSetting(this.data.dyPage, this.data.result.di);
+        this.setData({
+          dynamic: this.data.dynamic.concat(result.arr),
+          dyPage: result.data,
+          updating: false,
+        })
+      }
     },
   },
-  ready: function () {
-    console.log(123);
+  ready: function() {
     //获取屏幕剩余高度
     const _this = this;
     wx.createSelectorQuery().select(".searchWrapper").boundingClientRect(rect => {
       _this.setData({
         searchHeight: rect.height
       });
-      console.log(_this.data.searchHeight);
     }).exec();
     wx.createSelectorQuery().in(this).select(".tabWrapper").boundingClientRect(rect => {
       _this.setData({
@@ -155,28 +142,16 @@ Component({
       });
     }).exec();
     wx.getSystemInfo({
-      success: function (res) {
+      success: function(res) {
         _this.setData({
           clientHeight: res.windowHeight
         });
       }
     });
     //数据处理
-    this.setRumors();
-    this.setScience();
-    this.setDynamic();
-  },
-  pageLifetimes: {
-    show: function () {
-      // 页面被展示
-    console.log(123);
-    this.setRumors();
-    this.setScience();
-    this.setDynamic();
-    },
-    hide: function(){
-      console.log(567);
-    }
+    this.getRumors();
+    this.getScience();
+    this.getDynamic();
   },
   options: {
     addGlobalClass: true

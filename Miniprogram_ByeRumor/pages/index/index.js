@@ -7,7 +7,7 @@ Page({
     tabHeight: "",
     tabTitles: ["热门谣言", "防疫科普", "官方动态"],
     currentIndex: 0,
-    updating: true,
+    updating: false,
     ruPage: {
       pageSize: 10,
       pageNum: 0,
@@ -80,8 +80,8 @@ Page({
     wx.request({
       url: 'https://wdd.free.qydev.com/rumor/list',
       success(res) {
-        if (res.statusCode === 200) {
-          const result = _this.dataSetting.call(_this, _this.data.ruPage, res.data);
+        if (res.statusCode === 200 && _this.data.ruPage.total !== res.data.length) {
+          const result = app.dataSetting(_this.data.ruPage, res.data);
           _this.setData({
             rumors: _this.data.rumors.concat(result.arr),
             ruPage: result.data
@@ -103,8 +103,8 @@ Page({
     wx.request({
       url: 'https://wdd.free.qydev.com/science/list',
       success(res) {
-        if (res.statusCode === 200) {
-          const result = _this.dataSetting.call(_this, _this.data.scPage, res.data);
+        if (res.statusCode === 200 && _this.data.scPage.total !== res.data.length) {
+          const result = app.dataSetting(_this.data.scPage, res.data);
           result.arr[0].forEach(item => {
             item.hasImg = item.psImgSrc.indexOf('.mp4') !== -1 ? false : true;
           })
@@ -130,8 +130,8 @@ Page({
     wx.request({
       url: 'https://wdd.free.qydev.com/dynamic/list',
       success(res) {
-        if (res.statusCode === 200) {
-          const result = _this.dataSetting.call(_this, _this.data.dyPage, res.data);
+        if (res.statusCode === 200 && _this.data.dyPage.total !== res.data.length) {
+          const result = app.dataSetting(_this.data.dyPage, res.data);
           _this.setData({
             dynamic: _this.data.dynamic.concat(result.arr),
             dyPage: result.data
@@ -149,53 +149,29 @@ Page({
       }
     })
   },
-  dataSetting(page, target) {
-    const pageSize = page.pageSize;
-    const total = page.total + pageSize;
-    const pageNum = page.pageNum + 1;
-    const arr = [];
-    //二维数组
-    arr[0] = [];
-    for (let i = (pageNum - 1) * pageSize; i < total; i++) {
-      arr[0].push(target[i]);
-    }
-    //截取时间
-    arr[0].forEach((item, index) => {
-      item.releaseTime = item.releaseTime.slice(0, 10);
-    })
-    return {
-      arr,
-      data:{
-        pageSize,
-        total,
-        pageNum
-      }
-    }
-  },
   errorImg(e) {
     console.log(e);
-  },
-  getData() {
-    this.setData({
-      updating: true,
-    });
-    switch (this.data.currentIndex) {
-      case 0:
-        this.getRumors();
-        break;
-      case 1:
-        this.getScience();
-        break;
-      case 2:
-        this.getDynamic();
-        break;
-    }
   },
   //下拉触底添加数据
   reachBottomHandler() {
     if (!this.data.updating) {
-      this.getData();
+      this.setData({
+        updating: true,
+      });
+      switch (this.data.currentIndex) {
+        case 0:
+          this.getRumors();
+          break;
+        case 1:
+          this.getScience();
+          break;
+        case 2:
+          this.getDynamic();
+          break;
+      }
     }
+    console.log(this.data.ruPage);
+    console.log(this.data.rumors);
   },
   /**
    * 生命周期函数--监听页面加载
