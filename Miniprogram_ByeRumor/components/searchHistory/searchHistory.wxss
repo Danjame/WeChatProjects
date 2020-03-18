@@ -41,7 +41,7 @@
 
 .rankingWrapper .rankingList {
   display: flex;
-  padding: 12rpx 22rpx;
+  padding: 16rpx 22rpx;
   border-bottom: solid 2rpx #bbb;
   font-size: 31rpx;
 }
@@ -54,4 +54,11 @@
   text-align: center;
   line-height: 40rpx;
   color: #fff;
+}
+
+.rankingWrapper .rankingList .rankingItem {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: break-all;
 }

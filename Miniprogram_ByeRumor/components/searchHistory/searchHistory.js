@@ -1,4 +1,4 @@
-// components/searchHistory/searchHistory.js
+const app = getApp();
 Component({
   /**
    * 组件的属性列表
@@ -37,6 +37,6 @@ Component({
       const index = e.currentTarget.dataset.index;
       const item = this.data.rankList[index]
       this.triggerEvent("selectResult", { item, index });
-    }
-  }
+    },
+  },
 })

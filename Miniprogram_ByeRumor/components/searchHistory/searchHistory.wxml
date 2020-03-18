@@ -9,10 +9,10 @@
       </view>
     </view>
     <view class="rankingWrapper">
-      <view class="titleText">谣言排行榜</view>
-      <view wx:for="{{rankList}}" class="rankingList" wx:key="index" data-index="{{index}}" bindtap="selectRanking">
+      <view class="titleText" bindtap="selectRanking">谣言排行榜</view>
+      <view wx:for="{{rankList[0]}}" class="rankingList" wx:key="index" data-index="{{index}}" bindtap="selectRanking">
         <view class="rankingNum">{{index+1}}</view>
-        <view class="rankingItem">{{item}}</view>
+        <view class="rankingItem">{{item.rTitle}}</view>
       </view>
     </view>
   </view>

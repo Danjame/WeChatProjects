@@ -10,14 +10,17 @@ Page({
     searchState: false,
     searchResult: false,
     keyWords: [],
-    result:{},
+    result: {},
     tabTitles: ["显示全部", "热门谣言", "防疫科普", "官方动态"],
 
-    hisList: ["防疫种类", "防疫手段", "口罩", "酒精喷雾", "新增确诊", "国外疫情"],
-    rankList: ["99.7的无水乙醇可以稀释到75%后做消毒用",
-      "99.7的无水乙醇可以稀释到75%后做消毒用",
-    ],
+    hisList: ["口罩", "新增确诊"],
+    rankList: [],
 
+    rankPage:{
+      pageSize: 10,
+      pageNum: 0,
+      total: 0
+    },
     recoWords: [{
         text: "肺炎",
         type: "ru"
@@ -53,6 +56,53 @@ Page({
       focus: false,
     })
   },
+  //搜索关键字选择
+  selectResult(e) {
+    this.setData({
+      inputValue: e.detail.item
+    })
+    this.searchConfirm();
+  },
+  //确定搜索关键字
+  searchConfirm() {
+    if (this.data.inputValue) {
+      const _this = this;
+      wx.request({
+        url: 'https://wdd.free.qydev.com/common/search',
+        data: {
+          keyCode: _this.data.inputValue,
+        },
+        success(res) {
+          if (res.statusCode === 200) {
+            const result = res.data;
+            _this.setData({
+              result,
+            });
+          }
+        },
+        fail(error) {
+          console.log("something wrong")
+        },
+        complete() {
+          _this.setData({
+            focus: false,
+            searchState: false,
+            searchResult: true,
+          });
+          //去除重复的搜索记录并且前置最新记录
+          const hisList = _this.data.hisList
+          hisList.forEach((item, index) => {
+            if (item == _this.data.inputValue) {
+              hisList.splice(index, 1);
+            }
+          })
+          _this.setData({
+            hisList: [_this.data.inputValue, ...hisList],
+          })
+        },
+      })
+    }
+  },
   //搜索关键字匹配
   lastSearch: Date.now(),
   throttle: 500,
@@ -84,50 +134,34 @@ Page({
       }, this.throttle);
     }
   },
-  //确定搜索关键字
-  searchConfirm(){
-    const _this = this;
-    wx.request({
-      url: 'https://wdd.free.qydev.com/common/search',
-      data: {
-        keyCode: _this.data.inputValue
-      },
-      success(res) {
-        if (res.statusCode === 200) {
-          const result = res.data;
-          _this.setData({
-            result,
-          });
-        }
-      },
-      fail(error) {
-        console.log("something wrong")
-      },
-      complete() {
-        _this.setData({
-          focus: false,
-          searchState: false,
-          searchResult: true,
-        })
-      },
-    });
-
+  getRanking(pageData, target) {
+    if (pageData.total !== target.length) {
+      const result = app.dataSetting(pageData, target);
+      this.setData({
+        rankList: this.data.rankList.concat(result.arr),
+        rankPage: result.data
+      })
+    }
   },
-  //搜索关键字选择
-  selectResult(e) {
-    this.setData({
-      inputValue: e.detail.item.text
-    })
-    //确定搜索
-    this.searchConfirm();
-  },
-
-  
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    const _this = this;
+    wx.request({
+      url: 'https://wdd.free.qydev.com/rumor/sort',
+      success(res){
+        if(res.statusCode===200){
+          _this.getRanking(_this.data.rankPage, res.data);
+        }
+      },
+      fail(error){
+        console.log("Network Error!")
+      },
+      complete(){
 
+      }
+    })
   },
 
   /**

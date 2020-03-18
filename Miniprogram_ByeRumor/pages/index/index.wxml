@@ -11,7 +11,7 @@
   </view>
 
   <swiper style="height:{{clientHeight-searchHeight-tabHeight+'px'}}" current="{{currentIndex}}" bindchange="slideChange">
-
+<!-- 谣言分页 -->
     <swiper-item>
       <scroll-view scroll-y="{{true}}" style="height:{{clientHeight-searchHeight-tabHeight+'px'}}" bindscrolltolower="reachBottomHandler">
         <view class="dataWrapper">
@@ -36,7 +36,7 @@
         </view>
       </scroll-view>
     </swiper-item>
-
+<!-- 科普分页 -->
     <swiper-item>
       <scroll-view scroll-y="{{true}}" style="height:{{clientHeight-searchHeight-tabHeight+'px'}}" bindscrolltolower="reachBottomHandler">
         <view class="dataWrapper">
@@ -60,7 +60,7 @@
         </view>
       </scroll-view>
     </swiper-item>
-
+<!-- 动态分页 -->
     <swiper-item>
       <scroll-view scroll-y="{{true}}" style="height:{{clientHeight-searchHeight-tabHeight+'px'}}" bindscrolltolower="reachBottomHandler">
         <view class="dataWrapper">
