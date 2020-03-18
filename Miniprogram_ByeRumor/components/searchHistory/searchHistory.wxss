@@ -50,7 +50,6 @@
   width: 40rpx;
   height: 40rpx;
   margin-right: 60rpx;
-  background-color: red;
   text-align: center;
   line-height: 40rpx;
   color: #fff;

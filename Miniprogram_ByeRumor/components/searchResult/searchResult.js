@@ -64,7 +64,6 @@ Component({
       })
     },
     enterDetail(e) {
-      console.log(e);
       const id = e.currentTarget.dataset.index;
       this.data.totalList.forEach(item => {
         if (item.id === id) {

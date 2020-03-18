@@ -18,7 +18,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-
+    
   },
 
   /**
@@ -27,7 +27,7 @@ Component({
   methods: {
     selectHistory(e) {
       const index = e.currentTarget.dataset.index;
-      const item = this.data.hisList[index]
+      const item = this.data.hisList[index];
       this.triggerEvent("selectResult", {item, index});
     },
     deleteHistory() {
@@ -35,8 +35,7 @@ Component({
     },
     selectRanking(e){
       const index = e.currentTarget.dataset.index;
-      const item = this.data.rankList[index]
-      this.triggerEvent("selectResult", { item, index });
+      this.triggerEvent("selectRanking", index);
     },
   },
 })

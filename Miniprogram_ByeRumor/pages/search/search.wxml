@@ -17,7 +17,8 @@
                  hisList="{{hisList}}" 
                  rankList="{{rankList}}" 
                  bind:selectResult="selectResult" 
-                 bind:deleteHis="deleteHis">
+                 bind:deleteHis="deleteHis"
+                 bind:selectRanking="selectRanking">
   </searchHistory>
 
   <searchState wx:if="{{(focus || inputValue) && !searchResult}}" 

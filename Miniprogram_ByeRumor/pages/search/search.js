@@ -63,6 +63,9 @@ Page({
     })
     this.searchConfirm();
   },
+  selectRanking(e){
+    app.toHot_rumor(e.detail);
+  },
   //确定搜索关键字
   searchConfirm() {
     if (this.data.inputValue) {
@@ -103,7 +106,7 @@ Page({
       })
     }
   },
-  //搜索关键字匹配
+  //关键字匹配
   lastSearch: Date.now(),
   throttle: 500,
   inputChange(e) {
@@ -133,6 +136,22 @@ Page({
         }, err => console.log("Fail"));
       }, this.throttle);
     }
+  },
+  // 搜索谣言
+  onInputSearch(){
+    wx.request({
+      url: 'https://wdd.free.qydev.com/rumor/sort',
+      keyCode: this.data.inputValue,
+      success(){
+
+      },
+      fail(){
+
+      },
+      complete(){
+        
+      }
+    })
   },
   getRanking(pageData, target) {
     if (pageData.total !== target.length) {
