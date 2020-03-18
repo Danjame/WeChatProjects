@@ -1,22 +1,66 @@
- <view>
-    <view class="tabWrapper">
-      <view wx:for="{{tabTitles}}" class="tab {{index == currentIndex ? 'selected':'unSelected'}}" data-index="{{index}}" wx:key="index" bindtap="tabChange">{{item}}</view>
-    </view>
+<view>
+  <view class="tabWrapper">
+    <view wx:for="{{tabTitles}}" class="tab {{index == currentIndex ? 'selected':'unSelected'}}" data-index="{{index}}" wx:key="index" bindtap="tabChange">{{item}}</view>
+  </view>
 
-    <swiper style="height:{{clientHeight-searchHeight-tabHeight+'px'}}" current="{{currentIndex}}" bindchange="slideChange">
+  <view wx:if="{{general.length===0}}" class="noResult" style="height:{{clientHeight-searchHeight-tabHeight+'px'}}">
+    <text>无匹配结果</text>
+  </view>
 
-      <swiper-item>
-        <scroll-view scroll-y="{{true}}" style="height:{{clientHeight-searchHeight-tabHeight+'px'}}">
-          <view class="dataWrapper">
-            <view class="info" wx:for="{{}}" data-index="{{index}}" wx:key="index" bindtap="enterDetail">
-              <view class="sideBar ruBar"></view>
-              <view class="infoItem">{{}}</view>
+  <swiper style="height:{{clientHeight-searchHeight-tabHeight+'px'}}" current="{{currentIndex}}" bindchange="slideChange">
+    <!-- 首页分类 -->
+    <swiper-item>
+      <scroll-view scroll-y="{{true}}" style="height:{{clientHeight-searchHeight-tabHeight+'px'}}" bindscrolltolower="reachBottomHandler">
+        <view class="dataWrapper">
+          <view wx:for="{{general}}" data-index="{{index}}" wx:key="index">
+            <view class="info" wx:for="{{item}}" wx:for-item="subItem" data-index="{{subItem.id}}" wx:key="id" bindtap="enterDetail">
+              <view wx:if="{{subItem.rTitle}}" class="sideBar ruBar}}"></view>
+              <view wx:elif="{{subItem.psTitle}}" class="sideBar scBar}}"></view>
+              <view wx:else class="sideBar dyBar"></view>
+              <!-- 谣言项 -->
+              <view wx:if="{{subItem.rTitle}}" class="infoItem">
+                <view class="itemLeft">
+                  <view class="title">
+                    <text wx:if="{{subItem.rStatus === 1}}" class="truth">真</text>
+                    <text wx:elif="{{subItem.rStatus === -1}}" class="truth">假</text>
+                    <text wx:else class="truth">待</text>{{subItem.rTitle}}
+                  </view>
+                  <view class="time">{{subItem.releaseTime}}</view>
+                </view>
+                <view class="itemRight">
+                  <image src="{{subItem.rImgSrc}}" onerror="errorImg"></image>
+                </view>
+              </view>
+              <!-- 科普项 -->
+              <view wx:if="{{subItem.psTitle}}" class="infoItem">
+                <view class="itemLeft">
+                  <view class="title">
+                    {{subItem.psTitle}}
+                  </view>
+                  <view class="time">{{subItem.releaseTime}}</view>
+                </view>
+                <view class="itemRight">
+                  <image wx:if="{{subItem.hasImg==true}}" src="{{subItem.psImgSrc}}" mode="aspectFit"></image>
+                  <view wx:if="{{subItem.hasImg==false}}" class="iconfont icon-play"></view>
+                </view>
+              </view>
+              <!-- 动态项 -->
+              <view wx:if="{{subItem.diTitle}}" class="infoItem">
+                <view class="itemLeft">
+                  <view class="title">
+                    {{subItem.diTitle}}
+                  </view>
+                  <view class="time">{{subItem.releaseTime}}</view>
+                </view>
+              </view>
+
             </view>
           </view>
-        </scroll-view>
-      </swiper-item>
-
-      <swiper-item>
+        </view>
+      </scroll-view>
+    </swiper-item>
+    <!-- 谣言分页 -->
+    <swiper-item>
       <scroll-view scroll-y="{{true}}" style="height:{{clientHeight-searchHeight-tabHeight+'px'}}" bindscrolltolower="reachBottomHandler">
         <view class="dataWrapper">
           <view wx:for="{{rumors}}" data-index="{{index}}" wx:key="index">
@@ -40,7 +84,7 @@
         </view>
       </scroll-view>
     </swiper-item>
-
+    <!-- 科普分页 -->
     <swiper-item>
       <scroll-view scroll-y="{{true}}" style="height:{{clientHeight-searchHeight-tabHeight+'px'}}" bindscrolltolower="reachBottomHandler">
         <view class="dataWrapper">
@@ -55,8 +99,8 @@
                   <view class="time">{{subItem.releaseTime}}</view>
                 </view>
                 <view class="itemRight">
-                <image wx:if="{{subItem.hasImg}}" src="{{subItem.psImgSrc}}" mode="aspectFit"></image>
-                <view wx:else class="iconfont icon-play"></view>
+                  <image wx:if="{{subItem.hasImg==true}}" src="{{subItem.psImgSrc}}" mode="aspectFit"></image>
+                  <view wx:if="{{subItem.hasImg==false}}" class="iconfont icon-play"></view>
                 </view>
               </view>
             </view>
@@ -64,7 +108,7 @@
         </view>
       </scroll-view>
     </swiper-item>
-
+    <!-- 官方分页 -->
     <swiper-item>
       <scroll-view scroll-y="{{true}}" style="height:{{clientHeight-searchHeight-tabHeight+'px'}}" bindscrolltolower="reachBottomHandler">
         <view class="dataWrapper">
@@ -84,6 +128,6 @@
         </view>
       </scroll-view>
     </swiper-item>
-    </swiper>
+  </swiper>
 
-  </view>
+</view>

@@ -21,6 +21,14 @@
   border-color: #fff;
 }
 
+.noResult{
+  width: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 swiper .dataWrapper .info {
   display: flex;
   height: 205rpx;

@@ -22,10 +22,12 @@ Component({
    * 组件的初始数据
    */
   data: {
-    searchHeight: "",
-    tabHeight: "",
-    clientHeight: "",
     updating: false,
+    showAllPage: {
+      pageSize: 10,
+      pageNum: 0,
+      total: 0
+    },
     ruPage: {
       pageSize: 10,
       pageNum: 0,
@@ -41,6 +43,7 @@ Component({
       pageNum: 0,
       total: 0
     },
+    general: [],
     rumors: [],
     science: [],
     dynamic: [],
@@ -60,26 +63,31 @@ Component({
         currentIndex: e.detail.current
       })
     },
-    enterDetail() {
-      const id = e.currentTarget.dataset.index
-      switch (this.data.currentIndex) {
-        case 0:
-          app.toHot_rumor(id);
-          break;
-        case 1:
-          app.toAntiepic_science(id);
-          break;
-        case 2:
-          app.toOffic_dynamic(id);
-          break;
-      }
+    enterDetail(e) {
+      console.log(e);
+      const id = e.currentTarget.dataset.index;
+      this.data.totalList.forEach(item => {
+        if (item.id === id) {
+          console.log(item);
+          if (item.rTitle) {
+            app.toHot_rumor(id);
+          } else if (item.psTitle) {
+            app.toAntiepic_science(id);
+          } else {
+            app.toOffic_dynamic(id);
+          }
+        }
+      })
     },
     reachBottomHandler() {
-      if(!this.data.updating){
+      if (!this.data.updating) {
         this.setData({
           updating: true,
         });
         switch (this.data.currentIndex) {
+          case 0:
+            this.getAll();
+            break;
           case 1:
             this.getRumors();
             break;
@@ -91,8 +99,17 @@ Component({
             break;
         }
       }
-      console.log(this.data.ruPage);
-      console.log(this.data.rumors);
+    },
+    getAll() {
+      if (this.data.showAllPage.total !== this.data.totalList.length) {
+        const result = app.dataSetting(this.data.showAllPage, this.data.totalList);
+        this.setData({
+          general: this.data.general.concat(result.arr),
+          showAllPage: result.data,
+          updating: false,
+        });
+        // console.log(this.data.general);
+      }
     },
     getRumors() {
       if (this.data.ruPage.total !== this.data.result.r.length) {
@@ -108,7 +125,9 @@ Component({
       if (this.data.scPage.total !== this.data.result.ps.length) {
         const result = app.dataSetting(this.data.scPage, this.data.result.ps);
         result.arr[0].forEach(item => {
-          item.hasImg = item.psImgSrc.indexOf('.mp4') !== -1 ? false : true;
+          if (item.psImgSrc) {
+            item.hasImg = item.psImgSrc.indexOf('.mp4') !== -1 ? false : true;
+          }
         })
         this.setData({
           science: this.data.science.concat(result.arr),
@@ -118,7 +137,7 @@ Component({
       }
     },
     getDynamic() {
-      if (this.data.dyPage.total !== this.data.result.di.length){
+      if (this.data.dyPage.total !== this.data.result.di.length) {
         const result = app.dataSetting(this.data.dyPage, this.data.result.di);
         this.setData({
           dynamic: this.data.dynamic.concat(result.arr),
@@ -127,8 +146,35 @@ Component({
         })
       }
     },
+    //合并排列数据
+    initGeneral() {
+      let totalList = this.data.result;
+      totalList['ps'].forEach(item => {
+        if (item.psImgSrc) {
+          item.hasImg = item.psImgSrc.indexOf('.mp4') !== -1 ? false : true;
+        }
+      });
+      totalList = totalList['r'].concat(totalList['ps'], totalList['di']);
+      totalList.forEach(item => {
+        item.releaseTime = item.releaseTime.slice(0, 10);
+        item.releaseMs = new Date(item.releaseTime.replace(/-/g, "/")).getTime();
+      })
+      totalList.sort(() => {
+        return Math.random() - 0.5;
+      })
+      totalList.sort((a, b) => {
+        if (a.releaseMs > b.releaseMs) {
+          return -1;
+        } else if (a.releaseMs <= b.releaseMs) {
+          return 1;
+        }
+      })
+      this.setData({
+        totalList
+      })
+    }
   },
-  ready: function() {
+  ready: function () {
     //获取屏幕剩余高度
     const _this = this;
     wx.createSelectorQuery().select(".searchWrapper").boundingClientRect(rect => {
@@ -142,16 +188,18 @@ Component({
       });
     }).exec();
     wx.getSystemInfo({
-      success: function(res) {
+      success: function (res) {
         _this.setData({
           clientHeight: res.windowHeight
         });
       }
     });
     //数据处理
+    this.initGeneral();
     this.getRumors();
     this.getScience();
     this.getDynamic();
+    this.getAll();
   },
   options: {
     addGlobalClass: true

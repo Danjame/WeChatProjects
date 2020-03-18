@@ -21,8 +21,10 @@ Page({
         if(res.statusCode === 200){
           const result = res.data;
           result.psContext = result.psContext.replace(/^\s+/, '');
-          result.hasImg = result.psImgSrc.indexOf('.mp4') !== -1 ? false : true;
           result.releaseTime = result.releaseTime.slice(0, 10);
+          if (result.psImgSrc) {
+            result.hasImg = result.psImgSrc.indexOf('.mp4') !== -1 ? false : true;
+          }
           _this.setData({
             result
           })

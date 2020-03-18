@@ -1,8 +1,8 @@
 <view>
   <view class="header">
     <view class="head">{{result.psTitle}}</view>
-    <image wx:if="{{result.hasImg}}" src="{{result.psImgSrc}}" mode="widthFix"></image>
-    <video wx:else src="{{result.psImgSrc}}"></video>
+    <image wx:if="{{result.hasImg==true}}" src="{{result.psImgSrc}}" mode="widthFix"></image>
+    <video wx:if="{{result.hasImg==false}}" src="{{result.psImgSrc}}"></video>
   </view>
 
   <view class="content">

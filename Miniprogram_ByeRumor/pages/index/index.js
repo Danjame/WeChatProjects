@@ -2,9 +2,6 @@ const app = getApp();
 
 Page({
   data: {
-    clientHeight: "",
-    searchHeight: "",
-    tabHeight: "",
     tabTitles: ["热门谣言", "防疫科普", "官方动态"],
     currentIndex: 0,
     updating: false,
@@ -27,13 +24,11 @@ Page({
     science: [],
     dynamic: [],
   },
-
   tabChange(e) {
     this.setData({
       currentIndex: e.currentTarget.dataset.index
     });
   },
-
   slideChange(e) {
     this.setData({
       currentIndex: e.detail.current
@@ -41,7 +36,7 @@ Page({
   },
   //页面跳转
   enterDetail(e) {
-    const id = e.currentTarget.dataset.index
+    const id = e.currentTarget.dataset.index;
     switch (this.data.currentIndex) {
       case 0:
         app.toHot_rumor(id);
@@ -54,27 +49,6 @@ Page({
         break;
     }
   },
-  //获取屏幕剩余高度
-  getHightStyle() {
-    const _this = this;
-    wx.createSelectorQuery().select(".searchWrapper").boundingClientRect(rect => {
-      _this.setData({
-        searchHeight: rect.height
-      });
-    }).exec();
-    wx.createSelectorQuery().select(".tabWrapper").boundingClientRect(rect => {
-      _this.setData({
-        tabHeight: rect.height
-      });
-    }).exec();
-    wx.getSystemInfo({
-      success: function(res) {
-        _this.setData({
-          clientHeight: res.windowHeight
-        });
-      }
-    })
-  },
   getRumors() {
     const _this = this;
     wx.request({
@@ -85,7 +59,7 @@ Page({
           _this.setData({
             rumors: _this.data.rumors.concat(result.arr),
             ruPage: result.data
-          });
+          })
         }
       },
       fail(err) {
@@ -106,13 +80,14 @@ Page({
         if (res.statusCode === 200 && _this.data.scPage.total !== res.data.length) {
           const result = app.dataSetting(_this.data.scPage, res.data);
           result.arr[0].forEach(item => {
-            item.hasImg = item.psImgSrc.indexOf('.mp4') !== -1 ? false : true;
+            if (item.psImgSrc) {
+              item.hasImg = item.psImgSrc.indexOf('.mp4') !== -1 ? false : true;
+            }
           })
           _this.setData({
             science: _this.data.science.concat(result.arr),
             scPage: result.data
-          });
-          // console.log(_this.data.science);
+          })
         }
       },
       fail(err) {
@@ -136,7 +111,6 @@ Page({
             dynamic: _this.data.dynamic.concat(result.arr),
             dyPage: result.data
           })
-          // console.log(_this.data.dynamic);
         }
       },
       fail(err) {
@@ -170,8 +144,27 @@ Page({
           break;
       }
     }
-    console.log(this.data.ruPage);
-    console.log(this.data.rumors);
+  },
+  //获取屏幕剩余高度
+  getHightStyle() {
+    const _this = this;
+    wx.createSelectorQuery().select(".searchWrapper").boundingClientRect(rect => {
+      _this.setData({
+        searchHeight: rect.height
+      });
+    }).exec();
+    wx.createSelectorQuery().select(".tabWrapper").boundingClientRect(rect => {
+      _this.setData({
+        tabHeight: rect.height
+      });
+    }).exec();
+    wx.getSystemInfo({
+      success: function (res) {
+        _this.setData({
+          clientHeight: res.windowHeight
+        });
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面加载

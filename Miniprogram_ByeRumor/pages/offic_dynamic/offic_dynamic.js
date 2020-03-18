@@ -15,7 +15,7 @@ Page({
     wx.request({
       url: 'https://wdd.free.qydev.com/dynamic/get',
       data: {
-        id: 1
+        id: options.id
       },
       success(res) {
         if (res.statusCode === 200) {

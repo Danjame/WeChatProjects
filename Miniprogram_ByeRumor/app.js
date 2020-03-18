@@ -73,7 +73,7 @@ App({
         }
       }
       //截取时间
-      arr[0].forEach((item, index) => {
+      arr[0].forEach(item => {
         item.releaseTime = item.releaseTime.slice(0, 10);
       })
       return {

@@ -51,8 +51,8 @@
                   <view class="time">{{subItem.releaseTime}}</view>
                 </view>
                 <view class="itemRight">
-                <image wx:if="{{subItem.hasImg}}" src="{{subItem.psImgSrc}}" mode="aspectFit"></image>
-                <view wx:else class="iconfont icon-play"></view>
+                  <image wx:if="{{subItem.hasImg==true}}" src="{{subItem.psImgSrc}}" mode="aspectFit"></image>
+                  <view wx:if="{{subItem.hasImg==false}}" class="iconfont icon-play"></view>
                 </view>
               </view>
             </view>
