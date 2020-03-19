@@ -23,8 +23,7 @@ Component({
   methods: {
     selectInput(e){
       const index = e.currentTarget.dataset.index;
-      const item = this.data.keyWords[index];
-      this.triggerEvent("selectResult", {item, index});
+      this.triggerEvent("selectRumor", index);
     }
   }
 })

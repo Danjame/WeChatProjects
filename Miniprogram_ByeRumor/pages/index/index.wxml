@@ -23,7 +23,7 @@
                   <view class="title">
                     <text wx:if="{{subItem.rStatus === 1}}" class="truth">真</text>
                     <text wx:elif="{{subItem.rStatus === -1}}" class="truth">假</text>
-                    <text wx:else class="truth">待</text>{{subItem.rTitle}}
+                    <text wx:else class="truth">疑</text>{{subItem.rTitle}}
                   </view>
                   <view class="time">{{subItem.releaseTime}}</view>
                 </view>

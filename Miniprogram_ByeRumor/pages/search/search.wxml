@@ -16,14 +16,14 @@
   <searchHistory wx:if="{{!focus && !inputValue}}" 
                  hisList="{{hisList}}" 
                  rankList="{{rankList}}" 
-                 bind:selectResult="selectResult" 
+                 bind:selectKeyword="selectKeyword" 
                  bind:deleteHis="deleteHis"
-                 bind:selectRanking="selectRanking">
+                 bind:selectRumor="selectRumor">
   </searchHistory>
 
   <searchState wx:if="{{(focus || inputValue) && !searchResult}}" 
                keyWords="{{keyWords}}" 
-               bind:selectResult="selectResult">
+               bind:selectRumor="selectRumor">
   </searchState>
 
   <searchResult wx:if="{{searchResult && !focus}}"

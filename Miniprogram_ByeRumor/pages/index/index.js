@@ -145,32 +145,12 @@ Page({
       }
     }
   },
-  //获取屏幕剩余高度
-  getHightStyle() {
-    const _this = this;
-    wx.createSelectorQuery().select(".searchWrapper").boundingClientRect(rect => {
-      _this.setData({
-        searchHeight: rect.height
-      });
-    }).exec();
-    wx.createSelectorQuery().select(".tabWrapper").boundingClientRect(rect => {
-      _this.setData({
-        tabHeight: rect.height
-      });
-    }).exec();
-    wx.getSystemInfo({
-      success: function (res) {
-        _this.setData({
-          clientHeight: res.windowHeight
-        });
-      }
-    })
-  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    this.getHightStyle();
+    //获取高度以设置内容高度
+    app.getHeightData(this, ".searchWrapper", ".tabWrapper");
     this.getRumors();
     this.getScience();
     this.getDynamic();

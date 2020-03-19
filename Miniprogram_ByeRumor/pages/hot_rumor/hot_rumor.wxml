@@ -2,7 +2,7 @@
   <view class="header">
     <view wx:if="{{result.rStatus == 1}}">真</view>
     <view wx:elif="{{result.rStatus == -1}}">假</view>
-    <view wx:else>待</view>
+    <view wx:else>疑</view>
     <view class="head">{{result.rTitle}}</view>
     <view>{{result.rDescription}}</view>
   </view>

@@ -86,4 +86,24 @@ App({
       }
     }
   },
+  getHeightData(self, searchEle, tabEle) {
+    const _this = self;
+    wx.createSelectorQuery().select(searchEle).boundingClientRect(rect => {
+      _this.setData({
+        searchHeight: rect.height
+      });
+    }).exec();
+    wx.createSelectorQuery().in(_this).select(tabEle).boundingClientRect(rect => {
+      _this.setData({
+        tabHeight: rect.height
+      });
+    }).exec();
+    wx.getSystemInfo({
+      success: function (res) {
+        _this.setData({
+          clientHeight: res.windowHeight
+        });
+      }
+    })
+  },
 })

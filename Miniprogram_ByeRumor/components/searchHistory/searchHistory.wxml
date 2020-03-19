@@ -1,18 +1,18 @@
 <view>
-    <view class="historyWrapper">
-      <view class="historyTitle">
-        <text class="titleText">搜索记录</text>
-        <text class="deleteBtn" bindtap="deleteHistory">全部删除</text>
-      </view>
-      <view class="historyList">
-        <view wx:for="{{hisList}}" wx:key="index" data-index="{{index}}" bindtap="selectHistory">{{item}}</view>
-      </view>
+  <view class="historyWrapper">
+    <view class="historyTitle">
+      <text class="titleText">搜索记录</text>
+      <text class="deleteBtn" bindtap="deleteHistory">全部删除</text>
     </view>
-    <view class="rankingWrapper">
-      <view class="titleText" bindtap="selectRanking">谣言排行榜</view>
-      <view wx:for="{{rankList[0]}}" class="rankingList" wx:key="index" data-index="{{item.id}}" wx:key="id" bindtap="selectRanking">
-        <view class="rankingNum" style="background-color: rgb(255,{{index*25.5}}, 0)">{{index+1}}</view>
-        <view class="rankingItem">{{item.rTitle}}</view>
-      </view>
+    <view class="historyList">
+      <view wx:for="{{hisList}}" wx:key="index" data-index="{{index}}" bindtap="selectHistory">{{item}}</view>
     </view>
   </view>
+  <view class="rankingWrapper">
+    <view class="titleText" bindtap="selectRanking">谣言排行榜</view>
+    <view wx:for="{{rankList[0]}}" class="rankingList" wx:key="index" data-index="{{item.id}}" wx:key="id" bindtap="selectRanking">
+      <view class="rankingNum" style="background-color: rgb(255,{{index*25.5}}, 0)">{{index+1}}</view>
+      <view class="rankingItem">{{item.rTitle}}</view>
+    </view>
+  </view>
+</view>

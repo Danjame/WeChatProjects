@@ -1,11 +1,13 @@
 <view>
   <view class="stateWrapper">
-    <view wx:for="{{keyWords}}" class="keysList" wx:key="index" data-index="{{index}}" bindtap="selectInput">
+    <view wx:for="{{keyWords}}" class="keysList" wx:key="index" data-index="{{item.id}}" bindtap="selectInput">
       <view class="keysItem">
         <icon type="search"></icon>
-        <view>{{item.text}}</view>
+        <view>{{item.rTitle}}</view>
       </view>
-      <view class="truth">{{item.truth}}</view>
+      <view wx:if="{{item.rStatus == 1}}" class="truth" >真</view>
+      <view wx:elif="{{item.rStatus == -1}}" class="truth">假</view>
+      <view wx:else class="truth">疑</view>
     </view>
   </view>
 </view>

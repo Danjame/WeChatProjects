@@ -28,14 +28,14 @@ Component({
     selectHistory(e) {
       const index = e.currentTarget.dataset.index;
       const item = this.data.hisList[index];
-      this.triggerEvent("selectResult", {item, index});
+      this.triggerEvent("selectKeyword", {item, index});
     },
     deleteHistory() {
       this.triggerEvent("deleteHis");
     },
     selectRanking(e){
       const index = e.currentTarget.dataset.index;
-      this.triggerEvent("selectRanking", index);
+      this.triggerEvent("selectRumor", index);
     },
   },
 })

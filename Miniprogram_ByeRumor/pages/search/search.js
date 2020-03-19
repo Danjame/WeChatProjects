@@ -21,21 +21,7 @@ Page({
       pageNum: 0,
       total: 0
     },
-    recoWords: [{
-        text: "肺炎",
-        type: "ru"
-      },
-      {
-        text: "高温杀死新型肺炎病毒",
-        type: "ru"
-      }, {
-        text: "出门需带口罩",
-        type: "sc"
-      }, {
-        text: "广东连续3天无新增确诊",
-        type: "dy"
-      }
-    ],
+    recoResult: [],
   },
 
   //删除搜索历史
@@ -57,13 +43,14 @@ Page({
     })
   },
   //搜索关键字选择
-  selectResult(e) {
+  selectKeyword(e) {
     this.setData({
       inputValue: e.detail.item
     })
     this.searchConfirm();
   },
-  selectRanking(e){
+  //选择热门项
+  selectRumor(e){
     app.toHot_rumor(e.detail);
   },
   //确定搜索关键字
@@ -92,26 +79,30 @@ Page({
             searchState: false,
             searchResult: true,
           });
-          //去除重复的搜索记录并且前置最新记录
-          const hisList = _this.data.hisList
-          hisList.forEach((item, index) => {
-            if (item == _this.data.inputValue) {
-              hisList.splice(index, 1);
-            }
-          })
-          _this.setData({
-            hisList: [_this.data.inputValue, ...hisList],
-          })
+          _this.removeDup(_this, _this.data.hisList, _this.data.inputValue);
         },
       })
     }
+  },
+  ///去除重复的搜索记录并且前置最新记录
+  removeDup(self, historyLis, inputValue){
+    const _this = self;
+    const hisList = historyLis;
+    hisList.forEach((item, index) => {
+      if (item == inputValue) {
+        hisList.splice(index, 1);
+      }
+    })
+    _this.setData({
+      hisList: [_this.data.inputValue, ...hisList],
+    })
   },
   //关键字匹配
   lastSearch: Date.now(),
   throttle: 500,
   inputChange(e) {
+    let result;
     const _this = this;
-    let result = _this.data.recoWords;
     this.setData({
       inputValue: e.detail.value
     })
@@ -125,7 +116,10 @@ Page({
             })
             reject();
           } else {
-            result = result.filter(item => item.text.includes(e.detail.value));
+            _this.onInputSearch();
+            result = _this.data.recoResult;
+            result = result.filter(item => item.rTitle.includes(e.detail.value));
+            console.log(result);
             resolve(result);
           }
         });
@@ -139,20 +133,24 @@ Page({
   },
   // 搜索谣言
   onInputSearch(){
+    const _this= this;
     wx.request({
       url: 'https://wdd.free.qydev.com/rumor/sort',
-      keyCode: this.data.inputValue,
-      success(){
-
+      keyCode: _this.data.inputValue,
+      success(res){
+        _this.setData({
+          recoResult: res.data
+        })
       },
       fail(){
 
       },
       complete(){
-        
+
       }
     })
   },
+  //获取热门排行
   getRanking(pageData, target) {
     if (pageData.total !== target.length) {
       const result = app.dataSetting(pageData, target);
@@ -181,6 +179,7 @@ Page({
 
       }
     })
+    // this.onInputSearch();
   },
 
   /**
