@@ -13,6 +13,7 @@
 
 .keysItem {
   display: flex;
+  align-items: center;
 }
 
 .keysItem icon {
@@ -22,5 +23,44 @@
 .truth {
   width: 70rpx;
   height: 35rpx;
-  background-color: blue;
+  margin-left: 18rpx;
+  display: flex;
+  border:solid 2rpx;
+  flex-shrink:0;
+}
+
+.truth>text{
+  width: 35rpx;
+  height: 35rpx;
+  line-height: 35rpx;
+  color: white;
+}
+
+.truth>view{
+  flex-shrink:0;
+}
+
+.true{
+  border-color: green;
+}
+
+.true>text{
+  background-color: green;
+}
+
+.false{
+  border-color: red;
+}
+
+.false>text{
+  background-color: red;
+}
+
+.unknown{
+  border-color: orange;
+  background-color: orange;
+}
+
+.unknown>text{
+  background-color: orange;
 }

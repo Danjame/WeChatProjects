@@ -5,9 +5,18 @@
         <icon type="search"></icon>
         <view>{{item.rTitle}}</view>
       </view>
-      <view wx:if="{{item.rStatus == 1}}" class="truth" >真</view>
-      <view wx:elif="{{item.rStatus == -1}}" class="truth">假</view>
-      <view wx:else class="truth">疑</view>
+      <view wx:if="{{item.rStatus == 1}}" class="truth true" >
+      <text>真</text>
+      <view></view>
+      </view>
+      <view wx:elif="{{item.rStatus == -1}}" class="truth false">   
+      <view></view>
+      <text>假</text>
+      </view>
+      <view wx:else class="truth unknown">
+      <view></view>
+      <text>疑</text>
+      </view>
     </view>
   </view>
 </view>
