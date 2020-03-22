@@ -1,10 +1,13 @@
-// components/analyze-cmp/analyze-cmp.js
+// components/share-btn/share-btn.js
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-
+    question:{
+      type: Object,
+      value: {}
+    }
   },
 
   /**
@@ -18,8 +21,11 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    showShare() {
-      this.triggerEvent('shareClick')
+    exitShare(){
+      this.triggerEvent("exitShare");
+    },
+    stopPropa(){
+      return;
     }
   }
 })

@@ -1,11 +1,28 @@
 <!--pages/quiz/quiz-answer/quiz-answer.wxml-->
-<!-- <text>pages/quiz/quiz-answer/quiz-answer.wxml</text> -->
-<ans-top bind:exitClick="showBtnFn"/>
-<view class='ans-wrapper'>
-  <view class='title'>春节假期再次延长至2月20日？</view>
-  <view class='cont'>
-    <text class='txt'>请选择以下其中一个选项</text>
-    <button class='btn {{isActive=="true"?"active":""}}' style="width:100%;line-height:120rpx;" bindtap="handleStyle" data-index="true">真</button>
-    <button class='btn {{isActive=="false"?"active":""}}' style="width:100%;line-height:120rpx" bindtap="handleStyle" data-index="false">假</button>
+<view class="ansWrapper">
+
+  <view wx:if="{{isCorrect}}" class="quesWrapper">
+    <view>
+      <view class="title" data-index="{{question.id}}">{{question.ibTitle}}</view>
+      <view>
+        <text class="txt">请选择以下其中一个选项</text>
+        <view class="btn {{activated == 'true'?'active':''}}" bindtap="selectAnswer" data-index="true">真</view>
+        <view class="btn {{activated == 'false'? 'active':''}}" bindtap="selectAnswer" data-index="false">假</view>
+      </view>
+    </view>
   </view>
+
+  <view wx:if="{{!isCorrect}}" class="analWrapper">
+    <view>
+      <view class="iconfont icon-share" style="font-size:70rpx;text-align:right;" bindtap="showShare" />
+      <view class='tit'>{{question.ibTitle}}</view>
+      <view class='anl'>{{question.ibContext}}</view>
+      <view class="judge">{{question.ibResult=='1'?'真':'假'}}</view>
+    </view>
+    <view class="btn" bindtap="nextQues">下一题</view>
+  </view>
+
+  <share wx:if="{{showShare}}" question="{{question}}" bind:exitShare="hideShare">
+  </share>
+
 </view>

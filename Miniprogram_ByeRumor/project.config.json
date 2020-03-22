@@ -96,6 +96,13 @@
 					"id": -1,
 					"name": "pages/offic_dynamic/offic_dynamic",
 					"pathName": "pages/offic_dynamic/offic_dynamic",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/quiz/quiz",
+					"pathName": "pages/quiz/quiz",
 					"scene": null
 				}
 			]

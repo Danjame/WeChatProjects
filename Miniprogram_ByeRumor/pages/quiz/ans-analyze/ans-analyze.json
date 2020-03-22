@@ -1,8 +1,0 @@
-{
-  "component": true,
-  "usingComponents": {
-    "ans-top": "./../ans-top/ans-top",
-    "share-btn": "./../../../components/share-btn/share-btn",
-    "analyze-cmp": "./../../../components/analyze-cmp/analyze-cmp"
-  }
-}

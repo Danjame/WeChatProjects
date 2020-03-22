@@ -1,8 +1,17 @@
-<!--pages/rumor/rumor.wxml-->
-<!-- <text>pages/quiz/quiz.wxml</text> -->
-<quiz-btn wx:if="{{showBtn}}" bind:btnShowHide="btnShowHide"></quiz-btn>
-<quiz-answer wx:if="{{showAns}}" bind:exitClickFn="exitClickFn"></quiz-answer>
-<ans-analyze 
-  wx:if="{{showAnalyze}}" 
-  bind:exitClickFn="exitClickFn" 
-  bind:nextClickFn="nextClickFn"/>
+<view>
+  <!-- 顶部进度条 -->
+  <quiz-progress wx:if="{{started}}">
+  </quiz-progress>
+
+  <view class="main">
+    <!-- 开始按键 -->
+    <button wx:if="{{!started}}" 
+            class="startBtn" 
+            bindtap="startTest">开始答题</button>
+    <!-- 答题 -->
+    <quiz-answer wx:if="{{answer}}" 
+                 question="{{questions[index]}}" 
+                 bind:nextQues="nextQues">
+    </quiz-answer>
+  </view>
+</view>

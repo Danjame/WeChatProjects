@@ -1,4 +1,31 @@
 /* pages/rumor/rumor.wxss */
-page{
+page, page>view{
+  height: 100%;
+}
+
+quiz-progress{
+  position: absolute;
+  width: 100%;
+}
+
+.main{
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.startBtn{
+  width: 456rpx;
+  line-height: 168rpx;
+  border-radius: 40rpx;
+  box-shadow: 1rpx 1rpx 5rpx #9A9A9A;
+  background: #fff;
+  font-size: 60rpx;
+  color: #9A9A9A;
+}
+
+quiz-answer{
+  width:100%;
   height: 100%;
 }

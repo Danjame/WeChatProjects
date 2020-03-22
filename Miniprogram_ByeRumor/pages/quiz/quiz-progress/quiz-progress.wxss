@@ -1,26 +1,31 @@
-/* pages/quiz/ans-top/ans-top.wxss */
-.top{
-  display: flex;
-  width:100%;
+.topBar>view:first-child {
   height: 100rpx;
+  display: flex;
   justify-content: space-between;
   align-items: center;
-  /* background: pink; */
   padding: 0 20rpx;
   box-sizing: border-box;
 }
-.btn{
+
+.topBar>view:last-child {
+  padding: 0 60rpx;
+  text-align: right;
+}
+
+.topBar .exitBtn {
   width: 140rpx;
   line-height: 1.3;
   font-size: 28rpx;
-  background: #FD6840;
+  background: #fd6840;
   text-align: center;
 }
-.pro-wrap{
+
+.topBar .pro-wrap {
   display: flex;
   align-items: center;
 }
-.pro{
+
+.topBar .pro-wrap .pro {
   width: 400rpx;
   height: 28rpx;
   margin-left: 20rpx;

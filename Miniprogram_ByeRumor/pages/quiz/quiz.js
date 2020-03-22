@@ -1,40 +1,50 @@
 // pages/rumor/rumor.js
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-    showBtn: true, // 首页开始答题
-    showAns: false, // 答题页面
-    showAnalyze: false // 答案解析页面
+    started: false, // 首页开始答题
+    answer: false, // 答题页面
+    questions:[],
+    index: 0
   },
-  btnShowHide(){
+  startTest(){
     this.setData({
-      showBtn: false, 
-      showAns: true, 
-      showAnalyze: false 
+      started: true, 
+      answer: true, 
     })
   },
-  exitClickFn(){
-    this.setData({
-      showBtn: true, 
-      showAns: false, 
-      showAnalyze: false
-    })
-  },
-  nextClickFn(){
-    this.setData({
-      showBtn: false,
-      showAns: false,
-      showAnalyze: false
-    })
+
+  nextQues(){
+    if (this.data.index !== this.data.questions.length-1){
+      let index = this.data.index + 1;
+      this.setData({
+        index
+      });
+    }
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    const _this= this;
+    wx.request({
+      url: 'https://wdd.free.qydev.com/item/list',
+      success(res){
+        if(res.statusCode === 200){
+          _this.setData({
+            questions: res.data
+          })
+        }
+      },
+      fail(error){
+        console.log("Can not get questions!")
+      },
+      complete(){
+        console.log(_this.data.questions);
+      }
+    })
   },
 
   /**

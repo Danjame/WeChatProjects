@@ -1,3 +1,0 @@
-<!--pages/quiz/quiz_btn/quiz-btn.wxml-->
-<!-- <text>pages/quiz/quiz_btn/quiz-btn.wxml</text> -->
-<button class='btn' bindtap='beginAns'>开始答题</button>
