@@ -8,12 +8,12 @@
 
     <view class="btns">
         <button class='wechat' style="height:200rpx;width:200rpx;background:none;padding:0" open-type="share">
-      <view class='iconfont icon-wechat share-icon'></view>
+      <view class='iconfont icon-WeChat share-icon'></view>
       <text class="share-txt">分享给微信好友</text>
     </button>
 
     <button class="moments" style="height:200rpx;width:200rpx;background:none;padding:0">
-      <text class='iconfont icon-moments share-icon' style="color:#666;font-size:60rpx;"></text>
+      <text class='iconfont icon-Moments share-icon' style="color:#666;font-size:60rpx;"></text>
       <text class="share-txt">分享到朋友圈</text>
     </button>
     </view>

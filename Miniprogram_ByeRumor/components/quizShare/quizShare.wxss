@@ -52,7 +52,6 @@ button{
   border-radius:50%;
   color: #96D968;
   background: #fff;
-  
 }
 .share-txt{
   font-weight: normal;

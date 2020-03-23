@@ -1,13 +1,5 @@
 <!--pages/quiz_score/quiz_score.wxml-->
 <view>
-    <view class="score">
-        <text class='tit'>成绩</text>
-        <text>答对</text>
-        <text style="font-size:52rpx;padding:0 14rpx">9</text>
-        <text>题</text>
-    </view>
-
-    
-    <quiz_result wx:if="{{result}}">
-        </quiz_result>
+    <scoreMarks correctNum="{{correctNum}}"></scoreMarks>
+    <quiz_result score="{{score}}" questions="{{questions}}" dataOne="{{dataOne}}"></quiz_result>
 </view>

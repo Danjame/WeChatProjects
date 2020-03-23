@@ -1,6 +1,6 @@
 <view>
   <!-- 顶部进度条 -->
-  <quiz_progress wx:if="{{started}}">
+  <quiz_progress wx:if="{{started}}" index="{{index}}">
   </quiz_progress>
 
   <view class="main">
@@ -10,6 +10,7 @@
     <!-- 答题 -->
     <quiz_answer wx:if="{{started}}" 
                  question="{{questions[index]}}" 
+                 bind:sendScore="getScore"
                  bind:nextQues="nextQues">
     </quiz_answer>
   </view>

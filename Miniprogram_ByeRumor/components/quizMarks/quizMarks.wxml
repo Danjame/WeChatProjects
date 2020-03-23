@@ -1,0 +1,7 @@
+<!--components/quizMarks/quizMarks.wxml-->
+    <view class="score">
+        <text class='tit'>成绩</text>
+        <text>答对</text>
+        <text style="font-size:52rpx;padding:0 14rpx">{{correctNum}}</text>
+        <text>题</text>
+    </view>

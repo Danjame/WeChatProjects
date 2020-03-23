@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "quizMarks": "../../components/quizMarks/quizMarks",
+    "quizAnalysis": "../../components/quizAnalysis/quizAnalysis"
+  }
+}

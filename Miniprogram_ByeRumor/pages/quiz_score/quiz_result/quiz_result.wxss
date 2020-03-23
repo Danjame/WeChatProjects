@@ -1,3 +1,4 @@
+/* pages/quiz_score/quiz_result/quiz_result.wxss */
 @import "../../../icons/iconfont/iconfont.wxss";
 
 .score-order{
@@ -20,6 +21,10 @@
   border-radius: 50%;
   text-align: center;
   margin: 28rpx 46rpx;
+}
+
+.wrong{
+  background: orange;
 }
 
 .btns{

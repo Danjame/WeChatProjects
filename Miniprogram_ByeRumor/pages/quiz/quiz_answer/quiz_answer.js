@@ -16,6 +16,7 @@ Component({
   data: {
     activated: null,
     subject: true,
+    score: []
   },
 
   /**
@@ -39,14 +40,18 @@ Component({
       if ((this.data.activated == "true" && this.data.question.ibResult == "1") || (this.data.activated == "false" && this.data.question.ibResult == "0")){
         console.log("correct");
         this.setData({
-          subject: true
+          subject: true,
+          score: [...this.data.score, 1]
         });
+        this.triggerEvent("sendScore", this.data.score);
         this.nextQues();
       }else{
         console.log("wrong");
         this.setData({
-          subject: false
-        })
+          subject: false,
+          score: [...this.data.score, -1]
+        });
+        this.triggerEvent("sendScore", this.data.score);
       }
     },
   },

@@ -6,6 +6,7 @@ Page({
         started: false, // 首页开始答题
         questions: [],
         index: 0,
+        score: []
     },
     startTest() {
         this.setData({
@@ -13,27 +14,35 @@ Page({
         })
     },
     nextQues() {
+        const _this = this;
         if (this.data.index == this.data.questions.length - 1) {
-            console.log(123);
+            const score = JSON.stringify(this.data.score);
+            const questions = JSON.stringify(this.data.questions);
             wx.navigateTo({
-                url: '../quiz_score/quiz_score',
+                url: '../quiz_score/quiz_score?score=' + score + '&questions=' + questions,
                 events: {
                     getData() {
-                        console.log("Data");
+                        _this.setData({
+                            started: false,
+                            index: 0
+                        })
                     }
                 },
                 success(res) {
-                    res.eventChannel.emit("getData", {
-                        data: 0
-                    })
+                    console.log("succeed!")
                 }
-            })
+            });
         } else {
             let index = this.data.index + 1;
             this.setData({
                 index
             });
         }
+    },
+    getScore(e) {
+        this.setData({
+            score: e.detail
+        })
     },
     /**
      * 生命周期函数--监听页面加载

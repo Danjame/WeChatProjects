@@ -1,10 +1,1 @@
 /* pages/quiz_score/quiz_score.wxss */
-.score{
-  width: 600rpx;
-  line-height: 100rpx;
-  font-size: 34rpx;
-  margin: 0 auto;
-}
-.tit{
-  margin: 0 52rpx 0 58rpx;
-}

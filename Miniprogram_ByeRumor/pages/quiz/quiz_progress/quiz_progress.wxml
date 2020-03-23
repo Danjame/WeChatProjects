@@ -3,8 +3,8 @@
       <view class="exitBtn" bindtap="exit">退出答题</view>
       <view class="pro-wrap">
         <text>答题进度</text>
-        <progress class="pro" percent="20" stroke-width="28rpx" border-radius="14rpx" activeColor="#0BBA05" />
+        <progress class="pro" percent="{{(index+1)*10}}" stroke-width="28rpx" border-radius="14rpx" activeColor="#0BBA05" />
       </view>
     </view>
-    <view>5/10</view>
+    <view>{{index+1}}/10</view>
   </view>

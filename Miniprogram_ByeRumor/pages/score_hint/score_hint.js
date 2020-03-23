@@ -1,34 +1,25 @@
-// pages/quiz_score/quiz_score.js
+// pages/score_hint/score_hint.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    score: [],
-    questions: [],
-    correctNum: 0,
+    
   },
-
+  toHome(){
+    wx.switchTab({
+      url: '/pages/quiz/quiz',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getOpenerEventChannel().emit("getData");
-    const score = JSON.parse(options.score);
-    const questions = JSON.parse(options.questions);
-    let correctNum = 0;
-    score.forEach((item)=>{
-      if(item ==1){
-       correctNum +=item;
-      }
-    })
+    const ques = JSON.parse(options.ques);
     this.setData({
-      score,
-      questions,
-      correctNum
-    });
-    console.log(this.data.correctNum);
+      ques,
+    })
   },
 
   /**
