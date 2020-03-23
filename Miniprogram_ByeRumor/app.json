@@ -4,14 +4,13 @@
     "pages/search/search",
     "pages/quiz/quiz",
     "pages/profile/profile",
-    "pages/hot_rumor/hot_rumor",
-    "pages/antiepic_science/antiepic_science",
-    "pages/offic_dynamic/offic_dynamic",
-    "pages/quiz_score/quiz_score",
-    "pages/score_hint/score_hint",
+    "pages/rumor/rumor",
+    "pages/science/science",
+    "pages/dynamic/dynamic",
     "pages/login/login",
     "pages/recommend/recommend",
-    "pages/collection/collection"
+    "pages/collection/collection",
+    "pages/quiz_score/quiz_score"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

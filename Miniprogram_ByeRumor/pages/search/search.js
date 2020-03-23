@@ -51,7 +51,7 @@ Page({
   },
   //选择热门项
   selectRumor(e){
-    app.toHot_rumor(e.detail);
+    app.to_rumor(e.detail);
   },
   //确定搜索关键字
   searchConfirm() {

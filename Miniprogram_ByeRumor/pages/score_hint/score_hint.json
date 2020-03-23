@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "score-top": "./../../components/score-top/score-top",
-    "analyze-cmp": "./../../../components/analyze-cmp/analyze-cmp"
-  }
-}

@@ -1,5 +1,4 @@
-<!--pages/quiz/ans-top/ans-top.wxml-->
-  <view class="topBar">
+ <view class="topBar">
     <view>
       <view class="exitBtn" bindtap="exit">退出答题</view>
       <view class="pro-wrap">

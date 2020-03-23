@@ -1,6 +1,6 @@
 {
   "component": true,
   "usingComponents": {
-    "share": "../../../components/share/share"
+  	"quizShare": "../quizShare/quizShare"
   }
 }

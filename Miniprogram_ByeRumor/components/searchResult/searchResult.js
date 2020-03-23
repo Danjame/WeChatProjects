@@ -69,11 +69,11 @@ Component({
         if (item.id === id) {
           console.log(item);
           if (item.rTitle) {
-            app.toHot_rumor(id);
+            app.to_rumor(id);
           } else if (item.psTitle) {
-            app.toAntiepic_science(id);
+            app.to_science(id);
           } else {
-            app.toOffic_dynamic(id);
+            app.to_dynamic(id);
           }
         }
       })

@@ -1,4 +1,3 @@
-// pages/score_hint/score_hint.js
 Page({
 
   /**
@@ -7,11 +6,10 @@ Page({
   data: {
 
   },
-  toBegin(){
-    console.log(1233333)
-    wx.switchTab({
-      url: '/pages/quiz/quiz',
-    })
+  toScoreHint(){
+    // wx.navigateTo({
+    //   url:'/pages/score_hint/score_hint'
+    // })
   },
   /**
    * 生命周期函数--监听页面加载

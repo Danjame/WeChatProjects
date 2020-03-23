@@ -1,7 +1,9 @@
 {
   "usingComponents": {
-    "quiz-answer": "./quiz-answer/quiz-answer",
-    "quiz-progress": "./quiz-progress/quiz-progress"
+    "quiz_startBtn":"./quiz_startBtn/quiz_startBtn",
+    "quiz_progress": "./quiz_progress/quiz_progress",
+    "quiz_answer": "./quiz_answer/quiz_answer",
+    "quizAnalysis": "../../../components/quizAnalysis/quizAnalysis"
   },
   "navigationBarTitleText": "消遥达人"
 }

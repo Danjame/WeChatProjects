@@ -1,9 +1,8 @@
-/* pages/rumor/rumor.wxss */
 page, page>view{
   height: 100%;
 }
 
-quiz-progress{
+quiz_progress{
   position: absolute;
   width: 100%;
 }
@@ -11,21 +10,12 @@ quiz-progress{
 .main{
   height: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.startBtn{
-  width: 456rpx;
-  line-height: 168rpx;
-  border-radius: 40rpx;
-  box-shadow: 1rpx 1rpx 5rpx #9A9A9A;
-  background: #fff;
-  font-size: 60rpx;
-  color: #9A9A9A;
-}
-
-quiz-answer{
+quiz_answer{
   width:100%;
   height: 100%;
 }

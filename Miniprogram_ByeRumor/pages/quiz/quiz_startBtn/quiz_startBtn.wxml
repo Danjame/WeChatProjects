@@ -1,0 +1,4 @@
+<!--pages/quiz/quiz_startBtn/quiz_startBtn.wxml-->
+    <button wx:if="{{!started && !score}}" 
+            class="startBtn" 
+            bindtap="startTest">开始答题</button>

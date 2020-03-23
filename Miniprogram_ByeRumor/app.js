@@ -5,9 +5,9 @@ App({
 
   },
   //路由跳转
-  toHot_rumor(params) {
+  to_rumor(params) {
     wx.navigateTo({
-      url: '../hot_rumor/hot_rumor?id='+params,
+      url: '../rumor/rumor?id='+params,
       events: {
         getData(data) {
           console.log(data);
@@ -20,9 +20,9 @@ App({
       }
     })
   },
-  toAntiepic_science(params) {
+  to_science(params) {
     wx.navigateTo({
-      url: '../antiepic_science/antiepic_science?id=' + params,
+      url: '../science/science?id=' + params,
       events: {
         getData() {
           console.log("Data");
@@ -35,9 +35,9 @@ App({
       }
     })
   },
-  toOffic_dynamic(params) {
+  to_dynamic(params) {
     wx.navigateTo({
-      url: '../offic_dynamic/offic_dynamic?id=' + params,
+      url: '../dynamic/dynamic?id=' + params,
       events: {
         getData() {
           console.log("Data");

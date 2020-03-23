@@ -1,0 +1,10 @@
+/* pages/quiz/quiz_startBtn/quiz_startBtn.wxss */
+.startBtn{
+  width: 456rpx;
+  line-height: 168rpx;
+  border-radius: 40rpx;
+  box-shadow: 1rpx 1rpx 5rpx #9A9A9A;
+  background: #fff;
+  font-size: 60rpx;
+  color: #9A9A9A;
+}

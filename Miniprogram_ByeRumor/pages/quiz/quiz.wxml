@@ -1,17 +1,16 @@
 <view>
   <!-- 顶部进度条 -->
-  <quiz-progress wx:if="{{started}}">
-  </quiz-progress>
+  <quiz_progress wx:if="{{started}}">
+  </quiz_progress>
 
   <view class="main">
     <!-- 开始按键 -->
-    <button wx:if="{{!started}}" 
-            class="startBtn" 
-            bindtap="startTest">开始答题</button>
+    <quiz_startBtn wx:if="{{!started}}"
+                   bind:startTest="startTest"></quiz_startBtn>
     <!-- 答题 -->
-    <quiz-answer wx:if="{{answer}}" 
+    <quiz_answer wx:if="{{started}}" 
                  question="{{questions[index]}}" 
                  bind:nextQues="nextQues">
-    </quiz-answer>
+    </quiz_answer>
   </view>
 </view>

@@ -1,0 +1,44 @@
+/* pages/quiz/quiz-answer/quiz-answer.wxss */
+
+.ansWrapper {
+  height: 100%;
+}
+
+/* 测试题 */
+.quesWrapper {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.quesWrapper>view {
+  width: 70%;
+}
+
+.quesWrapper .title {
+  font-size: 54rpx;
+}
+
+.quesWrapper .txt {
+  color: #d6d6d6;
+  font-size: 28rpx;
+  line-height: 100rpx;
+}
+
+.btn {
+  margin: 60rpx auto;
+  padding: 0;
+  background: #eee;
+  border-radius: 28rpx;
+  color: #000;
+  font-size: 56rpx;
+  font-weight: normal;
+  line-height: 120rpx;
+  text-align: center;
+}
+
+.quesWrapper .active {
+  background: #33cb98;
+  color: #fff;
+}

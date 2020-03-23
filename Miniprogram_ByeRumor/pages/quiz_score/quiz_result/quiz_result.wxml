@@ -1,0 +1,26 @@
+<!-- <score-top/>  -->
+<view class="score-order">
+  <view class="order-wrap">
+    <text class='order-num' bindtap='toScoreHint'>1</text>
+    <text class='order-num' bindtap='toScoreHint'>2</text>
+    <text class='order-num' bindtap='toScoreHint'>3</text>
+    <text class='order-num' bindtap='toScoreHint'>4</text>
+    <text class='order-num' bindtap='toScoreHint'>5</text>
+    <text class='order-num' bindtap='toScoreHint'>6</text>
+    <text class='order-num' bindtap='toScoreHint'>7</text>
+    <text class='order-num' bindtap='toScoreHint'>8</text>
+    <text class='order-num' bindtap='toScoreHint'>9</text>
+    <text class='order-num' bindtap='toScoreHint'>10</text>
+  </view>
+      <view class="btns">
+        <button class='wechat' style="height:200rpx;width:200rpx;background:none;padding:0" open-type="share">
+      <view class='iconfont icon-wechat share-icon'></view>
+      <text class="share-txt">分享给微信好友</text>
+    </button>
+
+    <button class="moments" style="height:200rpx;width:200rpx;background:none;padding:0">
+      <text class='iconfont icon-moments share-icon' style="color:#666;font-size:60rpx;"></text>
+      <text class="share-txt">分享到朋友圈</text>
+    </button>
+    </view>
+</view>

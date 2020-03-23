@@ -1,4 +1,4 @@
-<!--components/share-btn/share-btn.wxml-->
+<!--components/quizShare/quizShare.wxml-->
 <view class="shareWrapper" mut-bind:tap="exitShare">
   <view class="main" mut-bind:tap="stopPropa">
     <view class="content">

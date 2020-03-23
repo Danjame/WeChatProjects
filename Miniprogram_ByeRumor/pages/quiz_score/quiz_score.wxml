@@ -1,17 +1,13 @@
 <!--pages/quiz_score/quiz_score.wxml-->
-<score-top/> 
-<view class="score-order">
-  <view class="order-wrap">
-    <text class='order-num' bindtap='toScoreHint'>1</text>
-    <text class='order-num' bindtap='toScoreHint'>2</text>
-    <text class='order-num' bindtap='toScoreHint'>3</text>
-    <text class='order-num' bindtap='toScoreHint'>4</text>
-    <text class='order-num' bindtap='toScoreHint'>5</text>
-    <text class='order-num' bindtap='toScoreHint'>6</text>
-    <text class='order-num' bindtap='toScoreHint'>7</text>
-    <text class='order-num' bindtap='toScoreHint'>8</text>
-    <text class='order-num' bindtap='toScoreHint'>9</text>
-    <text class='order-num' bindtap='toScoreHint'>10</text>
-  </view>
-  <share-btn/>
+<view>
+    <view class="score">
+        <text class='tit'>成绩</text>
+        <text>答对</text>
+        <text style="font-size:52rpx;padding:0 14rpx">9</text>
+        <text>题</text>
+    </view>
+
+    
+    <quiz_result wx:if="{{result}}">
+        </quiz_result>
 </view>

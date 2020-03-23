@@ -1,22 +1,10 @@
 /* pages/quiz_score/quiz_score.wxss */
-.score-order{
+.score{
   width: 600rpx;
-  height: 840rpx;
-  background: #33CB98;
-  margin: 30rpx auto;
-  border-radius: 40rpx;
-  padding: 14rpx 7rpx;
-  box-sizing: border-box;
+  line-height: 100rpx;
+  font-size: 34rpx;
+  margin: 0 auto;
 }
-.order-wrap{
-  display: flex;
-  flex-wrap: wrap
-}
-.order-num{
-  width: 104rpx;
-  line-height: 104rpx;
-  background: #fff;
-  border-radius: 50%;
-  text-align: center;
-  margin: 28rpx 46rpx;
+.tit{
+  margin: 0 52rpx 0 58rpx;
 }

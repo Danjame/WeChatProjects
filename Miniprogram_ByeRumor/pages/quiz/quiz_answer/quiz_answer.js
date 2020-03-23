@@ -15,8 +15,7 @@ Component({
    */
   data: {
     activated: null,
-    isCorrect: true,
-    showShare: false
+    subject: true,
   },
 
   /**
@@ -27,8 +26,7 @@ Component({
       this.triggerEvent("nextQues");
       this.setData({
         activated: null,
-        isCorrect: true,
-        showShare: false
+        subject: true,
       })
     },
     selectAnswer(e){
@@ -41,25 +39,15 @@ Component({
       if ((this.data.activated == "true" && this.data.question.ibResult == "1") || (this.data.activated == "false" && this.data.question.ibResult == "0")){
         console.log("correct");
         this.setData({
-          isCorrect: true
+          subject: true
         });
         this.nextQues();
       }else{
         console.log("wrong");
         this.setData({
-          isCorrect: false
+          subject: false
         })
       }
     },
-    hideShare(){
-      this.setData({
-        showShare: false
-      })
-    },
-    showShare(e){
-      this.setData({
-        showShare: true
-      })
-    }
   },
 })

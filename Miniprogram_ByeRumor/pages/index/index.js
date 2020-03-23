@@ -39,13 +39,13 @@ Page({
     const id = e.currentTarget.dataset.index;
     switch (this.data.currentIndex) {
       case 0:
-        app.toHot_rumor(id);
+        app.to_rumor(id);
         break;
       case 1:
-        app.toAntiepic_science(id);
+        app.to_science(id);
         break;
       case 2:
-        app.toOffic_dynamic(id);
+        app.to_dynamic(id);
         break;
     }
   },

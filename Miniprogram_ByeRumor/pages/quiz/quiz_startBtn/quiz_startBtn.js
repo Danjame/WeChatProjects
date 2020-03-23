@@ -1,13 +1,10 @@
-// components/share-btn/share-btn.js
+// pages/quiz/quiz_startBtn/quiz_startBtn.js
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-    question:{
-      type: Object,
-      value: {}
-    }
+
   },
 
   /**
@@ -21,11 +18,8 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    exitShare(){
-      this.triggerEvent("exitShare");
-    },
-    stopPropa(){
-      return;
+    startTest(){
+      this.triggerEvent("startTest")
     }
   }
 })
