@@ -4,15 +4,24 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    result:{
+      type: Object,
+      value: {}
+    },
+    like:{
+      type: Boolean,
+      value: false
+    },
+    collected:{
+      type: Boolean,
+      value: false
+    }
   },
 
   /**
    * 组件的初始数据
    */
   data: {
-    like: false,
-    collection: false,
     share: false
   },
   /**
@@ -22,12 +31,14 @@ Component({
     clickLikeHandler() {
       this.setData({
         like: this.data.like? false : true
-      })
+      });
+      this.triggerEvent("clickLike", this.data.like);
     },
     clickColleHandler() {
       this.setData({
-        collection: this.data.collection? false : true
-      })
+        collected: this.data.collected? false : true
+      });
+      this.triggerEvent("clickCollect", this.data.collected);
     },
     shareHandler(){
       this.setData({
