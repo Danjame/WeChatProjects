@@ -7,78 +7,72 @@ page{
 .profile-container{
   width: 100%;
   height: 100%;
-  position: relative;
 }
 .profile-login{
   height: 200rpx;
   background-color: #ffffff;
-  border: 2rpx solid #f1f1f1
+  border-bottom: 2rpx solid #f1f1f1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-.login-pic{
-  height: 100rpx;
-  width: 100rpx;
+
+.profile-login>view:first-child{
+  display: flex;
+  align-items: center;
+}
+
+.profile-login .login-pic{
+  margin: 0 40rpx 0 40rpx; 
+  padding: 18rpx;
+}
+
+.profile-login .login-pic .icon-user{
+  color: #bbb;
+  font-size: 80rpx;
+}
+
+.profile-login .login-pic image{
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.profile-login .logined{
   border-radius: 50%;
   background-color: #b5e3f5;
-  border: 2rpx solid #f1f1f1;
-  position: absolute;
-  left: 40rpx;
-  top: 60rpx;
-  overflow: hidden;
 }
-.icon-user{
-  font-size: 80rpx;
-  color: #f1f1f1;
-  position: absolute;
-  left: 10rpx;
-  top: 4rpx;
-}
-.profile-name{
-  line-height: 200rpx;
-  position: absolute;
-  left: 180rpx;
-  font-weight: 400;
+
+.profile-login text{
   font-size: 40rpx;
+  font-weight: 400rpx;
 }
-.profile-login .icon-youjiantou{
-  float: right;
-  line-height: 200rpx;
-  margin-right: 30rpx;
-  color: #ccc;
-}
-.my-collection{
-  height: 140rpx;
-  background-color: #ffffff;
-  border: 2rpx solid #f1f1f1
-}
-.my-collection text{
-  line-height: 140rpx;
-  padding-left: 40rpx;
-}
-.my-collection .icon-youjiantou{
-  float: right;
-  line-height: 140rpx;
-  margin-right: 30rpx;
-  color: #ccc;
-}
-.suggestion{
-  height: 140rpx;
-  background-color: #ffffff;
-  border: 2rpx solid #f1f1f1
-}
+
+.my-collection text,
 .suggestion text{
   line-height: 140rpx;
   padding-left: 40rpx;
 }
-.suggestion .icon-youjiantou{
-  float: right;
-  line-height: 140rpx;
-  margin-right: 30rpx;
-  color: #ccc;
+
+.my-collection{
+  height: 140rpx;
+    display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  border-bottom: 2rpx solid #f1f1f1
 }
-image{
-  position: absolute;
-  float: left;
-  width: 120rpx;
-  height: 120rpx;
-  z-index: 999;
+
+.suggestion{
+  height: 140rpx;
+    display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  border-bottom: 2rpx solid #f1f1f1
+}
+
+.icon-youjiantou{
+  margin-right: 30rpx;
+  line-height: 52rpx;
+  color: #ccc;
 }

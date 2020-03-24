@@ -4,11 +4,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userinfo:{},
-    userName:''
+    userInfo: {},
+    hasInfo: false,
+    userName: ""
   },
-  goToLogin: function(){
-    // console.log('123')
+  to_Login: function(){
     wx.navigateTo({
       url: "../login/login",
     })
@@ -17,41 +17,27 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-    const userinfo = wx.getStorageSync("userinfo");
-    this.setData({userinfo});
+    const userInfo = wx.getStorageSync("userInfo");
+     this.setData({userInfo});
+     if(Object.keys(this.data.userInfo).length){
+      this.setData({
+        hasInfo: true
+      })
+     }
   },
   /**
  * 生命周期函数--监听页面初次渲染完成
  */
   onReady: function () {
-    console.log(this.data.userinfo)
-    if (this.data.userinfo && this.data.userinfo.length !== 0) {
+    if (this.data.hasInfo) {
       this.setData({
-        userName: this.data.userName = this.data.userinfo.nickName
+        userName: this.data.userInfo.nickName
       })
     } else {
       this.setData({
-        userName: this.data.userName = "未登录"
+        userName: "未登录"
       })
     }
-    console.log(this.data.userName)
-
-
   },
 
   /**

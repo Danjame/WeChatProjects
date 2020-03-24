@@ -13,6 +13,7 @@ Component({
   data: {
     like: false,
     collection: false,
+    share: false
   },
   /**
    * 组件的方法列表
@@ -20,16 +21,18 @@ Component({
   methods: {
     clickLikeHandler() {
       this.setData({
-        like: this.data.like == false ? true : false
+        like: this.data.like? false : true
       })
     },
     clickColleHandler() {
       this.setData({
-        collection: this.data.collection == false ? true : false
+        collection: this.data.collection? false : true
       })
     },
+    shareHandler(){
+      this.setData({
+        share: this.data.share?false:true
+      })
+    }
   },
-  options:{
-    addGlobalClass: true
-  }
 })
