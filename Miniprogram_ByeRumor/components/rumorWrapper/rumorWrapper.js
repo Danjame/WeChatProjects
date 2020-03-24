@@ -27,7 +27,4 @@ Component({
             app.to_rumor(id);
         }
     },
-    ready(){
-        console.log(this.data.rumors);
-    }
 })

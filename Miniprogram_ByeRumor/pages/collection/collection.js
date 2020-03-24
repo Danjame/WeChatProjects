@@ -1,18 +1,37 @@
 // pages/collection/colect.js
+const app = getApp();
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-      collection: {}
+        collection: {},
+        ruPage: {
+            pageSize: 20,
+            pageNum: 0,
+            total: 0
+        },
+        scPage: {
+            pageSize: 20,
+            pageNum: 0,
+            total: 0
+        },
+        dyPage: {
+            pageSize: 20,
+            pageNum: 0,
+            total: 0
+        },
+        rumors: [],
+        science: [],
+        dynamic: []
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-      const _this =this;
+        const _this = this;
         const loginInfo = wx.getStorageSync("loginInfo");
         wx.request({
             url: 'https://wdd.free.qydev.com/user/collection',
@@ -20,10 +39,32 @@ Page({
                 userId: loginInfo.userId
             },
             success(res) {
-              _this.setData({
-                collection: res.data
-              });
-                console.log(_this.data.collection.Rumor);
+                if (res.data.Rumor.length) {
+                    const rumors = app.dataSetting(_this.data.ruPage, res.data.Rumor).arr;
+                    _this.setData({
+                        rumors,
+                    })
+                }
+                if (res.data.polularScience.length) {
+                    const science = app.dataSetting(_this.data.scPage, res.data.polularScience).arr;
+                    science[0].forEach(item => {
+                        if (item.psImgSrc) {
+                            item.hasImg = item.psImgSrc.indexOf('.mp4') !== -1 ? false : true;
+                        }
+                    })
+                    _this.setData({
+                        science,
+                    })
+                }
+                if (res.data.dynamicInformation.length) {
+                    const dynamic = app.dataSetting(_this.data.dyPage, res.data.dynamicInformation).arr;
+                    _this.setData({
+                        dynamic
+                    })
+                }
+            },
+            fail(){
+                console.log("fail")
             }
         })
     },
