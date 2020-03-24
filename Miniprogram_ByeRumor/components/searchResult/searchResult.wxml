@@ -11,9 +11,11 @@
     <!-- 首页分类 -->
     <swiper-item>
       <scroll-view scroll-y="{{true}}" style="height:{{clientHeight-searchHeight-tabHeight+'px'}}" bindscrolltolower="reachBottomHandler">
+
         <view class="dataWrapper">
           <view wx:for="{{general}}" data-index="{{index}}" wx:key="index">
             <view class="info" wx:for="{{item}}" wx:for-item="subItem" data-index="{{subItem.id}}" wx:key="id" bindtap="enterDetail">
+
               <view wx:if="{{subItem.rTitle}}" class="sideBar ruBar}}"></view>
               <view wx:elif="{{subItem.psTitle}}" class="sideBar scBar}}"></view>
               <view wx:else class="sideBar dyBar"></view>
@@ -62,70 +64,19 @@
     <!-- 谣言分页 -->
     <swiper-item>
       <scroll-view scroll-y="{{true}}" style="height:{{clientHeight-searchHeight-tabHeight+'px'}}" bindscrolltolower="reachBottomHandler">
-        <view class="dataWrapper">
-          <view wx:for="{{rumors}}" data-index="{{index}}" wx:key="index">
-            <view class="info" wx:for="{{item}}" wx:for-item="subItem" data-index="{{subItem.id}}" wx:key="id" bindtap="enterDetail">
-              <view class="sideBar ruBar"></view>
-              <view class="infoItem">
-                <view class="itemLeft">
-                  <view class="title">
-                    <text wx:if="{{subItem.rStatus === 1}}" class="truth">真</text>
-                    <text wx:elif="{{subItem.rStatus === -1}}" class="truth">假</text>
-                    <text wx:else class="truth">疑</text>{{subItem.rTitle}}
-                  </view>
-                  <view class="time">{{subItem.releaseTime}}</view>
-                </view>
-                <view class="itemRight">
-                  <image src="{{subItem.rImgSrc}}" onerror="errorImg"></image>
-                </view>
-              </view>
-            </view>
-          </view>
-        </view>
+        <rumorWrapper rumors="{{rumors}}"/>
       </scroll-view>
     </swiper-item>
     <!-- 科普分页 -->
     <swiper-item>
       <scroll-view scroll-y="{{true}}" style="height:{{clientHeight-searchHeight-tabHeight+'px'}}" bindscrolltolower="reachBottomHandler">
-        <view class="dataWrapper">
-          <view wx:for="{{science}}" data-index="{{index}}" wx:key="index">
-            <view class="info" wx:for="{{item}}" wx:for-item="subItem" data-index="{{subItem.id}}" wx:key="id" bindtap="enterDetail">
-              <view class="sideBar scBar"></view>
-              <view class="infoItem">
-                <view class="itemLeft">
-                  <view class="title">
-                    {{subItem.psTitle}}
-                  </view>
-                  <view class="time">{{subItem.releaseTime}}</view>
-                </view>
-                <view class="itemRight">
-                  <image wx:if="{{subItem.hasImg==true}}" src="{{subItem.psImgSrc}}" mode="aspectFit"></image>
-                  <view wx:if="{{subItem.hasImg==false}}" class="iconfont icon-play"></view>
-                </view>
-              </view>
-            </view>
-          </view>
-        </view>
+        <scienceWrapper science="{{science}}"/>
       </scroll-view>
     </swiper-item>
     <!-- 官方分页 -->
     <swiper-item>
       <scroll-view scroll-y="{{true}}" style="height:{{clientHeight-searchHeight-tabHeight+'px'}}" bindscrolltolower="reachBottomHandler">
-        <view class="dataWrapper">
-          <view wx:for="{{dynamic}}" data-index="{{index}}" wx:key="index">
-            <view class="info" wx:for="{{item}}" wx:for-item="subItem" data-index="{{subItem.id}}" wx:key="id" bindtap="enterDetail">
-              <view class="sideBar dyBar"></view>
-              <view class="infoItem">
-                <view class="itemLeft">
-                  <view class="title">
-                    {{subItem.diTitle}}
-                  </view>
-                  <view class="time">{{subItem.releaseTime}}</view>
-                </view>
-              </view>
-            </view>
-          </view>
-        </view>
+        <dynamicWrapper dynamic="{{dynamic}}"/>
       </scroll-view>
     </swiper-item>
   </swiper>

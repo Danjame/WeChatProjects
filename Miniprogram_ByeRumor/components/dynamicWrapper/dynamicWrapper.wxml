@@ -1,0 +1,16 @@
+<!--components/dynamicWrapper/dynamicWrapper.wxml-->
+<view class="dataWrapper">
+    <view wx:for="{{dynamic}}" data-index="{{index}}" wx:key="index">
+        <view class="info" wx:for="{{item}}" wx:for-item="subItem" data-index="{{subItem.id}}" wx:key="id" bindtap="enterDetail">
+            <view class="sideBar dyBar"></view>
+            <view class="infoItem">
+                <view class="itemLeft">
+                    <view class="title">
+                        {{subItem.diTitle}}
+                    </view>
+                    <view class="time">{{subItem.releaseTime}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

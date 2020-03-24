@@ -63,21 +63,6 @@ Component({
         currentIndex: e.detail.current
       })
     },
-    enterDetail(e) {
-      const id = e.currentTarget.dataset.index;
-      this.data.totalList.forEach(item => {
-        if (item.id === id) {
-          console.log(item);
-          if (item.rTitle) {
-            app.to_rumor(id);
-          } else if (item.psTitle) {
-            app.to_science(id);
-          } else {
-            app.to_dynamic(id);
-          }
-        }
-      })
-    },
     reachBottomHandler() {
       if (!this.data.updating) {
         this.setData({
@@ -184,7 +169,4 @@ Component({
     this.getDynamic();
     this.getAll();
   },
-  options: {
-    addGlobalClass: true
-  }
 })

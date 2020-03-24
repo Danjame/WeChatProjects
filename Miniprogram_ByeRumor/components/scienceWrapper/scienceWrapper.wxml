@@ -1,0 +1,20 @@
+<!--components/scienceWrapper/scienceWrapper.wxml-->
+<view class="dataWrapper">
+    <view wx:for="{{science}}" data-index="{{index}}" wx:key="index">
+        <view class="info" wx:for="{{item}}" wx:for-item="subItem" data-index="{{subItem.id}}" wx:key="id" bindtap="enterDetail">
+            <view class="sideBar scBar"></view>
+            <view class="infoItem">
+                <view class="itemLeft">
+                    <view class="title">
+                        {{subItem.psTitle}}
+                    </view>
+                    <view class="time">{{subItem.releaseTime}}</view>
+                </view>
+                <view class="itemRight">
+                    <image wx:if="{{subItem.hasImg==true}}" src="{{subItem.psImgSrc}}" mode="aspectFit"></image>
+                    <view wx:if="{{subItem.hasImg==false}}" class="iconfont icon-play"></view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

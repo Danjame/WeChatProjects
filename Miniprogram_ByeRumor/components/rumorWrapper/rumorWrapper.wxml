@@ -1,0 +1,21 @@
+<!--components/rumorWrapper/rumorWrapper.wxml-->
+<view class="dataWrapper">
+    <view wx:for="{{rumors}}" data-index="{{index}}" wx:key="index">
+        <view class="info" wx:for="{{item}}" wx:for-item="subItem" data-index="{{subItem.id}}" wx:key="id" bindtap="enterDetail">
+            <view class="sideBar ruBar"></view>
+            <view class="infoItem">
+                <view class="itemLeft">
+                    <view class="title">
+                        <text wx:if="{{subItem.rStatus === 1}}" class="truth">真</text>
+                        <text wx:elif="{{subItem.rStatus === -1}}" class="truth">假</text>
+                        <text wx:else class="truth">疑</text>{{subItem.rTitle}}
+                    </view>
+                    <view class="time">{{subItem.releaseTime}}</view>
+                </view>
+                <view class="itemRight">
+                    <image src="{{subItem.rImgSrc}}" onerror="errorImg"></image>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

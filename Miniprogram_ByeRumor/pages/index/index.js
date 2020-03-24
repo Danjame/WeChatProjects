@@ -34,21 +34,6 @@ Page({
       currentIndex: e.detail.current
     })
   },
-  //页面跳转
-  enterDetail(e) {
-    const id = e.currentTarget.dataset.index;
-    switch (this.data.currentIndex) {
-      case 0:
-        app.to_rumor(id);
-        break;
-      case 1:
-        app.to_science(id);
-        break;
-      case 2:
-        app.to_dynamic(id);
-        break;
-    }
-  },
   getRumors() {
     const _this = this;
     wx.request({

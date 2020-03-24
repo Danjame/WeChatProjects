@@ -1,58 +1,28 @@
-@import '../../icons/iconfont/iconfont.wxss';
-.tabWrapper {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  height: 60rpx;
-  border-bottom: solid 2rpx #ddd;
-  font-size: 24rpx;
-  color: #7f7f7f;
-}
+/* components/rumorWrapper/rumorWrapper.wxss */
 
-.tab {
-  height: 38rpx;
-  border-bottom: solid 4rpx;
-}
-
-.selected {
-  border-color: #3a9bd5;
-}
-
-.unSelected {
-  border-color: #fff;
-}
-
-.noResult{
-  width: 100%;
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-swiper .dataWrapper .info {
+.dataWrapper .info {
   display: flex;
   height: 205rpx;
 }
 
-swiper .dataWrapper .info .sideBar {
+.dataWrapper .info .sideBar {
   width: 18rpx;
   flex-shrink: 0;
 }
 
-swiper .dataWrapper .info .ruBar {
+.dataWrapper .info .ruBar {
   background-color: #cd672f;
 }
 
-swiper .dataWrapper .info .scBar {
+.dataWrapper .info .scBar {
   background-color: #facc48;
 }
 
-swiper .dataWrapper .info .dyBar {
+.dataWrapper .info .dyBar {
   background-color: #3499f7;
 }
 
-swiper .dataWrapper .info .infoItem {
+.dataWrapper .info .infoItem {
   flex-grow: 1;
   display: flex;
   justify-content: space-between;
@@ -61,13 +31,13 @@ swiper .dataWrapper .info .infoItem {
   border-bottom: solid 5rpx #e3e3e3;
 }
 
-swiper .dataWrapper .info .infoItem>.itemLeft {
+.dataWrapper .info .infoItem>.itemLeft {
   display: flex;
   flex-direction: column;
   align-content: center;
 }
 
-swiper .dataWrapper .info .infoItem>.itemLeft>.title {
+.dataWrapper .info .infoItem>.itemLeft>.title {
   margin-bottom: 14rpx;
   text-align: justify;
   display: -webkit-box;
@@ -78,11 +48,11 @@ swiper .dataWrapper .info .infoItem>.itemLeft>.title {
   -webkit-box-pack: center;
 }
 
-swiper .dataWrapper .info .infoItem>.itemLeft>.time {
+.dataWrapper .info .infoItem>.itemLeft>.time {
   font-size: 24rpx;
 }
 
-swiper .dataWrapper .info .infoItem>.itemRight {
+.dataWrapper .info .infoItem>.itemRight {
   width: 178rpx;
   height: 178rpx;
   margin-left: 32rpx;
@@ -93,12 +63,12 @@ swiper .dataWrapper .info .infoItem>.itemRight {
   border: solid 1rpx #ccc;
 }
 
-swiper .dataWrapper .info .infoItem image{
+.dataWrapper .info .infoItem image{
   width: 174rpx;
   height: 174rpx;
 }
 
-swiper .dataWrapper .info .infoItem .iconfont{
+.dataWrapper .info .infoItem .iconfont{
   font-size: 60rpx;
 }
 

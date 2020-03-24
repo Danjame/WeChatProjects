@@ -1,0 +1,53 @@
+/* components/dynamicWrapper/dynamicWrapper.wxss */
+
+.dataWrapper .info {
+  display: flex;
+  height: 205rpx;
+}
+
+.dataWrapper .info .sideBar {
+  width: 18rpx;
+  flex-shrink: 0;
+}
+
+.dataWrapper .info .ruBar {
+  background-color: #cd672f;
+}
+
+.dataWrapper .info .scBar {
+  background-color: #facc48;
+}
+
+.dataWrapper .info .dyBar {
+  background-color: #3499f7;
+}
+
+.dataWrapper .info .infoItem {
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 26rpx;
+  border-bottom: solid 5rpx #e3e3e3;
+}
+
+.dataWrapper .info .infoItem>.itemLeft {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+.dataWrapper .info .infoItem>.itemLeft>.title {
+  margin-bottom: 14rpx;
+  text-align: justify;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  word-wrap: break-word;
+  overflow: hidden;
+  -webkit-box-pack: center;
+}
+
+.dataWrapper .info .infoItem>.itemLeft>.time {
+  font-size: 24rpx;
+}

@@ -23,7 +23,7 @@ Page({
               _this.setData({
                 collection: res.data
               });
-                console.log(_this.data.collection);
+                console.log(_this.data.collection.Rumor);
             }
         })
     },
