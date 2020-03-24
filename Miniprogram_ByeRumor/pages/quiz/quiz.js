@@ -13,6 +13,13 @@ Page({
             started: true,
         })
     },
+    exitAnswer() {
+        this.setData({
+            started: false,
+            index: 0,
+            score: []
+        })
+    },
     nextQues() {
         const _this = this;
         if (this.data.index == this.data.questions.length - 1) {

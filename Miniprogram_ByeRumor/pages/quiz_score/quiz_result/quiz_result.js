@@ -4,14 +4,14 @@ Component({
      * 组件的属性列表
      */
     properties: {
-      score:{
-        type: Array,
-        value: []
-      },
-      questions:{
-        type: Array,
-        value: []
-      }
+        score: {
+            type: Array,
+            value: []
+        },
+        questions: {
+            type: Array,
+            value: []
+        }
     },
 
     /**
@@ -29,7 +29,7 @@ Component({
             const index = e.currentTarget.dataset.index;
             const ques = JSON.stringify(this.data.questions[index]);
             wx.navigateTo({
-                url: '/pages/score_hint/score_hint?ques='+ ques
+                url: '/pages/score_hint/score_hint?ques=' + ques
             })
         }
     },

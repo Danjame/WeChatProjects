@@ -20,7 +20,7 @@ Component({
    */
   methods: {
     exit(){
-      this.triggerEvent('exitClick')
+      this.triggerEvent('click')
     }
   }
 })

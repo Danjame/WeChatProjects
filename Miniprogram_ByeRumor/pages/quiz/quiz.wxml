@@ -1,6 +1,6 @@
 <view>
   <!-- 顶部进度条 -->
-  <quiz_progress wx:if="{{started}}" index="{{index}}">
+  <quiz_progress wx:if="{{started}}" index="{{index}}" bind:click="exitAnswer">
   </quiz_progress>
 
   <view class="main">
