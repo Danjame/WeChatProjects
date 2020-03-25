@@ -1,6 +1,7 @@
 {
   "component": true,
   "usingComponents": {
+  	"generalWrapper":"../generalWrapper/generalWrapper",
   	"rumorWrapper":"../rumorWrapper/rumorWrapper",
   	"scienceWrapper":"../scienceWrapper/scienceWrapper",
   	"dynamicWrapper":"../dynamicWrapper/dynamicWrapper"

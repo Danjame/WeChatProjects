@@ -57,5 +57,4 @@
 .shareWrapper .btns .share-txt {
     font-weight: normal;
     font-size: 28rpx;
-    color: #fff width:200rpx;
 }

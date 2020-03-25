@@ -69,7 +69,7 @@ Page({
                 console.log("Can not get questions!")
             },
             complete() {
-                console.log(_this.data.questions);
+                // console.log(_this.data.questions);
             }
         })
     },

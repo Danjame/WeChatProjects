@@ -6,25 +6,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        collection: {},
-        ruPage: {
-            pageSize: 20,
-            pageNum: 0,
-            total: 0
-        },
-        scPage: {
-            pageSize: 20,
-            pageNum: 0,
-            total: 0
-        },
-        dyPage: {
-            pageSize: 20,
-            pageNum: 0,
-            total: 0
-        },
-        rumors: [],
-        science: [],
-        dynamic: []
+        result: []
     },
 
     /**
@@ -39,31 +21,29 @@ Page({
                 userId: loginInfo.userId
             },
             success(res) {
-                if (res.data.Rumor.length) {
-                    const rumors = app.dataSetting(_this.data.ruPage, res.data.Rumor).arr;
-                    _this.setData({
-                        rumors,
-                    })
-                }
-                if (res.data.polularScience.length) {
-                    const science = app.dataSetting(_this.data.scPage, res.data.polularScience).arr;
-                    science[0].forEach(item => {
-                        if (item.psImgSrc) {
-                            item.hasImg = item.psImgSrc.indexOf('.mp4') !== -1 ? false : true;
-                        }
-                    })
-                    _this.setData({
-                        science,
-                    })
-                }
-                if (res.data.dynamicInformation.length) {
-                    const dynamic = app.dataSetting(_this.data.dyPage, res.data.dynamicInformation).arr;
-                    _this.setData({
-                        dynamic
-                    })
-                }
+                let result = [[]];
+                //合并所有数组
+                result[0] = res.data['Rumor'].concat(res.data['polularScience'], res.data['dynamicInformation']);
+                //加上毫秒时间
+                result[0].forEach(item => {
+                    item.releaseMs = new Date(item.releaseTime.replace(/-/g, "/")).getTime();
+                })
+                //重新排序
+                result[0].sort(() => {
+                    return Math.random() - 0.5;
+                })
+                result[0].sort((a, b) => {
+                    if (a.releaseMs > b.releaseMs) {
+                        return -1;
+                    } else if (a.releaseMs <= b.releaseMs) {
+                        return 1;
+                    }
+                })
+                _this.setData({
+                    result
+                })
             },
-            fail(){
+            fail() {
                 console.log("fail")
             }
         })

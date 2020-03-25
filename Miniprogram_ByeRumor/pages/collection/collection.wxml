@@ -1,8 +1,5 @@
 <!--pages/collection/colect.wxml-->
 <view class="collection_container">
-  <view class="page-section">
-     <rumorWrapper rumors="{{rumors}}"/>
-     <scienceWrapper science="{{science}}"/>
-     <dynamicWrapper dynamic="{{dynamic}}"/>
-  </view>
+     <generalWrapper general="{{result}}"
+                     totalList="{{result[0]}}"/>
 </view>

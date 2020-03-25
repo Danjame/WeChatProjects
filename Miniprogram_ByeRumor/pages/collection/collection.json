@@ -1,8 +1,6 @@
 {
   "usingComponents": {
-  	"rumorWrapper":"../../components/rumorWrapper/rumorWrapper",
-  	"scienceWrapper":"../../components/scienceWrapper/scienceWrapper",
-  	"dynamicWrapper":"../../components/dynamicWrapper/dynamicWrapper"
+  	"generalWrapper":"../../components/generalWrapper/generalWrapper"
   },
   "navigationBarTitleText": "我的收藏"
 }

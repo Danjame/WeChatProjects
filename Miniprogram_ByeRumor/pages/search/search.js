@@ -89,7 +89,6 @@ Page({
         const _this = self;
         const hisList = historyLis;
         if (hisList.length) {
-          console.log(hisList);
             hisList.forEach((item, index) => {
                 if (item == inputValue) {
                     hisList.splice(index, 1);

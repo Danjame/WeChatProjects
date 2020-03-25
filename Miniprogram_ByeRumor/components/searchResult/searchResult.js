@@ -133,19 +133,23 @@ Component({
     //合并排列数据
     initGeneral() {
       let totalList = this.data.result;
+      //判断媒体类型
       totalList['ps'].forEach(item => {
         if (item.psImgSrc) {
           item.hasImg = item.psImgSrc.indexOf('.mp4') !== -1 ? false : true;
         }
       });
       totalList = totalList['r'].concat(totalList['ps'], totalList['di']);
+      //时间格式处理并加上毫秒时间
       totalList.forEach(item => {
         item.releaseTime = item.releaseTime.slice(0, 10);
         item.releaseMs = new Date(item.releaseTime.replace(/-/g, "/")).getTime();
       })
+      //打乱排序
       totalList.sort(() => {
         return Math.random() - 0.5;
       })
+      //按时间排序
       totalList.sort((a, b) => {
         if (a.releaseMs > b.releaseMs) {
           return -1;
