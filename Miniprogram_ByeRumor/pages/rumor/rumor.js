@@ -1,5 +1,5 @@
+const app = getApp();
 Page({
-
     /**
      * 页面的初始数据
      */
@@ -8,11 +8,27 @@ Page({
         like: null,
         collected: null,
     },
-    clickLike(e){
-      console.log(e.detail);
+    //点赞和取消点赞
+    clickLike(e) {
+        this.setData({
+            like: e.detail
+        });
+        if (e.detail) {
+            app.likeAndCollectHandler.call(app, "rumor", "like", this);
+        } else {
+            app.likeAndCollectHandler.call(app, "rumor", "unlike", this);
+        }
     },
-    clickCollect(e){
-      console.log(e.detail);
+    //收藏和取消收藏
+    clickCollect(e) {
+        this.setData({
+            collected: e.detail
+        });
+        if (e.detail) {
+            app.likeAndCollectHandler.call(app, "rumor", "collect", this);
+        } else {
+            app.likeAndCollectHandler.call(app, "rumor", "uncollect", this);
+        }
     },
     /**
      * 生命周期函数--监听页面加载
@@ -42,22 +58,9 @@ Page({
                 console.log("something wrong")
             },
             complete() {
-                const loginInfo = wx.getStorageSync("loginInfo");
-                  wx.request({
-                  url:'https://wdd.free.qydev.com/rumor/collection/is',
-                  data: {
-                    rumorId: _this.data.result.id,
-                    userId: loginInfo.userId
-                  },
-                  success(res){
-                    _this.setData({
-                      collected: res.data
-                    })
-                  },
-                  complete(){
-                    console.log(_this.data.collected);
-                  }
-                })
+              //获取是否点赞和收藏数据
+                app.likeAndCollectHandler.call(app, "rumor", "checklike", _this);
+                app.likeAndCollectHandler.call(app, "rumor", "checkcollect", _this);
             }
         })
     },

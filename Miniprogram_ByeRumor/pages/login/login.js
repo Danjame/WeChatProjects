@@ -2,7 +2,7 @@
 Page({
     // 获取用户登录数据
     getUserInfo(e) {
-      ////获取用户信息
+        ////获取用户信息
         const userInfo = e.detail.userInfo;
         wx.setStorage({
             key: "userInfo",
@@ -15,16 +15,18 @@ Page({
                 if (res.code) {
                     wx.request({
                         url: 'https://wdd.free.qydev.com/user/login',
-                        data:{code: res.code},
+                        data: { code: res.code },
                         method: "POST",
                         success(res) {
-                            wx.setStorage({
-                                key: "loginInfo",
-                                data: res.data
-                            });
+                            if (res.statusCode === 200) {
+                                wx.setStorage({
+                                    key: "loginInfo",
+                                    data: res.data
+                                });
+                            }
                         },
-                        fail(){
-                          console.log("fail")
+                        fail() {
+                            console.log("fail")
                         }
                     })
                 }

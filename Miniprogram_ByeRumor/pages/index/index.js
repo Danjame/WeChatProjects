@@ -3,6 +3,7 @@ const app = getApp();
 Page({
   data: {
     tabTitles: ["热门谣言", "防疫科普", "官方动态"],
+    // succeed: false,
     currentIndex: 0,
     updating: false,
     ruPage: {
@@ -49,6 +50,9 @@ Page({
       },
       fail(err) {
         console.log("can not get rumors");
+        _this.setData({
+          succeed: false
+        })
       },
       complete() {
         _this.setData({

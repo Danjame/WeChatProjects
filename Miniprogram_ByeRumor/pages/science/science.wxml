@@ -34,5 +34,9 @@
     </view> -->
 
   </view>
-  <footer></footer>
+    <footer result="{{result}}"
+          like="{{like}}"
+          collected="{{collected}}"
+          bind:clickLike="clickLike"
+          bind:clickCollect="clickCollect"></footer>
 </view>
