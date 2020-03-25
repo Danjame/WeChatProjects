@@ -8,7 +8,6 @@ App({
     likeAndCollectHandler(type, action, that) {
         const _this = this;
         const _that = that;
-        console.log(_that.data);
         const loginInfo = wx.getStorageSync("loginInfo");
         wx.request({
             url: _this.defineRequest(type, action),

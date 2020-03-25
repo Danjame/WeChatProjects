@@ -31,8 +31,8 @@ Page({
                     })
                 }
             }
-        })
-
+        });
+        
         // 跳回打开页面
         wx.navigateBack({
             delta: 1

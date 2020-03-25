@@ -13,7 +13,7 @@ Page({
         result: {},
         tabTitles: ["显示全部", "热门谣言", "防疫科普", "官方动态"],
 
-        hisList: ["口罩", "新增确诊"],
+        hisList: [],
         rankList: [],
 
         rankPage: {
@@ -88,13 +88,19 @@ Page({
     removeDup(self, historyLis, inputValue) {
         const _this = self;
         const hisList = historyLis;
-        hisList.forEach((item, index) => {
-            if (item == inputValue) {
-                hisList.splice(index, 1);
-            }
-        })
+        if (hisList.length) {
+          console.log(hisList);
+            hisList.forEach((item, index) => {
+                if (item == inputValue) {
+                    hisList.splice(index, 1);
+                }
+            });
+            hisList.unshift(inputValue);
+        } else {
+            hisList.push(inputValue);
+        };
         _this.setData({
-            hisList: [_this.data.inputValue, ...hisList],
+            hisList
         })
     },
     //关键字匹配
@@ -119,7 +125,7 @@ Page({
                         _this.onInputSearch();
                         result = _this.data.recoResult;
                         result = result.filter(item => item.rTitle.includes(e.detail.value));
-                        console.log(result);
+                        // console.log(result);
                         resolve(result);
                     }
                 });
@@ -188,7 +194,13 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function() {
-
+        //加载搜索历史
+        const searchHistory = wx.getStorageSync("searchHistory");
+        if (searchHistory) {
+            this.setData({
+                hisList: searchHistory
+            })
+        }
     },
 
     /**
@@ -209,7 +221,12 @@ Page({
      * 生命周期函数--监听页面卸载
      */
     onUnload: function() {
-
+        //缓存搜索历史
+        const _this = this;
+        wx.setStorage({
+            key: "searchHistory",
+            data: _this.data.hisList
+        });
     },
 
     /**

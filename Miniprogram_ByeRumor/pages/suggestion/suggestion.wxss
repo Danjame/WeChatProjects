@@ -24,3 +24,7 @@ page{
   display: flex;
   align-items: center;
 }
+
+textarea{
+  padding: 20rpx;
+}

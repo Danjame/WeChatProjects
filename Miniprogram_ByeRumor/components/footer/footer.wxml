@@ -2,11 +2,11 @@
     <view wx:if="{{!share}}" class="footWrapper">
         <view>
             <view class="iconfont {{like? 'icon-good-fill':'icon-good'}}" bindtap="clickLikeHandler"></view>
-            <view>点赞</view>
+            <view>{{like?'已点赞':'点赞'}}</view>
         </view>
         <view>
             <view class="iconfont {{collected? 'icon-collection-fill':'icon-collection'}}" bindtap="clickColleHandler"></view>
-            <view>收藏</view>
+            <view>{{collected?'已收藏':'收藏'}}</view>
         </view>
         <view>
             <view class="iconfont icon-share" bindtap="shareHandler"></view>
