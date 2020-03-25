@@ -1,4 +1,5 @@
 // pages/login/login.js
+const app = getApp();
 Page({
     // 获取用户登录数据
     getUserInfo(e) {
@@ -9,30 +10,7 @@ Page({
             data: userInfo
         });
         //获取登录code和token
-        const _this = this;
-        wx.login({
-            success(res) {
-                if (res.code) {
-                    wx.request({
-                        url: 'https://wdd.free.qydev.com/user/login',
-                        data: { code: res.code },
-                        method: "POST",
-                        success(res) {
-                            if (res.statusCode === 200) {
-                                wx.setStorage({
-                                    key: "loginInfo",
-                                    data: res.data
-                                });
-                            }
-                        },
-                        fail() {
-                            console.log("fail")
-                        }
-                    })
-                }
-            }
-        });
-        
+        app.login();
         // 跳回打开页面
         wx.navigateBack({
             delta: 1

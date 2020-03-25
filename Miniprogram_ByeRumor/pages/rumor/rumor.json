@@ -1,5 +1,6 @@
 {
   "usingComponents": {
+  	"rumorWrapper":"../../components/rumorWrapper/rumorWrapper",
     "footer":"../../components/footer/footer"
   },
   "navigationBarTitleText": "热门谣言"

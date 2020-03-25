@@ -5,6 +5,7 @@ Page({
      */
     data: {
         result: {},
+        about: [],
         like: null,
         collected: null,
     },
@@ -42,15 +43,23 @@ Page({
             },
             success(res) {
                 if (res.statusCode === 200) {
-                    const result = res.data;
+                    const about = [[]];
+                    about[0] = res.data.about;
+                    about[0].forEach(item => {
+                        item.releaseTime = item.releaseTime.slice(0, 10);
+                    })
+           
+                    const result = res.data.rumor;
                     if (result.rContext.includes("要点：")) {
                         const targetIndex = result.rContext.indexOf("要点：");
                         result.rSummary = result.rContext.slice(targetIndex + 3);
                         result.rDescription = result.rContext.slice(0, targetIndex);
                         result.releaseTime = result.releaseTime.slice(0, 10);
-                    }
+                    };
+
                     _this.setData({
-                        result
+                        result,
+                        about
                     })
                 }
             },
@@ -58,7 +67,7 @@ Page({
                 console.log("something wrong")
             },
             complete() {
-              //获取是否点赞和收藏数据
+                //获取是否点赞和收藏数据
                 app.likeAndCollectHandler.call(app, "rumor", "checklike", _this);
                 app.likeAndCollectHandler.call(app, "rumor", "checkcollect", _this);
             }

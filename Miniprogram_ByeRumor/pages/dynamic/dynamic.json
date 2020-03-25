@@ -1,5 +1,6 @@
 {
   "usingComponents": {
+  	"dynamicWrapper": "../../components/dynamicWrapper/dynamicWrapper",
     "footer": "../../components/footer/footer"
   },
   "navigationBarTitleText": "官方动态"

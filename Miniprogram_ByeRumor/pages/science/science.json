@@ -1,5 +1,6 @@
 {
   "usingComponents": {
+  	"scienceWrapper": "../../components/scienceWrapper/scienceWrapper",
     "footer": "../../components/footer/footer"
   },
   "navigationBarTitleText": "防疫科普"

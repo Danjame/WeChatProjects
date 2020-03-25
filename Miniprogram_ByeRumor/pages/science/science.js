@@ -6,6 +6,7 @@ Page({
      */
     data: {
         result: {},
+        about: [],
         like: null,
         collected: null,
     },
@@ -44,14 +45,24 @@ Page({
             },
             success(res) {
                 if (res.statusCode === 200) {
-                    const result = res.data;
+                    const about = [[]];
+                    about[0] = res.data.about;
+                    about[0].forEach(item => {
+                        item.releaseTime = item.releaseTime.slice(0, 10);
+                        if (item.psImgSrc) {
+                            item.hasImg = item.psImgSrc.indexOf('.mp4') !== -1 ? false : true;
+                        }
+                    })
+
+                    const result = res.data.science;
                     result.psContext = result.psContext.replace(/^\s+/, '');
                     result.releaseTime = result.releaseTime.slice(0, 10);
                     if (result.psImgSrc) {
                         result.hasImg = result.psImgSrc.indexOf('.mp4') !== -1 ? false : true;
                     }
                     _this.setData({
-                        result
+                        result,
+                        about
                     })
                 }
             },
@@ -59,7 +70,7 @@ Page({
                 console.log("something wrong")
             },
             complete() {
-              //获取是否点赞和收藏数据
+                //获取是否点赞和收藏数据
                 app.likeAndCollectHandler.call(app, "science", "checklike", _this);
                 app.likeAndCollectHandler.call(app, "science", "checkcollect", _this);
             }

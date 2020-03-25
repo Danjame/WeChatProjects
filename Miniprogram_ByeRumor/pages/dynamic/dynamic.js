@@ -6,6 +6,7 @@ Page({
      */
     data: {
         result: {},
+        about: [],
         like: null,
         collected: null,
     },
@@ -43,10 +44,17 @@ Page({
             },
             success(res) {
                 if (res.statusCode === 200) {
-                    const result = res.data;
+                    const about = [[]];
+                    about[0] = res.data.about;
+                    about[0].forEach(item => {
+                        item.releaseTime = item.releaseTime.slice(0, 10);
+                    })
+
+                    const result = res.data.dynamic;
                     result.releaseTime = result.releaseTime.slice(0, 10);
                     _this.setData({
-                        result
+                        result,
+                        about
                     })
                 }
             },

@@ -19,7 +19,7 @@
   <view class="readMore">
     <view class="head">相关阅读</view>
 
-    <!-- <scienceWrapper science="{{science}}"/> -->
+    <scienceWrapper science="{{about}}"/>
 
   </view>
     <footer result="{{result}}"

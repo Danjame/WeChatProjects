@@ -17,7 +17,7 @@
   <view class="readMore">
     <view class="head">相关阅读</view>
 
-    <!-- <dynamicWrapper dynamic="{{dynamic}}"/> -->
+    <dynamicWrapper dynamic="{{about}}"/>
 
   </view>
     <footer result="{{result}}"

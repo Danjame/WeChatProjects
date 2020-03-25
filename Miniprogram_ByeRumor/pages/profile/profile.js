@@ -6,7 +6,6 @@ Page({
   data: {
     userInfo: {},
     hasInfo: false,
-    userName: ""
   },
   to_Login: function(){
     wx.navigateTo({
@@ -29,15 +28,7 @@ Page({
  * 生命周期函数--监听页面初次渲染完成
  */
   onReady: function () {
-    if (this.data.hasInfo) {
-      this.setData({
-        userName: this.data.userInfo.nickName
-      })
-    } else {
-      this.setData({
-        userName: "未登录"
-      })
-    }
+
   },
 
   /**

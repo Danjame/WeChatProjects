@@ -10,7 +10,7 @@
   <view class="content">
     <view class="head">{{result.rConclusion}}</view>
     <view class="text">
-      <view class="head">查证要点：</view>
+      <view class="head">{{result.rSummary?'查证要点：':''}}</view>
       <view>
         <text>{{result.rSummary}}</text>
       </view>
@@ -25,7 +25,7 @@
   <view class="readMore">
     <view class="head">相关阅读</view>
 
-    <!-- <rumorWrapper rumors="{{rumors}}"/> -->
+    <rumorWrapper rumors="{{about}}"/>
 
   </view>
   <footer result="{{result}}"

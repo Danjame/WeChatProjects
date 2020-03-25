@@ -4,6 +4,56 @@ App({
     data: {
 
     },
+    onShow() {
+        this.authorize();
+    },
+    //登录
+    login() {
+        wx.login({
+            success(res) {
+                if (res.code) {
+                    wx.request({
+                        url: 'https://wdd.free.qydev.com/user/login',
+                        data: { code: res.code },
+                        method: "POST",
+                        success(res) {
+                            if (res.statusCode === 200) {
+                                wx.setStorage({
+                                    key: "loginInfo",
+                                    data: res.data
+                                });
+                            }
+                        },
+                        fail() {
+                            console.log("fail")
+                        }
+                    })
+                }
+            }
+        });
+    },
+    //验证token
+    authorize() {
+        const _this = this;
+        const loginInfo = wx.getStorageSync("loginInfo");
+        wx.request({
+            url: 'https://wdd.free.qydev.com//user/auth',
+            data: {
+                userId: loginInfo.userId,
+                token: loginInfo.token
+            },
+            method: "POST",
+            success(res) {
+                if (res.data) {
+                    console.log("已登录！");
+                } else {
+                    console.log("请登录！");
+                    // 获取登录code和token
+                    _this.loin();
+                }
+            }
+        })
+    },
     //点赞收藏请求封装
     likeAndCollectHandler(type, action, that) {
         const _this = this;
@@ -29,8 +79,8 @@ App({
                     }
                 }
             },
-            fail(){
-              console.log("fail");
+            fail() {
+                console.log("fail");
             },
             complete() {}
         })

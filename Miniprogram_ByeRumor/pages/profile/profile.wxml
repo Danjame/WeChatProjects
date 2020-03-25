@@ -6,7 +6,7 @@
                 <icon wx:if="{{!hasInfo}}" class="icon iconfont icon-user"></icon>
                 <image wx:else src="{{userInfo.avatarUrl}}"></image>
             </view>
-            <text>{{userName}}</text>
+            <text>{{hasInfo?userInfo.nickName:'未登录'}}</text>
         </view>
         <icon class="icon iconfont icon-youjiantou"></icon>
     </view>

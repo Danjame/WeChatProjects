@@ -43,6 +43,7 @@
 }
 
 .readMore>view:first-child {
-  margin-left: 30rpx;
-  margin-bottom: 16rpx;
+  padding-left: 30rpx;
+  padding-bottom: 16rpx;
+  border-bottom: solid 2rpx #bbb;
 }
