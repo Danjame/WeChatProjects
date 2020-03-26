@@ -40,6 +40,9 @@ Component({
       });
       this.triggerEvent("clickCollect", this.data.collected);
     },
+    shareToMoment(){
+      this.triggerEvent("shareToMoment");
+    },
     shareHandler(){
       this.setData({
         share: this.data.share?false:true

@@ -1,0 +1,16 @@
+/* components/shareQR/shareQR.wxss */
+.canvasWrapper{
+	position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgb(125, 125, 125, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+canvas{
+	width: 500rpx;
+	height: 600rpx;
+}

@@ -24,5 +24,9 @@
           like="{{like}}"
           collected="{{collected}}"
           bind:clickLike="clickLike"
-          bind:clickCollect="clickCollect"></footer>
+          bind:clickCollect="clickCollect"
+          bind:shareToMoment="shareToMoment" />
+
+    <shareQR wx:if="{{shareImage}}" 
+           bindtap="shareToMoment"/>
 </view>

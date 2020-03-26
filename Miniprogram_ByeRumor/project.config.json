@@ -124,6 +124,20 @@
 					"id": -1,
 					"name": "pages/suggestion/suggestion",
 					"pathName": "pages/suggestion/suggestion",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/rumor/rumor",
+					"pathName": "pages/rumor/rumor",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "components/shareQR/shareCanvas",
+					"pathName": "components/shareQR/shareCanvas",
 					"scene": null
 				}
 			]

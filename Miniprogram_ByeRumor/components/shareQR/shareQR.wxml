@@ -1,0 +1,9 @@
+<!--components/shareQR/shareQR.wxml-->
+<view class="canvasWrapper" 
+      style="height: {{clientHeight}}px" 
+      catchtouchmove="preventScroll"
+      bindtap="shareToMoment">
+
+	<canvas canvas-id="shareQR" 
+          catchtap="stopPropagation"></canvas>
+</view>

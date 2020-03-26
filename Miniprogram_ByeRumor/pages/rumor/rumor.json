@@ -1,7 +1,8 @@
 {
   "usingComponents": {
   	"rumorWrapper":"../../components/rumorWrapper/rumorWrapper",
-    "footer":"../../components/footer/footer"
+    "footer":"../../components/footer/footer",
+    "shareQR":"../../components/shareQR/shareQR"
   },
   "navigationBarTitleText": "热门谣言"
 }

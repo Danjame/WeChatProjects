@@ -17,8 +17,11 @@ Page({
    */
   onLoad: function (options) {
     const ques = JSON.parse(options.ques);
+    const num = Number(options.correctNum);
+    console.log(typeof num);
     this.setData({
       ques,
+      num
     })
   },
 

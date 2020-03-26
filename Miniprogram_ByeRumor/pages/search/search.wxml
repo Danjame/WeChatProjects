@@ -18,17 +18,14 @@
                  rankList="{{rankList}}" 
                  bind:selectKeyword="selectKeyword" 
                  bind:deleteHis="deleteHis"
-                 bind:selectRumor="selectRumor">
-  </searchHistory>
+                 bind:selectRumor="selectRumor" />
 
   <searchState wx:if="{{(focus || inputValue) && !searchResult}}" 
                keyWords="{{keyWords}}" 
-               bind:selectRumor="selectRumor">
-  </searchState>
+               bind:selectRumor="selectRumor" />
 
   <searchResult wx:if="{{searchResult && !focus}}"
                 tabTitles="{{tabTitles}}"
-                result="{{result}}">
-  </searchResult>
+                result="{{result}}" />
 
 </view>

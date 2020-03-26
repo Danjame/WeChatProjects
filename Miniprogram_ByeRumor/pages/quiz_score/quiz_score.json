@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "scoreMarks":"../../components/quizMarks/quizMarks",
+    "quizMarks":"../../components/quizMarks/quizMarks",
   	"quiz_result":"./quiz_result/quiz_result"
   }
 }

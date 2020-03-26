@@ -2,14 +2,19 @@
 @import '../../icons/iconfont/iconfont.wxss';
 
 .analWrapper {
-  padding-top: 130rpx;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.analWrapper>view:first-child {
+.analWrapper>view:first-child{
   width: 90%;
+}
+
+.analWrapper>view>view:first-child {
+  flex-shrink: 0;
   padding: 20rpx 30rpx;
-  margin: 30rpx auto;
-  box-sizing: border-box;
   border-radius: 40rpx;
   background-color: #33cb98;
   overflow: hidden;
@@ -44,8 +49,7 @@
 }
 
 .analWrapper .btn {
-  width: 90%;
-  margin: 60rpx auto;
+  margin: 30rpx auto;
   padding: 0;
   background: #eee;
   border-radius: 28rpx;

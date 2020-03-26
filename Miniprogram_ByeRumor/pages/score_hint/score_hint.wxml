@@ -1,8 +1,8 @@
 <!--pages/score_hint/score_hint.wxml-->
 <view>
-    <scoreMarks></scoreMarks>
-    <quizAnalysis 
-                  question="{{ques}}" 
+    <quizMarks correctNum="{{num}}"/>
+
+    <quizAnalysis question="{{ques}}" 
                   bind:click="toHome">
         <text>返回开始页面</text>
     </quizAnalysis>

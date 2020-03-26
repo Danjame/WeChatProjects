@@ -11,6 +11,10 @@ Component({
         questions: {
             type: Array,
             value: []
+        },
+        correctNum: {
+            type: Number,
+            value: 0
         }
     },
 
@@ -28,8 +32,9 @@ Component({
         toScoreHint(e) {
             const index = e.currentTarget.dataset.index;
             const ques = JSON.stringify(this.data.questions[index]);
+            const correctNum = this.data.correctNum;
             wx.navigateTo({
-                url: '/pages/score_hint/score_hint?ques=' + ques
+                url: `/pages/score_hint/score_hint?ques=${ques}&correctNum=${correctNum}`
             })
         }
     },

@@ -1,5 +1,5 @@
 <!--pages/quiz_score/quiz_score.wxml-->
 <view>
-    <scoreMarks correctNum="{{correctNum}}"></scoreMarks>
-    <quiz_result score="{{score}}" questions="{{questions}}" dataOne="{{dataOne}}"></quiz_result>
+    <quizMarks correctNum="{{correctNum}}" />
+    <quiz_result score="{{score}}" questions="{{questions}}" correctNum="{{correctNum}}" />
 </view>
