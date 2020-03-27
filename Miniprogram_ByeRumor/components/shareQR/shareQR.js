@@ -11,9 +11,9 @@ Component({
    * 组件的初始数据
    */
   data: {
-    clientHeight:"",
+    clientHeight: "",
     profilePath: "",
-    qrPath:"",
+    qrPath: "",
     tempFilePath: ""
   },
 
@@ -36,7 +36,7 @@ Component({
     },
     //获取图片本地地址
     setImageData(callBack) {
-      const proPromise = new Promise((resolve, reject)=>{
+      const proPromise = new Promise((resolve, reject) => {
         wx.getImageInfo({
           src: wx.getStorageSync("userInfo").avatarUrl,
           success(res) {
@@ -52,7 +52,7 @@ Component({
           },
         });
       })
-      Promise.all([proPromise]).then((res)=>{
+      Promise.all([proPromise]).then((res) => {
         callBack(res);
       })
     },
@@ -65,7 +65,7 @@ Component({
       //圆头像
       ctx.save();
       ctx.beginPath();
-      ctx.arc(45, 45, 25, 0, 2*Math.PI, false);
+      ctx.arc(45, 45, 25, 0, 2 * Math.PI, false);
       ctx.clip();
       ctx.drawImage(profilePath, 20, 20, 50, 50);
       ctx.restore();
@@ -74,13 +74,16 @@ Component({
       //文字
       ctx.setFontSize(15);
       ctx.setFillStyle("#aaa");
-      ctx.fillText(wx.getStorageSync("userInfo").nickName, 90, 35);
+
+      const gender = wx.getStorageSync("userInfo").gender == 1 ? "靓仔" : "美女"
+      ctx.fillText(wx.getStorageSync("userInfo").nickName + gender, 90, 35);
+
       ctx.fillText("邀请您使用辟谣助手", 90, 65);
       ctx.setFontSize(18);
       ctx.setFillStyle("#ef962d");
       ctx.fillText("逍遥平台", 90, 100);
       //开始绘制
-      ctx.draw(false, ()=>{
+      ctx.draw(false, () => {
         wx.canvasToTempFilePath({
           canvasId: "canvas",
           success(res) {
@@ -105,10 +108,10 @@ Component({
             icon: "none"
           })
         },
-        fail(){
+        fail() {
           wx.showToast({
             title: "保存失败",
-            icon:"none"
+            icon: "none"
           })
         }
       })
@@ -117,19 +120,19 @@ Component({
   lifetimes: {
     ready() {
       //获取可视高度
-      this.getClientHeight((height)=>{
+      this.getClientHeight((height) => {
         this.setData({
           clientHeight: height
         })
       });
       //获取图片地址
-      this.setImageData(res=>{
+      this.setImageData(res => {
         this.setData({
           profilePath: res[0],
           qrPath: res[1]
         })
         //绘图图片
-        this.drawImage(this.data.profilePath,"../../icons/qr.png");
+        this.drawImage(this.data.profilePath, "../../icons/qr.png");
       });
     }
   }

@@ -63,10 +63,19 @@ Page({
                     _this.setData({
                         questions: res.data
                     })
+                }else{
+                  //失败则导入缓存
+                  _this.setData({
+                    questions: wx.getStorageSync("questions")
+                  })
                 }
             },
             fail(error) {
-                console.log("Can not get questions!")
+                console.log("Can not get questions!");
+              //失败则导入缓存
+              _this.setData({
+                questions: wx.getStorageSync("questions")
+              })
             },
             complete() {
                 // console.log(_this.data.questions);
@@ -99,7 +108,11 @@ Page({
      * 生命周期函数--监听页面卸载
      */
     onUnload: function() {
-
+      //离开页面缓存此次数据
+      wx.setStorage({
+        key: 'questions',
+        data: this.data.questions,
+      })
     },
 
     /**

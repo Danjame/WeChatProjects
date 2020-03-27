@@ -51,6 +51,9 @@ Page({
       })
     });
 
+    wx.showLoading({
+      title: "加载中..."
+    })
     wx.request({
       url: 'https://wdd.free.qydev.com/science/get',
       data: {
@@ -79,12 +82,24 @@ Page({
             result,
             about
           })
+        }else{
+          //失败则导入缓存
+          _this.setData({
+            result: wx.getStorageSync("scienceDetail"),
+            about: wx.getStorageSync("scienceAbout")
+          })
         }
       },
       fail(error) {
-        console.log("something wrong")
+        //失败则导入缓存
+        console.log("Something wrong!");
+        _this.setData({
+          result: wx.getStorageSync("scienceDetail"),
+          about: wx.getStorageSync("scienceAbout")
+        })
       },
       complete() {
+        wx.hideLoading();
         //获取是否点赞和收藏数据
         app.likeAndCollectHandler.call(app, "science", "checklike", _this);
         app.likeAndCollectHandler.call(app, "science", "checkcollect", _this);
@@ -117,7 +132,15 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function() {
-
+    //离开页面缓存此次数据
+    wx.setStorage({
+      key: 'scienceDetail',
+      data: this.data.result,
+    })
+    wx.setStorage({
+      key: 'scienceAbout',
+      data: this.data.about,
+    })
   },
 
   /**

@@ -152,6 +152,13 @@
 					"id": -1,
 					"name": "pages/quiz/quiz",
 					"pathName": "pages/quiz/quiz",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/dynamic/dynamic",
+					"pathName": "pages/dynamic/dynamic",
 					"scene": null
 				}
 			]

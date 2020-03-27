@@ -49,7 +49,10 @@ Page({
         clientHeight: wHeight
       })
     });
-    
+
+    wx.showLoading({
+      title: "加载中..."
+    });
     wx.request({
       url: 'https://wdd.free.qydev.com/dynamic/get',
       data: {
@@ -71,12 +74,24 @@ Page({
             result,
             about
           })
+        }else{
+          //失败则导入缓存
+          _this.setData({
+            result: wx.getStorageSync("dynamicDetail"),
+            about: wx.getStorageSync("dynamicAbout")
+          })
         }
       },
       fail(error) {
-        console.log("something wrong")
+        console.log("Something wrong!");
+        //失败则导入缓存
+        _this.setData({
+          result: wx.getStorageSync("dynamicDetail"),
+          about: wx.getStorageSync("dynamicAbout")
+        })
       },
       complete() {
+        wx.hideLoading();
         //获取是否点赞和收藏数据
         app.likeAndCollectHandler.call(app, "dynamic", "checklike", _this);
         app.likeAndCollectHandler.call(app, "dynamic", "checkcollect", _this);
@@ -109,7 +124,15 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function() {
-
+    //离开页面缓存此次数据
+    wx.setStorage({
+      key: 'dynamicDetail',
+      data: this.data.result,
+    })
+    wx.setStorage({
+      key: 'dynamicAbout',
+      data: this.data.about,
+    })
   },
 
   /**

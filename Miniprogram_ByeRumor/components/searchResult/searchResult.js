@@ -92,7 +92,6 @@ Component({
           showAllPage: result.data,
           updating: false,
         });
-        // console.log(this.data.general);
       }
     },
     getRumors() {

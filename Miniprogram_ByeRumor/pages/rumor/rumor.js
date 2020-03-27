@@ -49,6 +49,9 @@ Page({
       })
     });
 
+    wx.showLoading({
+      title: "加载中..."
+    })
     wx.request({
       url: 'https://wdd.free.qydev.com/rumor/click',
       data: {
@@ -76,12 +79,24 @@ Page({
             result,
             about
           })
+        }else{
+          //失败则导入缓存
+          _this.setData({
+            result: wx.getStorageSync("rumorDetail"),
+            about: wx.getStorageSync("rumorAbout")
+          })
         }
       },
       fail(error) {
-        console.log("something wrong")
+        console.log("Something wrong!");
+        //失败则导入缓存
+        _this.setData({
+          result: wx.getStorageSync("rumorDetail"),
+          about: wx.getStorageSync("rumorAbout")
+        })
       },
       complete() {
+        wx.hideLoading();
         //获取是否点赞和收藏数据
         app.likeAndCollectHandler.call(app, "rumor", "checklike", _this);
         app.likeAndCollectHandler.call(app, "rumor", "checkcollect", _this);
@@ -109,7 +124,20 @@ Page({
   onHide: function() {
 
   },
-
+  /**
+ * 生命周期函数--监听页面卸载
+ */
+  onUnload: function () {
+    //离开页面缓存此次数据
+    wx.setStorage({
+      key: 'rumorDetail',
+      data: this.data.result,
+    })
+    wx.setStorage({
+      key: 'rumorAbout',
+      data: this.data.about,
+    })
+  },
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */

@@ -35,6 +35,9 @@ Page({
     })
   },
   getRumors() {
+    wx.showLoading({
+      title: "加载中..."
+    })
     const _this = this;
     wx.request({
       url: 'https://wdd.free.qydev.com/rumor/list',
@@ -54,6 +57,7 @@ Page({
         })
       },
       complete() {
+        wx.hideLoading();
         _this.setData({
           updating: false,
         })
