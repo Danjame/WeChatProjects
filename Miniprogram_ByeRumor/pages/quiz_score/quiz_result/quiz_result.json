@@ -1,4 +1,6 @@
 {
   "component": true,
-  "usingComponents": {}
+  "usingComponents": {
+    "shareQR":"../../../components/shareQR/shareQR"
+  }
 }

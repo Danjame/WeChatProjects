@@ -212,7 +212,7 @@ App({
   getHeightData(ele1, ele2, that, callBack) {
     const _this = that;
     const sePromise = new Promise((resolve, reject) => {
-      wx.createSelectorQuery().in(_this).select(ele1).boundingClientRect(rect => {
+      wx.createSelectorQuery().select(ele1).boundingClientRect(rect => {
         resolve(rect.height);
       }).exec()
     });

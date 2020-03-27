@@ -9,9 +9,10 @@
                 <image src="../../../icons/wechat.png" mode="aspectFit" />
                 <view class="share-txt">分享给微信好友</view>
             </button>
-            <button class="shareBtn">
+            <button class="shareBtn" catchtap="shareToMoment">
                 <image src="../../../icons/moments.png" mode="aspectFit" />
                 <view class="share-txt">分享到朋友圈</view>
             </button>
-        </view>
+      </view>
+      <shareQR wx:if="{{shareImage}}" catchtap="shareToMoment" />
 </view>

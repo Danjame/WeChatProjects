@@ -1,6 +1,4 @@
 .searchWrapper {
-  height: 100rpx;
-  box-sizing: border-box;
   padding: 20rpx 30rpx;
 }
 
@@ -8,12 +6,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 60rpx;
+  height: 70rpx;
   border: solid 2rpx #ddd;
   border-radius: 6rpx;
   padding: 0 28rpx 0 28rpx;
   color: #aaa;
-  font-size: 28rpx;
 }
 
 .searchWrapper navigator icon {
@@ -21,9 +18,10 @@
 }
 
 .tabWrapper {
+  box-sizing: border-box;
   display: flex;
   justify-content: space-around;
-  height: 65rpx;
+  height: 80rpx;
   padding-top: 15rpx;
   border-top: solid 3rpx #aaa;
   border-bottom: solid 2rpx #ddd;

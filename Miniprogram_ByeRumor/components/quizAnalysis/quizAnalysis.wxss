@@ -25,6 +25,7 @@
   padding: 0 3rpx;
   font-size: 54rpx;
   text-align: justify;
+  clear: both;
 }
 
 .analWrapper .anl {
@@ -58,4 +59,9 @@
   font-weight: normal;
   line-height: 120rpx;
   text-align: center;
+}
+
+.icon-share{
+  float: right;
+  font-size:70rpx;
 }

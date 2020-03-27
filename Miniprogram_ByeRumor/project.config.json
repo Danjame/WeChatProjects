@@ -145,6 +145,13 @@
 					"id": -1,
 					"name": "pages/science/science",
 					"pathName": "pages/science/science",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/quiz/quiz",
+					"pathName": "pages/quiz/quiz",
 					"scene": null
 				}
 			]

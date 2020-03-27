@@ -2,9 +2,9 @@
 <view wx:if="{{!isCorrect}}" class="analWrapper" catchtouchmove="preventScroll">
     <view>
         <view>
-            <quizShare wx:if="{{share}}" question="{{question}}" bind:exitShare="hideShare">
-            </quizShare>
-            <view class="iconfont icon-share" style="font-size:70rpx;text-align:right;" bindtap="showShare" />
+            <quizShare wx:if="{{share}}" question="{{question}}" bind:exitShare="hideShare" />
+            <view class="iconfont icon-share" bindtap="showShare"></view>
+
             <view class="tit">{{question.ibTitle}}</view>
             <view class="anl">{{question.ibContext}}</view>
             <view class="judge">{{question.ibResult=='1'?'真':'假'}}</view>

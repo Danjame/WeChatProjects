@@ -10,7 +10,7 @@
     align-items: center;
 }
 
-canvas{
-	width: 500rpx;
-	height: 700rpx;
+.saveBtn{
+  margin-top: 20rpx;
+  width: 500rpx;
 }

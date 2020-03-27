@@ -1,8 +1,8 @@
 <!--components/shareQR/shareQR.wxml-->
-<view class="canvasWrapper" 
-      style="height: {{clientHeight}}px" 
-      catchtouchmove="preventScroll">
-
-	<canvas canvas-id="canvas"
-          catchtap="stopPropagation"></canvas>
+<view class="canvasWrapper" style="height: {{clientHeight}}px" catchtouchmove="preventScroll">
+  <view catchtap="stopPropagation">
+    <canvas style="width: 500rpx; height: 700rpx;" canvas-id="canvas">
+    </canvas>
+    <button class="saveBtn" style="width: 500rpx" catchtap="saveImge">保存到相册</button>
+  </view>
 </view>

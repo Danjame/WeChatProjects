@@ -1,12 +1,14 @@
 @import '../../icons/iconfont/iconfont.wxss';
+
 .tabWrapper {
+  height: 80rpx;
+  box-sizing: border-box;
+  border-bottom: solid 2rpx #ddd;
+  font-size: 28rpx;
+  color: #7f7f7f;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 60rpx;
-  border-bottom: solid 2rpx #ddd;
-  font-size: 24rpx;
-  color: #7f7f7f;
 }
 
 .tab {
@@ -22,7 +24,7 @@
   border-color: #fff;
 }
 
-.noResult{
+.noResult {
   width: 100%;
   position: absolute;
   display: flex;

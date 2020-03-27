@@ -22,13 +22,18 @@ Component({
      * 组件的初始数据
      */
     data: {
-
+      shareImage: false
     },
 
     /**
      * 组件的方法列表
      */
     methods: {
+      shareToMoment() {
+        this.setData({
+          shareImage: this.data.shareImage ? false : true
+        })
+      },
         toScoreHint(e) {
             const index = e.currentTarget.dataset.index;
             const ques = JSON.stringify(this.data.questions[index]);

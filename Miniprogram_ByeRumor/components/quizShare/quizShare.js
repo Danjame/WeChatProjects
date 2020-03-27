@@ -14,7 +14,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-
+    shareImage: false
   },
 
   /**
@@ -26,6 +26,11 @@ Component({
     },
     stopPropa(){
       return;
-    }
+    },
+    shareToMoment() {
+      this.setData({
+        shareImage: this.data.shareImage? false: true
+      })
+    },
   }
 })

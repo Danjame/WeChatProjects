@@ -13,7 +13,8 @@ Component({
   data: {
     clientHeight:"",
     profilePath: "",
-    qrPath:""
+    qrPath:"",
+    tempFilePath: ""
   },
 
   /**
@@ -33,6 +34,7 @@ Component({
         }
       })
     },
+    //获取图片本地地址
     setImageData(callBack) {
       const proPromise = new Promise((resolve, reject)=>{
         wx.getImageInfo({
@@ -42,66 +44,92 @@ Component({
           },
         });
       })
-      // const qrPromise = new Promise((resolve, reject) => {
-      //   wx.getImageInfo({
-      //     src: "../../icons/qr.png",
-      //     success(res) {
-      //       resolve(res.path);
-      //     },
-      //   });
-      // })
+      const qrPromise = new Promise((resolve, reject) => {
+        wx.getImageInfo({
+          src: "",
+          success(res) {
+            resolve(res.path);
+          },
+        });
+      })
       Promise.all([proPromise]).then((res)=>{
         callBack(res);
-        this.drawImage();
       })
     },
-    //绘制图片
-    drawImage() {
+    //绘制图片并下载
+    drawImage(profilePath, qrPath) {
+      const _this = this;
       const ctx = wx.createCanvasContext("canvas", this);
       ctx.setFillStyle("white");
       ctx.fillRect(0, 0, 250, 350);
-      ctx.drawImage(this.data.profilePath, 20, 20, 50, 50);
-      ctx.drawImage("../../icons/qr.png", 25, 125, 200, 200);
-      // ctx.draw();
-      ctx.draw(wx.canvasToTempFilePath({
-        canvasId: "canvas",
+      //圆头像
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(45, 45, 25, 0, 2*Math.PI, false);
+      ctx.clip();
+      ctx.drawImage(profilePath, 20, 20, 50, 50);
+      ctx.restore();
+      //二维码
+      ctx.drawImage(qrPath, 25, 125, 200, 200);
+      //文字
+      ctx.setFontSize(15);
+      ctx.setFillStyle("#aaa");
+      ctx.fillText(wx.getStorageSync("userInfo").nickName, 90, 35);
+      ctx.fillText("邀请您使用辟谣助手", 90, 65);
+      ctx.setFontSize(18);
+      ctx.setFillStyle("#ef962d");
+      ctx.fillText("逍遥平台", 90, 100);
+      //开始绘制
+      ctx.draw(false, ()=>{
+        wx.canvasToTempFilePath({
+          canvasId: "canvas",
+          success(res) {
+            _this.setData({
+              tempFilePath: res.tempFilePath
+            })
+          },
+          fail() {
+            console.log("fail to save imgPath")
+          }
+        }, this)
+      });
+    },
+    //保存图片
+    saveImge() {
+      const _this = this;
+      wx.saveImageToPhotosAlbum({
+        filePath: _this.data.tempFilePath,
         success(res) {
-          console.log(res.tempFilePath);
-          wx.saveImageToPhotosAlbum({
-            filePath: 'res.tempFilePath',
-            success(res){
-              wx.showToast({
-                title: '图片已保存至相册',
-              })
-            }
+          wx.showToast({
+            title: "图片已保存至手机相册，赶紧分享到朋友圈吧！",
+            icon: "none"
           })
         },
-        fail() {
-          console.log("fail")
-        }
-      }, this));
-    },
-    saveImge() {
-      wx.saveImageToPhotosAlbum({
-        filePath: "",
-        success(res) {
-          console.log("succeed!")
+        fail(){
+          wx.showToast({
+            title: "保存失败",
+            icon:"none"
+          })
         }
       })
     }
   },
   lifetimes: {
     ready() {
+      //获取可视高度
       this.getClientHeight((height)=>{
         this.setData({
           clientHeight: height
         })
       });
+      //获取图片地址
       this.setImageData(res=>{
         this.setData({
           profilePath: res[0],
           qrPath: res[1]
         })
+        //绘图图片
+        this.drawImage(this.data.profilePath,"../../icons/qr.png");
       });
     }
   }
