@@ -10,7 +10,11 @@ Component({
   /**
    * 组件的初始数据
    */
-  data: {},
+  data: {
+    clientHeight:"",
+    profilePath: "",
+    qrPath:""
+  },
 
   /**
    * 组件的方法列表
@@ -22,51 +26,60 @@ Component({
     stopPropagation() {
       return;
     },
-    getClientHeight() {
-      const _this = this;
+    getClientHeight(callBack) {
       wx.getSystemInfo({
         success: function(res) {
-          _this.setData({
-            clientHeight: res.windowHeight
-          });
+          callBack(res.windowHeight);
         }
       })
     },
+    setImageData(callBack) {
+      const proPromise = new Promise((resolve, reject)=>{
+        wx.getImageInfo({
+          src: wx.getStorageSync("userInfo").avatarUrl,
+          success(res) {
+            resolve(res.path);
+          },
+        });
+      })
+      // const qrPromise = new Promise((resolve, reject) => {
+      //   wx.getImageInfo({
+      //     src: "../../icons/qr.png",
+      //     success(res) {
+      //       resolve(res.path);
+      //     },
+      //   });
+      // })
+      Promise.all([proPromise]).then((res)=>{
+        callBack(res);
+        this.drawImage();
+      })
+    },
+    //绘制图片
     drawImage() {
-      //绘制二维码图片
-      const ctx = wx.createCanvasContext("shareQR", this);
-      //绘制头像
-      wx.getImageInfo({
-        src: wx.getStorageSync("userInfo").avatarUrl,
+      const ctx = wx.createCanvasContext("canvas", this);
+      ctx.setFillStyle("white");
+      ctx.fillRect(0, 0, 250, 350);
+      ctx.drawImage(this.data.profilePath, 20, 20, 50, 50);
+      ctx.drawImage("../../icons/qr.png", 25, 125, 200, 200);
+      // ctx.draw();
+      ctx.draw(wx.canvasToTempFilePath({
+        canvasId: "canvas",
         success(res) {
-          ctx.setFillStyle("white");
-          ctx.fillRect(0, 0, 250, 300);
-          ctx.drawImage(res.path, 100, 0, 50, 50);
-          ctx.draw();
+          console.log(res.tempFilePath);
+          wx.saveImageToPhotosAlbum({
+            filePath: 'res.tempFilePath',
+            success(res){
+              wx.showToast({
+                title: '图片已保存至相册',
+              })
+            }
+          })
         },
         fail() {
-          console.log("Fail to get profilePath!")
+          console.log("fail")
         }
-      })
-      //绘制二维码
-      // wx.getImageInfo({
-      //   src: '',
-      //   success(res) {
-      //     ctx.drawImage(res.path, 50, 150, 200, 200);
-      //   },
-      //   fail(){
-      //     console.log("Fail to get qrPath!")
-      //   }
-      // })
-    },
-    canvasToImage() {
-      //保存图片
-      wx.canvasToTempFilePath({
-        canvasId: "shareQR",
-        success() {
-
-        }
-      })
+      }, this));
     },
     saveImge() {
       wx.saveImageToPhotosAlbum({
@@ -79,8 +92,17 @@ Component({
   },
   lifetimes: {
     ready() {
-      this.getClientHeight();
-      this.drawImage();
+      this.getClientHeight((height)=>{
+        this.setData({
+          clientHeight: height
+        })
+      });
+      this.setImageData(res=>{
+        this.setData({
+          profilePath: res[0],
+          qrPath: res[1]
+        })
+      });
     }
   }
 })

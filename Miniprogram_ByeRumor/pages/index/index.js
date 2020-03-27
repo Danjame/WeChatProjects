@@ -3,7 +3,6 @@ const app = getApp();
 Page({
   data: {
     tabTitles: ["热门谣言", "防疫科普", "官方动态"],
-    // succeed: false,
     currentIndex: 0,
     updating: false,
     ruPage: {
@@ -138,11 +137,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    //获取高度以设置内容高度
-    app.getHeightData(this, ".searchWrapper", ".tabWrapper");
     this.getRumors();
     this.getScience();
     this.getDynamic();
+
+    //获取高度以设置内容高度
+    app.getHeightData(".searchWrapper", ".tabWrapper", this, (res) => {
+      this.setData({
+        searchHeight: res[0],
+        tabHeight: res[1],
+        clientHeight: res[2]
+      })
+    });
   },
 
   /**

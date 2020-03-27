@@ -42,6 +42,13 @@ Page({
    */
   onLoad: function(options) {
     const _this = this;
+    app.getContentHeight(".footer", this, (fHeight, wHeight) => {
+      _this.setData({
+        footerHeight: fHeight,
+        clientHeight: wHeight
+      })
+    });
+
     wx.request({
       url: 'https://wdd.free.qydev.com/rumor/click',
       data: {

@@ -138,6 +138,13 @@
 					"id": -1,
 					"name": "components/shareQR/shareCanvas",
 					"pathName": "components/shareQR/shareCanvas",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/science/science",
+					"pathName": "pages/science/science",
 					"scene": null
 				}
 			]

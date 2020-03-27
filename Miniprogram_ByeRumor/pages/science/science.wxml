@@ -1,34 +1,30 @@
 <view>
-  <view class="header">
-    <view class="head">{{result.psTitle}}</view>
-    <image wx:if="{{result.hasImg==true}}" src="{{result.psImgSrc}}" mode="widthFix"></image>
-    <video wx:if="{{result.hasImg==false}}" src="{{result.psImgSrc}}"></video>
-  </view>
-
-  <view class="content">
-    <view class="text">
-      <text>{{result.psContext}}</text>
+  <view style="min-height: {{clientHeight-footerHeight}}px">
+    <view class="header">
+      <view class="head">{{result.psTitle}}</view>
+      <image wx:if="{{result.hasImg==true}}" src="{{result.psImgSrc}}" mode="widthFix"></image>
+      <video wx:if="{{result.hasImg==false}}" src="{{result.psImgSrc}}"></video>
     </view>
 
-    <view class="infoSrc">
-      <text class="head">辟谣来源：</text>{{result.psInfoFrom}}
-      <text class="head">发布时间：</text>{{result.releaseTime}}
+    <view class="content">
+      <view class="text">
+        <text>{{result.psContext}}</text>
+      </view>
+
+      <view class="infoSrc">
+        <text class="head">辟谣来源：</text>{{result.psInfoFrom}}
+        <text class="head">发布时间：</text>{{result.releaseTime}}
+      </view>
+    </view>
+
+    <view class="readMore">
+      <view class="head">相关阅读</view>
+
+      <scienceWrapper science="{{about}}" />
+
     </view>
   </view>
+  <footer class="footer" result="{{result}}" like="{{like}}" collected="{{collected}}" bind:clickLike="clickLike" bind:clickCollect="clickCollect" bind:shareToMoment="shareToMoment" />
 
-  <view class="readMore">
-    <view class="head">相关阅读</view>
-
-    <scienceWrapper science="{{about}}"/>
-
-  </view>
-    <footer result="{{result}}"
-          like="{{like}}"
-          collected="{{collected}}"
-          bind:clickLike="clickLike"
-          bind:clickCollect="clickCollect"
-          bind:shareToMoment="shareToMoment" />
-
-    <shareQR wx:if="{{shareImage}}" 
-           bindtap="shareToMoment"/>
+  <shareQR wx:if="{{shareImage}}" bindtap="shareToMoment" />
 </view>

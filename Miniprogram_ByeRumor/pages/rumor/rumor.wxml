@@ -1,40 +1,37 @@
 <view>
-  <view class="header">
-    <view wx:if="{{result.rStatus == 1}}">真</view>
-    <view wx:elif="{{result.rStatus == -1}}">假</view>
-    <view wx:else>疑</view>
-    <view class="head">{{result.rTitle}}</view>
-    <view>{{result.rDescription}}</view>
-  </view>
+  <view style="min-height: {{clientHeight-footerHeight}}px">
+    <view class="header">
+      <view wx:if="{{result.rStatus == 1}}">真</view>
+      <view wx:elif="{{result.rStatus == -1}}">假</view>
+      <view wx:else>疑</view>
+      <view class="head">{{result.rTitle}}</view>
+      <view>{{result.rDescription}}</view>
+    </view>
 
-  <view class="content">
-    <view class="head">{{result.rConclusion}}</view>
-    <view class="text">
-      <view class="head">{{result.rSummary?'查证要点：':''}}</view>
-      <view>
-        <text>{{result.rSummary}}</text>
+    <view class="content">
+      <view class="head">{{result.rConclusion}}</view>
+      <view class="text">
+        <view class="head">{{result.rSummary?'查证要点：':''}}</view>
+        <view>
+          <text>{{result.rSummary}}</text>
+        </view>
+      </view>
+
+      <view class="infoSrc">
+        <text class="head">辟谣来源：</text>{{result.rInfoFrom}}
+        <text class="head">发布时间：</text>{{result.releaseTime}}
       </view>
     </view>
 
-    <view class="infoSrc">
-      <text class="head">辟谣来源：</text>{{result.rInfoFrom}}
-      <text class="head">发布时间：</text>{{result.releaseTime}}
+    <view class="readMore">
+      <view class="head">相关阅读</view>
+
+      <rumorWrapper rumors="{{about}}" />
+
     </view>
+    
   </view>
-
-  <view class="readMore">
-    <view class="head">相关阅读</view>
-
-    <rumorWrapper rumors="{{about}}"/>
-
-  </view>
-  <footer result="{{result}}"
-          like="{{like}}"
-          collected="{{collected}}"
-          bind:clickLike="clickLike"
-          bind:clickCollect="clickCollect"
-          bind:shareToMoment="shareToMoment" />
-          
-  <shareQR wx:if="{{shareImage}}" 
-           bindtap="shareToMoment"/>
+  <footer class="footer" result="{{result}}" like="{{like}}" collected="{{collected}}" bind:clickLike="clickLike" bind:clickCollect="clickCollect" bind:shareToMoment="shareToMoment" />
+  
+  <shareQR wx:if="{{shareImage}}" bindtap="shareToMoment" />
 </view>
