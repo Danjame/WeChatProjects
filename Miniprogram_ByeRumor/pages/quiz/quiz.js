@@ -1,9 +1,10 @@
+const app = getApp();
 Page({
     /**
      * 页面的初始数据
      */
     data: {
-        started: false, // 首页开始答题
+        started: true, // 首页开始答题
         questions: [],
         index: 0,
         score: []
@@ -11,7 +12,7 @@ Page({
     startTest() {
         this.setData({
             started: true,
-        })
+        });
     },
     exitAnswer() {
         this.setData({
@@ -55,7 +56,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-        const _this = this;
+      const _this = this;
         wx.request({
             url: 'https://wdd.free.qydev.com/item/list',
             success(res) {

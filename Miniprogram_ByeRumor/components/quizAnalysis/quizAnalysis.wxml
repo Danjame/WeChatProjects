@@ -1,16 +1,22 @@
 <!--components/quizAnalysis/quizAnalysis.wxml-->
 <view wx:if="{{!isCorrect}}" class="analWrapper" catchtouchmove="preventScroll">
-    <view>
-        <view>
-            <quizShare wx:if="{{share}}" question="{{question}}" bind:exitShare="hideShare" />
-            <view class="iconfont icon-share" bindtap="showShare"></view>
 
-            <view class="tit">{{question.ibTitle}}</view>
-            <view class="anl">{{question.ibContext}}</view>
-            <view class="judge">{{question.ibResult=='1'?'真':'假'}}</view>
-        </view>
-        <view class="btn" bindtap="clickHandler">
-            <slot></slot>
-        </view>
+  <quizShare wx:if="{{share}}" question="{{question}}" bind:exitShare="hideShare" />
+
+  <view class="contentWrapper">
+    <view class="iconWrapper">
+      <view class="iconfont icon-share" bindtap="showShare"></view>
     </view>
+
+    <view>
+      <view class="tit">{{question.ibTitle}}</view>
+      <view class="anl">{{question.ibContext}}</view>
+      <view class="judge">{{question.ibResult=='1'?'真':'假'}}</view>
+    </view>
+  </view>
+
+  <view class="btn" bindtap="clickHandler">
+    <slot></slot>
+  </view>
+
 </view>

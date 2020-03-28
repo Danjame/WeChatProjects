@@ -2,33 +2,39 @@
 @import '../../icons/iconfont/iconfont.wxss';
 
 .analWrapper {
+  margin: 20rpx auto 0 auto;
   height: 100%;
+  width: 90%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
 }
 
-.analWrapper>view:first-child{
-  width: 90%;
+.contentWrapper{
+background-color: #33cb98;
+border-radius: 40rpx;
+padding: 20rpx 30rpx;
+flex:1;
 }
 
-.analWrapper>view>view:first-child {
-  flex-shrink: 0;
-  padding: 20rpx 30rpx;
-  border-radius: 40rpx;
-  background-color: #33cb98;
-  overflow: hidden;
+.iconWrapper{
+ overflow: hidden;
 }
 
-.analWrapper .tit {
-  margin: 20rpx 0;
+.iconWrapper .icon-share{
+  float: right;
+  font-size:70rpx;
+}
+
+.tit {
+  margin-bottom: 20rpx;
   padding: 0 3rpx;
   font-size: 54rpx;
   text-align: justify;
-  clear: both;
 }
 
-.analWrapper .anl {
+.anl {
   padding: 0 35rpx;
   color: #fff;
   font-size: 36rpx;
@@ -37,7 +43,7 @@
   text-align: justify;
 }
 
-.analWrapper .judge {
+.judge {
   float: right;
   width: 134rpx;
   margin-top: 20rpx;
@@ -49,8 +55,9 @@
   text-align: center;
 }
 
-.analWrapper .btn {
-  margin: 30rpx auto;
+.btn {
+  width: 100%;
+  margin: 30rpx auto 60rpx auto;
   padding: 0;
   background: #eee;
   border-radius: 28rpx;
@@ -59,9 +66,4 @@
   font-weight: normal;
   line-height: 120rpx;
   text-align: center;
-}
-
-.icon-share{
-  float: right;
-  font-size:70rpx;
 }

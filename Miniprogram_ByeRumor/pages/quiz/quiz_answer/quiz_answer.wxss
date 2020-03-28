@@ -1,5 +1,4 @@
 /* pages/quiz/quiz-answer/quiz-answer.wxss */
-
 .ansWrapper {
   height: 100%;
 }
@@ -7,7 +6,8 @@
 .quesWrapper {
   height: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -15,12 +15,13 @@
   width: 70%;
 }
 
-.quesWrapper .title {
+.title {
   font-size: 54rpx;
+  flex: 1;
 }
 
-.quesWrapper .txt {
-  color: #d6d6d6;
+.txt {
+  color: #aaa;
   font-size: 28rpx;
   line-height: 100rpx;
 }
@@ -37,7 +38,7 @@
   text-align: center;
 }
 
-.quesWrapper .active {
+.active {
   background: #33cb98;
   color: #fff;
 }

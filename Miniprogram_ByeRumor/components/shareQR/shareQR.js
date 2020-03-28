@@ -104,7 +104,7 @@ Component({
         filePath: _this.data.tempFilePath,
         success(res) {
           wx.showToast({
-            title: "图片已保存至手机相册，赶紧分享到朋友圈吧！",
+            title: "图片已保存至相册，赶紧分享到朋友圈吧！",
             icon: "none"
           })
         },

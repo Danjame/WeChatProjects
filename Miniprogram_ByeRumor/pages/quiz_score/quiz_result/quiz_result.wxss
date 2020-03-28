@@ -1,52 +1,59 @@
 /* pages/quiz_score/quiz_result/quiz_result.wxss */
 
+page {
+  height: 90%;
+}
+
 .score-order {
-    width: 600rpx;
-    height: 840rpx;
-    background: #33CB98;
-    margin: 30rpx auto;
-    border-radius: 40rpx;
-    padding: 14rpx 7rpx;
-    box-sizing: border-box;
+  height: 100%;
+  background: #33cb98;
+  border-radius: 40rpx;
+  margin-bottom: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .order-wrap {
-    display: flex;
-    flex-wrap: wrap
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .order-num {
-    width: 104rpx;
-    line-height: 104rpx;
-    background: #fff;
-    border-radius: 50%;
-    text-align: center;
-    margin: 28rpx 46rpx;
+  width: 110rpx;
+  height: 110rpx;
+  margin: 26rpx 30rpx;
+  line-height: 110rpx;
+  background: #fff;
+  border-radius: 50%;
+  text-align: center;
 }
 
 .wrong {
-    background: orange;
+  background: orange;
 }
 
 .btns {
-  margin-top: 20rpx;
-    display: flex;
-    justify-content: space-between;
+  margin-bottom: 30rpx;
+  display: flex;
+  justify-content: space-between;
 }
 
 .btns image {
-    width: 90rpx;
-    height: 90rpx;
+  width: 90rpx;
+  height: 90rpx;
 }
 
 .btns .shareBtn {
-    width: 200rpx;
-    flex-shrink: 0;
-    padding: 0;
-    background: transparent;
+  width: 200rpx;
+  flex-shrink: 0;
+  padding: 0;
+  background: transparent;
 }
 
 .btns .share-txt {
-    font-weight: normal;
-    font-size: 28rpx;
+  font-weight: normal;
+  font-size: 28rpx;
 }

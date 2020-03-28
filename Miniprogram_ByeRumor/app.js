@@ -197,7 +197,7 @@ App({
       }
     }
   },
-  //获取单个和可视窗口高度
+  //获取组件和可视窗口高度
   getContentHeight(ele, that, callBack) {
     const _this = that;
     wx.createSelectorQuery().in(_this).select(ele).boundingClientRect(rect => {
@@ -208,7 +208,7 @@ App({
       })
     }).exec()
   },
-  //获取两个元素和可视窗口高度
+  //获取元素，组件和可视窗口高度
   getHeightData(ele1, ele2, that, callBack) {
     const _this = that;
     const sePromise = new Promise((resolve, reject) => {

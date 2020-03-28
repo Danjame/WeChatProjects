@@ -1,21 +1,26 @@
-page, page>view{
+page{
   height: 100%;
 }
 
-quiz_progress{
-  position: absolute;
-  width: 100%;
-}
-
-.main{
+page>view{
   height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+}
+
+quiz_progress{
+  width: 100%;
+}
+
+.startWrapper{
+  height: 100%;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
 
-quiz_answer{
-  width:100%;
-  height: 100%;
+.testWrapper{
+  margin-top: 20rpx;
+  flex: 1;
 }

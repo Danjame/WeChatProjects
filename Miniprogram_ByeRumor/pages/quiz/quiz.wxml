@@ -2,13 +2,14 @@
   <!-- 顶部进度条 -->
   <quiz_progress wx:if="{{started}}" index="{{index}}" bind:click="exitAnswer" />
 
-  <view class="main">
+  <view wx:if="{{!started}}" class="startWrapper">
     <!-- 开始按键 -->
-    <quiz_startBtn wx:if="{{!started}}"
-                   bind:startTest="startTest" />
-    <!-- 答题 -->
-    <quiz_answer wx:if="{{started}}" 
-                 question="{{questions[index]}}" 
+    <quiz_startBtn bind:startTest="startTest" />
+  </view>
+
+  <view wx:if="{{started}}" class="testWrapper">
+      <!-- 答题 -->
+    <quiz_answer question="{{questions[index]}}" 
                  bind:sendScore="getScore"
                  bind:nextQues="nextQues" />
   </view>

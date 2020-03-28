@@ -2,14 +2,13 @@
 <view class="ansWrapper">
 
   <view wx:if="{{subject}}" class="quesWrapper">
-    <view>
       <view class="title" data-index="{{question.id}}">{{question.ibTitle}}</view>
+
       <view>
         <text class="txt">请选择以下其中一个选项</text>
         <view class="btn {{activated == 'true'?'active':''}}" bindtap="selectAnswer" data-index="true">真</view>
         <view class="btn {{activated == 'false'? 'active':''}}" bindtap="selectAnswer" data-index="false">假</view>
       </view>
-    </view>
   </view>
 
   <quizAnalysis wx:if="{{!subject}}"
