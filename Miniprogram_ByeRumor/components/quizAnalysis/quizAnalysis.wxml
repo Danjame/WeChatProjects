@@ -1,5 +1,5 @@
 <!--components/quizAnalysis/quizAnalysis.wxml-->
-<view wx:if="{{!isCorrect}}" class="analWrapper" catchtouchmove="preventScroll">
+<view wx:if="{{!isCorrect}}" class="analWrapper">
 
   <quizShare wx:if="{{share}}" question="{{question}}" bind:exitShare="hideShare" />
 

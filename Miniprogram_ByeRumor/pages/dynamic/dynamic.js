@@ -43,13 +43,6 @@ Page({
    */
   onLoad: function(options) {
     const _this = this;
-    app.getContentHeight(".footer", this, (fHeight, wHeight) => {
-      _this.setData({
-        footerHeight: fHeight,
-        clientHeight: wHeight
-      })
-    });
-
     wx.showLoading({
       title: "加载中..."
     });

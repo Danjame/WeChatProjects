@@ -1,5 +1,5 @@
 <view>
-  <view style="min-height: {{clientHeight-footerHeight}}px">
+  <view>
     <view class="header">
       <view class="head">{{result.diTitle}}</view>
     </view>
@@ -23,7 +23,7 @@
     </view>
   </view>
 
-  <footer class="footer" result="{{result}}" like="{{like}}" collected="{{collected}}" bind:clickLike="clickLike" bind:clickCollect="clickCollect" bind:shareToMoment="shareToMoment" />
+  <footer result="{{result}}" like="{{like}}" collected="{{collected}}" bind:clickLike="clickLike" bind:clickCollect="clickCollect" bind:shareToMoment="shareToMoment" />
 
   <shareQR wx:if="{{shareImage}}" bindtap="shareToMoment" />
 </view>

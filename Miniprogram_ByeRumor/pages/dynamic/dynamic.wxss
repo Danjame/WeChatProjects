@@ -1,3 +1,17 @@
+page, page>view{
+  height: 100%
+}
+
+page>view{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+page>view>view{
+  flex: 1;
+}
+
 .header{
   min-height: 46rpx;
   padding: 20rpx 30rpx;

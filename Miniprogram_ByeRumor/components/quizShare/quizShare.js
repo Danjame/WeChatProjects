@@ -32,5 +32,8 @@ Component({
         shareImage: this.data.shareImage? false: true
       })
     },
+    preventScroll(){
+      return;
+    }
   }
 })

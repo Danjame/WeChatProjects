@@ -65,6 +65,9 @@ Page({
     })
   },
   getScience() {
+    wx.showLoading({
+      title: "加载中..."
+    })
     const _this = this;
     wx.request({
       url: 'https://wdd.free.qydev.com/science/list',
@@ -86,6 +89,7 @@ Page({
         console.log("can not get science");
       },
       complete() {
+        wx.hideLoading();
         _this.setData({
           updating: false,
         })
@@ -93,6 +97,9 @@ Page({
     })
   },
   getDynamic() {
+    wx.showLoading({
+      title: "加载中..."
+    })
     const _this = this;
     wx.request({
       url: 'https://wdd.free.qydev.com/dynamic/list',
@@ -109,6 +116,7 @@ Page({
         console.log("can not get dynamic");
       },
       complete() {
+        wx.hideLoading();
         _this.setData({
           updating: false,
         })

@@ -1,5 +1,5 @@
 <view>
-  <view style="min-height: {{clientHeight-footerHeight}}px">
+  <view>
     <view class="header">
       <view wx:if="{{result.rStatus == 1}}">真</view>
       <view wx:elif="{{result.rStatus == -1}}">假</view>
@@ -27,11 +27,10 @@
       <view class="head">相关阅读</view>
 
       <rumorWrapper rumors="{{about}}" />
-
     </view>
     
   </view>
-  <footer class="footer" result="{{result}}" like="{{like}}" collected="{{collected}}" bind:clickLike="clickLike" bind:clickCollect="clickCollect" bind:shareToMoment="shareToMoment" />
+  <footer result="{{result}}" like="{{like}}" collected="{{collected}}" bind:clickLike="clickLike" bind:clickCollect="clickCollect" bind:shareToMoment="shareToMoment" />
   
   <shareQR wx:if="{{shareImage}}" bindtap="shareToMoment" />
 </view>

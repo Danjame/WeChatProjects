@@ -33,9 +33,6 @@ Component({
             this.setData({
                 share: false
             })
-        },
-        preventScroll() {
-            return;
         }
     }
 })

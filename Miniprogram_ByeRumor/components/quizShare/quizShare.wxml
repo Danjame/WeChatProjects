@@ -1,5 +1,5 @@
 <!--components/quizShare/quizShare.wxml-->
-<view class="shareWrapper" mut-bind:tap="exitShare">
+<view class="shareWrapper" mut-bind:tap="exitShare" catchtouchmove="preventScroll">
     <view class="main" mut-bind:tap="stopPropa">
         <view class="content">
             <view>{{question.ibTitle}}</view>

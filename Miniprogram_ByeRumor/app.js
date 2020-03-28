@@ -12,6 +12,9 @@ App({
     wx.login({
       success(res) {
         if (res.code) {
+          wx.showToast({
+            title: '登录成功！',
+          });
           wx.request({
             url: 'https://wdd.free.qydev.com/user/login',
             data: {
@@ -36,7 +39,6 @@ App({
   },
   //验证token
   authorize() {
-    const _this = this;
     const loginInfo = wx.getStorageSync("loginInfo");
     wx.request({
       url: 'https://wdd.free.qydev.com//user/auth',
@@ -51,7 +53,7 @@ App({
         } else {
           console.log("请登录！");
           // 获取登录code和token
-          _this.loin();
+          this.loin();
         }
       }
     })
@@ -196,17 +198,6 @@ App({
         }
       }
     }
-  },
-  //获取组件和可视窗口高度
-  getContentHeight(ele, that, callBack) {
-    const _this = that;
-    wx.createSelectorQuery().in(_this).select(ele).boundingClientRect(rect => {
-      wx.getSystemInfo({
-        success: function (res) {
-          callBack(rect.height, res.windowHeight)
-        }
-      })
-    }).exec()
   },
   //获取元素，组件和可视窗口高度
   getHeightData(ele1, ele2, that, callBack) {
