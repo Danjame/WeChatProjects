@@ -159,6 +159,13 @@
 					"id": -1,
 					"name": "pages/dynamic/dynamic",
 					"pathName": "pages/dynamic/dynamic",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/suggestion/suggestion",
+					"pathName": "pages/suggestion/suggestion",
 					"scene": null
 				}
 			]

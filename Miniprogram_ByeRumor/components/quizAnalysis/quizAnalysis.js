@@ -1,4 +1,5 @@
 // components/quizAnalysis/quizAnalysis.js
+const app = getApp();
 Component({
     /**
      * 组件的属性列表
@@ -25,9 +26,11 @@ Component({
             this.triggerEvent("click")
         },
         showShare() {
+          app.authorize(()=>{
             this.setData({
-                share: true
+              share: true
             })
+          })
         },
         hideShare() {
             this.setData({

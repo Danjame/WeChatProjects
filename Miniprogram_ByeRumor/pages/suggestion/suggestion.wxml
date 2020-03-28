@@ -3,6 +3,6 @@
     <textarea focus="true" maxlength="300" bindinput="textareaInput" class="suggestion-textarea" placeholder="写下对我们的意见~（300字以内）"></textarea>
   </view>
   <view class="submit-view">
-    <button class="suggestion-submit" bindtap="submit" type="primary">提交</button>
+    <button style="width:65%" bindtap="submit" type="primary">提交</button>
   </view>
 </view>

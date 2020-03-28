@@ -1,4 +1,5 @@
 // pages/quiz_score/quiz_result/quiz_result.js
+const app = getApp();
 Component({
   /**
    * 组件的属性列表
@@ -30,9 +31,17 @@ Component({
    */
   methods: {
     shareToMoment() {
-      this.setData({
-        shareImage: this.data.shareImage ? false : true
-      })
+      if (!this.data.shareImage){
+        app.authorize(() => {
+          this.setData({
+            shareImage: this.data.shareImage ? false : true
+          })
+        })
+      }else{
+        this.setData({
+          shareImage: this.data.shareImage ? false : true
+        })
+      }
     },
     toScoreHint(e) {
       const index = e.currentTarget.dataset.index;

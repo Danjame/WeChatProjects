@@ -8,23 +8,15 @@ page{
   background-color: #ccc;
 }
 .textarea-view{
-  height: 500rpx;
+  height: 30%;
+  padding: 10%;
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 .suggestion-textarea{
-  overflow:auto;
-  width: 500rpx;
-  height: 400rpx;
+  height: 90%;
+  padding: 30rpx;
   background-color: #fff;
-  font-size: 28rpx;
-}
-.submit-view{
-  display: flex;
-  align-items: center;
+  overflow:auto;
 }
 
-textarea{
-  padding: 20rpx;
-}

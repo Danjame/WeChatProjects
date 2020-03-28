@@ -4,17 +4,11 @@ App({
   data: {
 
   },
-  onShow() {
-    this.authorize();
-  },
   //登录
   login() {
     wx.login({
       success(res) {
         if (res.code) {
-          wx.showToast({
-            title: '登录成功！',
-          });
           wx.request({
             url: 'https://wdd.free.qydev.com/user/login',
             data: {
@@ -27,6 +21,8 @@ App({
                   key: "loginInfo",
                   data: res.data
                 });
+              }else{
+                console.log("登录失败");
               }
             },
             fail() {
@@ -34,11 +30,14 @@ App({
             }
           })
         }
+      },
+      fail(){
+        console.log(123);
       }
     });
   },
   //验证token
-  authorize() {
+  authorize(callBack) {
     const loginInfo = wx.getStorageSync("loginInfo");
     wx.request({
       url: 'https://wdd.free.qydev.com//user/auth',
@@ -50,10 +49,25 @@ App({
       success(res) {
         if (res.data) {
           console.log("已登录！");
+          //登录状态下执行的回调
+          callBack();
         } else {
-          console.log("请登录！");
-          // 获取登录code和token
-          this.loin();
+          console.log("未登录！");
+          wx.showModal({
+            title: '尚未登录',
+            content: '是否登录？',
+            confirmText: '是',
+            cancelText: '否',
+            success(res) {
+              if (res.confirm) {
+                wx.navigateTo({
+                  url: "../../pages/login/login",
+                });
+              } else {
+                console.log("不登录");
+              }
+            }
+          })
         }
       }
     })
@@ -214,15 +228,14 @@ App({
     });
     const winPromise = new Promise((resolve, reject) => {
       wx.getSystemInfo({
-        success: function (res) {
+        success: function(res) {
           resolve(res.windowHeight)
         }
       })
     });
-    Promise.all([sePromise, taPromise, winPromise]).then((result)=>{
+    Promise.all([sePromise, taPromise, winPromise]).then((result) => {
       callBack(result);
-    }
-    ).catch(error=>{
+    }).catch(error => {
       console.log("Failure");
     })
   },

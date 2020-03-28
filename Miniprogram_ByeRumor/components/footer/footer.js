@@ -1,4 +1,5 @@
 // components/footer/footer.js
+const app = getApp();
 Component({
   /**
    * 组件的属性列表
@@ -29,24 +30,30 @@ Component({
    */
   methods: {
     clickLikeHandler() {
-      this.setData({
-        like: this.data.like? false : true
+      app.authorize(()=>{
+        this.setData({
+          like: this.data.like ? false : true
+        });
+        this.triggerEvent("clickLike", this.data.like);
       });
-      this.triggerEvent("clickLike", this.data.like);
     },
     clickColleHandler() {
-      this.setData({
-        collected: this.data.collected? false : true
+      app.authorize(()=>{
+        this.setData({
+          collected: this.data.collected ? false : true
+        });
+        this.triggerEvent("clickCollect", this.data.collected);
       });
-      this.triggerEvent("clickCollect", this.data.collected);
     },
     shareToMoment(){
       this.triggerEvent("shareToMoment");
     },
     shareHandler(){
-      this.setData({
-        share: this.data.share?false:true
-      })
+      app.authorize(()=>{
+        this.setData({
+          share: this.data.share ? false : true
+        })
+      });
     }
   },
 })

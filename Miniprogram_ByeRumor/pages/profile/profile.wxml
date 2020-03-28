@@ -10,16 +10,16 @@
         </view>
         <icon class="icon iconfont icon-youjiantou"></icon>
     </view>
-    <navigator url="/pages/collection/collection">
+    <view bindtap="toCollection">
         <view class="my-collection">
             <text>我的收藏</text>
             <icon class="icon iconfont icon-youjiantou"></icon>
         </view>
-    </navigator>
-    <navigator url="/pages/suggestion/suggestion">
+    </view>
+    <view bindtap="toSuggestion">
         <view class="suggestion">
             <text>提个意见</text>
             <icon class="icon iconfont icon-youjiantou"></icon>
         </view>
-    </navigator>
+    </view>
 </view>

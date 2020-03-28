@@ -4,7 +4,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        started: true, // 首页开始答题
+        started: false, // 首页开始答题
         questions: [],
         index: 0,
         score: []
