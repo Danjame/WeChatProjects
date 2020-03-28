@@ -132,7 +132,7 @@ Component({
           qrPath: res[1]
         })
         //绘图图片
-        this.drawImage(this.data.profilePath, "../../icons/qr.png");
+        this.drawImage(this.data.profilePath, "../../icons/qr.jpg");
       });
     }
   }

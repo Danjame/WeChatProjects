@@ -5,7 +5,6 @@ Page({
   getUserInfo(e) {
     //获取用户信息
     const userInfo = e.detail.userInfo;
-    console.log(userInfo);
     wx.setStorage({
       key: "userInfo",
       data: userInfo

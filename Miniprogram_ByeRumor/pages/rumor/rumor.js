@@ -33,9 +33,6 @@ Page({
     }
   },
   shareToMoment() {
-    if (!this.data.shareImage){
-      app.authorize();
-    }
     this.setData({
       shareImage: this.data.shareImage ? false : true
     });
