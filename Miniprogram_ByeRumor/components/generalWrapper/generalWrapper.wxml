@@ -1,12 +1,10 @@
 <!--components/generalWrapper/generalWrapper.wxml-->
 <view class="dataWrapper">
-    <view wx:for="{{general}}" data-index="{{index}}" wx:key="index">
-        <view class="info" wx:for="{{item}}" wx:for-item="subItem" data-index="{{subItem.id}}" wx:key="id" bindtap="enterDetail">
-            <view wx:if="{{subItem.rTitle}}" class="sideBar ruBar}}"></view>
-            <view wx:elif="{{subItem.psTitle}}" class="sideBar scBar}}"></view>
-            <view wx:else class="sideBar dyBar"></view>
+    <view wx:for="{{result}}" data-index="{{index}}" wx:key="index">
+        <view class="info" wx:for="{{item}}" wx:for-item="subItem" data-index="{{subItem.id}}" wx:key="id" bindtap="enterDetail" bindlongpress="longpressHandler">
             <!-- 谣言项 -->
             <view wx:if="{{subItem.rTitle}}" class="infoItem">
+            <view class="sideBar ruBar}}"></view>
                 <view class="itemLeft">
                     <view class="title">
                         <text wx:if="{{subItem.rStatus === 1}}" class="truth">真</text>
@@ -21,6 +19,7 @@
             </view>
             <!-- 科普项 -->
             <view wx:if="{{subItem.psTitle}}" class="infoItem">
+            <view class="sideBar scBar}}"></view>
                 <view class="itemLeft">
                     <view class="title">
                         {{subItem.psTitle}}
@@ -34,6 +33,7 @@
             </view>
             <!-- 动态项 -->
             <view wx:if="{{subItem.diTitle}}" class="infoItem">
+            <view class="sideBar dyBar"></view>
                 <view class="itemLeft">
                     <view class="title">
                         {{subItem.diTitle}}

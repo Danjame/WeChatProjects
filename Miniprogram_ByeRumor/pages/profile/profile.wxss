@@ -48,23 +48,17 @@ page{
 }
 
 .my-collection text,
-.suggestion text{
+.suggestion text,
+.aboutTeam text{
   line-height: 140rpx;
   padding-left: 40rpx;
 }
 
-.my-collection{
+.my-collection,
+.suggestion,
+.aboutTeam{
   height: 140rpx;
-    display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #ffffff;
-  border-bottom: 2rpx solid #f1f1f1
-}
-
-.suggestion{
-  height: 140rpx;
-    display: flex;
+  display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: #ffffff;

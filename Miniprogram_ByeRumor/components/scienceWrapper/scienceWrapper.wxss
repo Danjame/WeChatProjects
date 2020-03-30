@@ -1,43 +1,46 @@
 /* components/scienceWrapper/scienceWrapper.wxss */
 @import '../../icons/iconfont/iconfont.wxss';
-.dataWrapper .info {
-  display: flex;
+
+.info {
   height: 205rpx;
+  background-color: #fff;
+  border-bottom: solid 5rpx #e3e3e3;
 }
 
-.dataWrapper .info .sideBar {
+.infoItem {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sideBar {
+  height: 100%;
   width: 18rpx;
   flex-shrink: 0;
 }
 
-.dataWrapper .info .ruBar {
+.ruBar {
   background-color: #cd672f;
 }
 
-.dataWrapper .info .scBar {
+.scBar {
   background-color: #facc48;
 }
 
-.dataWrapper .info .dyBar {
+.dyBar {
   background-color: #3499f7;
 }
 
-.dataWrapper .info .infoItem {
+.infoItem>.itemLeft {
   flex-grow: 1;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 26rpx;
-  border-bottom: solid 5rpx #e3e3e3;
-}
-
-.dataWrapper .info .infoItem>.itemLeft {
   display: flex;
   flex-direction: column;
   align-content: center;
+  padding: 0 26rpx;
 }
 
-.dataWrapper .info .infoItem>.itemLeft>.title {
+.infoItem>.itemLeft>.title {
   margin-bottom: 14rpx;
   text-align: justify;
   display: -webkit-box;
@@ -48,11 +51,11 @@
   -webkit-box-pack: center;
 }
 
-.dataWrapper .info .infoItem>.itemLeft>.time {
+.infoItem>.itemLeft>.time {
   font-size: 24rpx;
 }
 
-.dataWrapper .info .infoItem>.itemRight {
+.infoItem>.itemRight {
   width: 178rpx;
   height: 178rpx;
   margin-left: 32rpx;
@@ -63,11 +66,11 @@
   border: solid 1rpx #ccc;
 }
 
-.dataWrapper .info .infoItem image{
+.infoItem image {
   width: 174rpx;
   height: 174rpx;
 }
 
-.dataWrapper .info .infoItem .iconfont{
+.infoItem .iconfont {
   font-size: 60rpx;
 }

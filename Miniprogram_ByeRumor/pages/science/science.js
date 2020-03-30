@@ -17,9 +17,9 @@ Page({
       like: e.detail
     });
     if (e.detail) {
-      app.likeAndCollectHandler.call(app, "science", "like", this);
+      app.likeAndCollectHandler(this.data.result.id, "science", "like");
     } else {
-      app.likeAndCollectHandler.call(app, "science", "unlike", this);
+      app.likeAndCollectHandler(this.data.result.id, "science", "unlike");
     }
   },
   //收藏和取消收藏
@@ -28,9 +28,9 @@ Page({
       collected: e.detail
     });
     if (e.detail) {
-      app.likeAndCollectHandler.call(app, "science", "collect", this);
+      app.likeAndCollectHandler(this.data.result.id, "science", "collect");
     } else {
-      app.likeAndCollectHandler.call(app, "science", "uncollect", this);
+      app.likeAndCollectHandler(this.data.result.id, "science", "uncollect");
     }
   },
   shareToMoment() {
@@ -94,8 +94,8 @@ Page({
       complete() {
         wx.hideLoading();
         //获取是否点赞和收藏数据
-        app.likeAndCollectHandler.call(app, "science", "checklike", _this);
-        app.likeAndCollectHandler.call(app, "science", "checkcollect", _this);
+        app.likeAndCollectHandler(_this.data.result.id, "science", "checklike", _this);
+        app.likeAndCollectHandler(_this.data.result.id, "science", "checkcollect", _this);
       }
     })
   },

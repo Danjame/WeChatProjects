@@ -12,8 +12,8 @@
     <swiper-item>
       <scroll-view scroll-y="{{true}}" style="height:{{clientHeight-searchHeight-tabHeight+'px'}}" bindscrolltolower="reachBottomHandler">
 
-        <generalWrapper general="{{general}}"
-                        totalList="{{totalList}}"/>
+        <generalWrapper result="{{general}}"
+                        rawData="{{genData}}"/>
 
       </scroll-view>
     </swiper-item>

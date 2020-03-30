@@ -6,9 +6,36 @@ Page({
    * 页面的初始数据
    */
   data: {
-    result: []
+    result: [],
   },
-
+  //长按删除收藏
+  longpress(e) {
+    const _this = this;
+    wx.showModal({
+      content: '删除收藏',
+      success(res) {
+        if (res.confirm) {
+          let result = _this.data.result;
+          const id = e.detail;
+          result[0].forEach((item, index) => {
+            if (item.id == id) {
+              if (item.rTitle) {
+                app.likeAndCollectHandler(id, "rumor", "uncollect");
+              } else if (item.psTitle) {
+                app.likeAndCollectHandler(id, "science", "uncollect");
+              } else {
+                app.likeAndCollectHandler(id, "dynamic", "uncollect");
+              }
+              result[0].splice(index, 1);
+            }
+          })
+          _this.setData({
+            result
+          })
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -31,21 +58,26 @@ Page({
           ];
           //合并所有数组
           result[0] = res.data['Rumor'].concat(res.data['polularScience'], res.data['dynamicInformation']);
-          //加上毫秒时间
+          //时间格式化
           result[0].forEach(item => {
-            item.releaseMs = new Date(item.releaseTime.replace(/-/g, "/")).getTime();
+            item.releaseTime = item.releaseTime.slice(0, 10);
           })
-          //重新排序
-          result[0].sort(() => {
-            return Math.random() - 0.5;
-          })
-          result[0].sort((a, b) => {
-            if (a.releaseMs > b.releaseMs) {
-              return -1;
-            } else if (a.releaseMs <= b.releaseMs) {
-              return 1;
-            }
-          })
+
+          // //加上毫秒时间
+          // result[0].forEach(item => {
+          //   item.releaseMs = new Date(item.releaseTime.replace(/-/g, "/")).getTime();
+          // })
+          // //重新排序
+          // result[0].sort(() => {
+          //   return Math.random() - 0.5;
+          // })
+          // result[0].sort((a, b) => {
+          //   if (a.releaseMs > b.releaseMs) {
+          //     return -1;
+          //   } else if (a.releaseMs <= b.releaseMs) {
+          //     return 1;
+          //   }
+          // })
           _this.setData({
             result
           })

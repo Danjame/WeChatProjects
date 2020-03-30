@@ -85,8 +85,8 @@ Component({
       }
     },
     getAll() {
-      if (this.data.showAllPage.total !== this.data.totalList.length) {
-        const result = app.dataSetting(this.data.showAllPage, this.data.totalList);
+      if (this.data.showAllPage.total !== this.data.genData.length) {
+        const result = app.dataSetting(this.data.showAllPage, this.data.genData);
         this.setData({
           general: this.data.general.concat(result.arr),
           showAllPage: result.data,
@@ -131,25 +131,25 @@ Component({
     },
     //合并排列数据
     initGeneral() {
-      let totalList = this.data.result;
+      let genData = this.data.result;
       //判断媒体类型
-      totalList['ps'].forEach(item => {
+      genData['ps'].forEach(item => {
         if (item.psImgSrc) {
           item.hasImg = item.psImgSrc.indexOf('.mp4') !== -1 ? false : true;
         }
       });
-      totalList = totalList['r'].concat(totalList['ps'], totalList['di']);
+      genData = genData['r'].concat(genData['ps'], genData['di']);
       //时间格式处理并加上毫秒时间
-      totalList.forEach(item => {
+      genData.forEach(item => {
         item.releaseTime = item.releaseTime.slice(0, 10);
         item.releaseMs = new Date(item.releaseTime.replace(/-/g, "/")).getTime();
       })
       //打乱排序
-      totalList.sort(() => {
+      genData.sort(() => {
         return Math.random() - 0.5;
       })
       //按时间排序
-      totalList.sort((a, b) => {
+      genData.sort((a, b) => {
         if (a.releaseMs > b.releaseMs) {
           return -1;
         } else if (a.releaseMs <= b.releaseMs) {
@@ -157,7 +157,7 @@ Component({
         }
       })
       this.setData({
-        totalList
+        genData
       })
     }
   },

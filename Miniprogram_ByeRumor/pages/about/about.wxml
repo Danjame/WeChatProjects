@@ -1,0 +1,5 @@
+<!--pages/about/about.wxml-->
+<view>
+<view>关于项目：</view>
+<view>团队介绍：</view>
+</view>

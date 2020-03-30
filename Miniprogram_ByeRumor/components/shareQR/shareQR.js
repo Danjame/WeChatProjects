@@ -81,7 +81,7 @@ Component({
       ctx.fillText("邀请您使用辟谣助手", 90, 65);
       ctx.setFontSize(18);
       ctx.setFillStyle("#ef962d");
-      ctx.fillText("消遥平台", 90, 100);
+      ctx.fillText("消谣平台", 90, 100);
       //开始绘制
       ctx.draw(false, () => {
         wx.canvasToTempFilePath({

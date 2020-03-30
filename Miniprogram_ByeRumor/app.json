@@ -10,7 +10,8 @@
     "pages/login/login",
     "pages/suggestion/suggestion",
     "pages/collection/collection",
-    "pages/quiz_score/quiz_score"
+    "pages/quiz_score/quiz_score",
+    "pages/about/about"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

@@ -4,6 +4,9 @@ App({
   data: {
 
   },
+  onShow(){
+    this.authorize(()=>{return});
+  },
   //登录
   login() {
     wx.login({
@@ -73,14 +76,13 @@ App({
     })
   },
   //点赞收藏请求封装
-  likeAndCollectHandler(type, action, that) {
-    const _this = this;
+  likeAndCollectHandler(id, type, action, that) {
     const _that = that;
     const loginInfo = wx.getStorageSync("loginInfo");
     wx.request({
-      url: _this.defineRequest(type, action),
+      url: defineRequest(type, action),
       data: {
-        id: _that.data.result.id,
+        id,
         userId: loginInfo.userId
       },
       success(res) {
@@ -102,31 +104,31 @@ App({
       },
       complete() {}
     })
-  },
-  //点赞收藏请求地址封装
-  defineRequest(type, action) {
-    let url;
-    switch (action) {
-      case "like":
-        url = `https://wdd.free.qydev.com/${type}/stick`;
-        break;
-      case "unlike":
-        url = `https://wdd.free.qydev.com/${type}/nostick`;
-        break;
-      case "checklike":
-        url = `https://wdd.free.qydev.com/${type}/stick/is`;
-        break;
-      case "collect":
-        url = `https://wdd.free.qydev.com/${type}/collection`;
-        break;
-      case "uncollect":
-        url = `https://wdd.free.qydev.com/${type}/nocollection`;
-        break;
-      case "checkcollect":
-        url = `https://wdd.free.qydev.com/${type}/collection/is`;
-        break;
+    //点赞收藏请求地址封装
+    function defineRequest(type, action) {
+      let url;
+      switch (action) {
+        case "like":
+          url = `https://wdd.free.qydev.com/${type}/stick`;
+          break;
+        case "unlike":
+          url = `https://wdd.free.qydev.com/${type}/nostick`;
+          break;
+        case "checklike":
+          url = `https://wdd.free.qydev.com/${type}/stick/is`;
+          break;
+        case "collect":
+          url = `https://wdd.free.qydev.com/${type}/collection`;
+          break;
+        case "uncollect":
+          url = `https://wdd.free.qydev.com/${type}/nocollection`;
+          break;
+        case "checkcollect":
+          url = `https://wdd.free.qydev.com/${type}/collection/is`;
+          break;
+      };
+      return url;
     };
-    return url;
   },
   //路由跳转
   to_rumor(params) {

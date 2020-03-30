@@ -17,9 +17,9 @@ Page({
       like: e.detail
     });
     if (e.detail) {
-      app.likeAndCollectHandler.call(app, "dynamic", "like", this);
+      app.likeAndCollectHandler(this.data.result.id, "dynamic", "like");
     } else {
-      app.likeAndCollectHandler.call(app, "dynamic", "unlike", this);
+      app.likeAndCollectHandler(this.data.result.id, "dynamic", "unlike");
     }
   },
   //收藏和取消收藏
@@ -28,9 +28,9 @@ Page({
       collected: e.detail
     });
     if (e.detail) {
-      app.likeAndCollectHandler.call(app, "dynamic", "collect", this);
+      app.likeAndCollectHandler(this.data.result.id, "dynamic", "collect");
     } else {
-      app.likeAndCollectHandler.call(app, "dynamic", "uncollect", this);
+      app.likeAndCollectHandler(this.data.result.id, "dynamic", "uncollect");
     }
   },
   shareToMoment() {
@@ -86,8 +86,8 @@ Page({
       complete() {
         wx.hideLoading();
         //获取是否点赞和收藏数据
-        app.likeAndCollectHandler.call(app, "dynamic", "checklike", _this);
-        app.likeAndCollectHandler.call(app, "dynamic", "checkcollect", _this);
+        app.likeAndCollectHandler(_this.data.result.id, "dynamic", "checklike", _this);
+        app.likeAndCollectHandler(_this.data.result.id, "dynamic", "checkcollect", _this);
       }
     })
   },

@@ -1,5 +1,6 @@
 <!--pages/collection/colect.wxml-->
 <view class="collection_container">
-     <generalWrapper general="{{result}}"
-                     totalList="{{result[0]}}"/>
+     <generalWrapper result="{{result}}"
+                     rawData="{{result[0]}}"
+                     bind:longpressHandler="longpress" />
 </view>

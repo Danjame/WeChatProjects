@@ -1,25 +1,31 @@
 <!--pages/profile/profile.wxml-->
 <view class="profile-container">
-    <view class="profile-login" bindtap="to_Login">
-        <view>
-            <view class="login-pic {{!hasInfo?'logined':''}}">
-                <icon wx:if="{{!hasInfo}}" class="icon iconfont icon-user"></icon>
-                <image wx:else src="{{userInfo.avatarUrl}}"></image>
-            </view>
-            <text>{{hasInfo?userInfo.nickName:'未登录'}}</text>
-        </view>
-        <icon class="icon iconfont icon-youjiantou"></icon>
+  <view class="profile-login" bindtap="to_Login">
+    <view>
+      <view class="login-pic {{!hasInfo?'logined':''}}">
+        <icon wx:if="{{!hasInfo}}" class="icon iconfont icon-user"></icon>
+        <image wx:else src="{{userInfo.avatarUrl}}"></image>
+      </view>
+      <text>{{hasInfo?userInfo.nickName:'未登录'}}</text>
     </view>
-    <view bindtap="toCollection">
-        <view class="my-collection">
-            <text>我的收藏</text>
-            <icon class="icon iconfont icon-youjiantou"></icon>
-        </view>
+    <icon class="icon iconfont icon-youjiantou"></icon>
+  </view>
+  <view bindtap="toCollection">
+    <view class="my-collection">
+      <text>我的收藏</text>
+      <icon class="icon iconfont icon-youjiantou"></icon>
     </view>
-    <view bindtap="toSuggestion">
-        <view class="suggestion">
-            <text>提个意见</text>
-            <icon class="icon iconfont icon-youjiantou"></icon>
-        </view>
+  </view>
+  <view bindtap="toSuggestion">
+    <view class="suggestion">
+      <text>提个意见</text>
+      <icon class="icon iconfont icon-youjiantou"></icon>
     </view>
+  </view>
+  <navigator url="../about/about">
+    <view class="aboutTeam">
+      <text>项目团队</text>
+      <icon class="icon iconfont icon-youjiantou"></icon>
+    </view>
+  </navigator>
 </view>
