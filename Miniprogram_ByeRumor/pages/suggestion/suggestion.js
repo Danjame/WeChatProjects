@@ -22,7 +22,6 @@ Page({
                 content: "确认提交意见？",
                 cancelText: "我再想想",
                 confirmText: "提交",
-                confirmColor: "green",
                 success: function(res) {
                     if (res.confirm) {
                         //提交意见数据

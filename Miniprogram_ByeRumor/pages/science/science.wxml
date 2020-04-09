@@ -11,9 +11,9 @@
         <text>{{result.psContext}}</text>
       </view>
 
-      <view class="infoSrc">
-        <text class="head">辟谣来源：</text>{{result.psInfoFrom}}
-        <text class="head">发布时间：</text>{{result.releaseTime}}
+      <view class="srcInfo">
+        <text class="from">辟谣来源：</text>{{result.psInfoFrom}}
+        <text class="releaseTime">发布时间：</text>{{result.releaseTime}}
       </view>
     </view>
 

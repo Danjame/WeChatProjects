@@ -29,7 +29,7 @@ flex:1;
 
 .tit {
   margin-bottom: 20rpx;
-  padding: 0 3rpx;
+  padding: 0 35rpx;
   font-size: 54rpx;
   text-align: justify;
 }

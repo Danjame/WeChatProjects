@@ -12,7 +12,7 @@ Page({
   longpress(e) {
     const _this = this;
     wx.showModal({
-      content: '删除收藏',
+      content: '取消收藏？',
       success(res) {
         if (res.confirm) {
           let result = _this.data.result;

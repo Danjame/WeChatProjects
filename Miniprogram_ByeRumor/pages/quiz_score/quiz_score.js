@@ -28,7 +28,6 @@ Page({
             questions,
             correctNum
         });
-        console.log(this.data.correctNum);
     },
 
     /**

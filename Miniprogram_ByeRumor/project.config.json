@@ -166,6 +166,13 @@
 					"id": -1,
 					"name": "pages/suggestion/suggestion",
 					"pathName": "pages/suggestion/suggestion",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/profile/profile",
+					"pathName": "pages/profile/profile",
 					"scene": null
 				}
 			]

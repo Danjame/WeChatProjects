@@ -13,7 +13,6 @@ Page({
       url: "../login/login",
     })
   },
-
   toCollection() {
     app.authorize(() => {
       wx.navigateTo({
@@ -33,23 +32,27 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    const userInfo = wx.getStorageSync("userInfo");
-    this.setData({
-      userInfo
-    });
-    if (Object.keys(this.data.userInfo).length) {
-      this.setData({
-        hasInfo: true
-      })
-    }
+
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-
+  
   },
-
+  onShow(){
+    app.authorize(()=>{
+      const userInfo = wx.getStorageSync("userInfo");
+      this.setData({
+        userInfo
+      });
+      if (Object.keys(this.data.userInfo).length) {
+        this.setData({
+          hasInfo: true
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

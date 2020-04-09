@@ -17,8 +17,9 @@ page>view>view{
   padding: 20rpx 30rpx;
 }
 
-.header>view:first-child {
+.header .head {
   margin-bottom: 32rpx;
+  font-size: 38rpx;
 }
 
 .header>video {
@@ -35,25 +36,29 @@ page>view>view{
 
 .content .text {
   margin-top: 16rpx;
-  font-size: 30rpx;
   text-align: justify;
 }
 
-.content .infoSrc {
+.content .srcInfo {
   font-size: 26rpx;
   margin-top: 16rpx;
 }
 
-.content .infoSrc .head:last-child {
+.content .srcInfo .releaseTime {
   margin-left: 26rpx;
+}
+
+.readMore .head {
+  padding-left: 30rpx;
+  padding-bottom: 16rpx;
+  border-bottom: solid 2rpx #bbb;
+  font-size: 32rpx;
+}
+
+.from, .releaseTime {
+  font-weight: bold;
 }
 
 .head {
   font-weight: bold;
-}
-
-.readMore>view:first-child {
-  padding-left: 30rpx;
-  padding-bottom: 16rpx;
-  border-bottom: solid 2rpx #bbb;
 }
