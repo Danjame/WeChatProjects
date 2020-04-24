@@ -61,6 +61,7 @@ Page({
             url: 'https://wdd.free.qydev.com/item/list',
             success(res) {
                 if (res.statusCode === 200) {
+                  console.log(res);
                     _this.setData({
                         questions: res.data
                     })
